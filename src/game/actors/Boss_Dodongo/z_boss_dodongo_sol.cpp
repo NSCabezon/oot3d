@@ -1,5 +1,6 @@
-/* Complete first candidates, unmatched and inactive. No generated statics enabled. */
+/* Unmatched native 3DS candidate. Original ASM remains active. */
 #if 0
+/* Complete first candidates, unmatched and inactive. No generated statics enabled. */
 #include "z_boss_dodongo.hpp"
 
 #include "model_manager.hpp"
@@ -16,7 +17,7 @@ extern s16 BossDodongo_ExitParams;
 s32 Animation_GetLastFrame(SkelAnime*,s32);
 void FUN_00353020(SkelAnime*,s32*,f32,f32,f32,s32,f32);
 void FUN_003490e0(SkelAnime*,s32*);
-void FUN_00181770(BossDodongo*,PlayState*);
+void FUN_00181770(BossDodongo*);
 void FUN_0019e118(BossDodongo*,PlayState*);
 void FUN_003da7ac(BossDodongo*,PlayState*);
 void FUN_003dc268(BossDodongo*,PlayState*);
@@ -52,15 +53,16 @@ void FUN_001e81fc(BossDodongo* self, PlayState* play) {
     if(self->unk_77C>20) Audio_PlayActorSound2(&self->actor,0x010002BF);
     Math_SmoothStepToF(&self->unk_7D8,0.05f,1.0f,0.005f,0.0f);
     FUN_00370734(&self->skelAnime);
+    s16 zero=0;
     if(self->unk_7AA==0) {
         self->actor.speedXZ=self->unk_7B4=0.0f;
-        FUN_00353020(&self->skelAnime,&BossDodongo_Anim5,1.0f,0.0f,(f32)Animation_GetLastFrame(&self->skelAnime,BossDodongo_AnimTable[5]),2,0.0f);
+        FUN_00353020(&self->skelAnime,&BossDodongo_AnimTable[5],1.0f,0.0f,(f32)Animation_GetLastFrame(&self->skelAnime,BossDodongo_AnimTable[5]),2,0.0f);
         self->actionFunc=FUN_003dc268;
         self->unk_7AA=75;
-        self->unk_77E=0;
+        self->unk_77E=zero;
     } else {
         self->unk_77C++;
-        if(self->unk_77C>20 && self->unk_77C<82) {
+        if(self->unk_77C>20 && self->unk_77C<=81) {
             explosive=play->actorCtx.actorLists[ACTORCAT_EXPLOSIVES].head;
             while(explosive!=0) {
                 if(explosive!=&self->actor) {
@@ -86,8 +88,9 @@ void FUN_001e81fc(BossDodongo* self, PlayState* play) {
     }
 }
 
+#if 0
 void FUN_0013ff98(BossDodongo* self, PlayState* play) {
-    Vec3f dustVel,dustAccel,dustPos,focus;
+    Vec3f dustVel,dustAccel,dustPos;
     s16 i;
     f32 end;
     Math_SmoothStepToF(&self->unk_7D8,0.05f,1.0f,0.005f,0.0f);
@@ -101,21 +104,23 @@ void FUN_0013ff98(BossDodongo* self, PlayState* play) {
             dustPos.x=self->actor.world.pos.x+dustVel.x*3.0f;
             dustPos.y=self->actor.world.pos.y+(90.0f+dustVel.y*3.0f);
             dustPos.z=self->actor.world.pos.z+dustVel.z*3.0f;
-            FUN_00365d20(play,&dustPos,&dustVel,&dustAccel,BossDodongo_DustPrim,BossDodongo_DustEnv,500,10,10);
+            FUN_00365d20(play,&dustPos,&dustVel,&dustAccel,&sDodongoDustPrim,&sDodongoDustEnv,500,10,10);
         }
         end=(f32)Animation_GetLastFrame(&self->skelAnime,BossDodongo_AnimTable[11]);
-        FUN_00353020(&self->skelAnime,&BossDodongo_Anim11,1.0f,0.0f,end,2,-5.0f);
+        FUN_00353020(&self->skelAnime,&BossDodongo_AnimTable[11],1.0f,0.0f,end,2,-5.0f);
         self->actionFunc=FUN_0013cb28;
         Actor_SetColorFilter(&self->actor,0,255,0,(s16)(end+100.0f));
         Audio_PlayActorSound2(&self->actor,0x01000100);
         Audio_PlayActorSound2(&self->actor,0x01000276);
         FUN_0036fca8(&self->actor,play,4,10);
         self->unk_764-=2;
-        if(self->unk_764<=0) self->unk_764=1;
-        focus=self->actor.focus.pos;
-        FUN_00365560(play,0,0,&focus,BossDodongo_ExitParams);
+        if(self->unk_764<1) self->unk_764=1;
+        { Vec3f focus={self->actor.focus.pos.x,self->actor.focus.pos.y,self->actor.focus.pos.z};
+          FUN_00365560(play,0,0,&focus,*(s16*)BossDodongo_AnimTable);
+        }
     }
 }
+#endif
 
 void FUN_00345590(BossDodongo* self, PlayState* play) {
     Vec3f* corner;
@@ -164,6 +169,7 @@ void FUN_00345590(BossDodongo* self, PlayState* play) {
     }
 }
 
+#if 0
 void FUN_001ccc78(BossDodongo* self, PlayState* play) {
     Vec3f* corner;
     Vec3f dust;
@@ -195,7 +201,7 @@ void FUN_001ccc78(BossDodongo* self, PlayState* play) {
             if(self->unk_776) self->unk_772=1-self->unk_772;
             self->unk_7B8=self->unk_7B4=0.0f;
             self->unk_794=-21845;
-            FUN_00181770(self,play);
+            FUN_00181770(self);
             self->unk_7F8=9200.0f;
             self->actor.velocity.y=20.0f;
             Audio_PlayActorSound2(&self->actor,0x010002BC);
@@ -208,6 +214,7 @@ void FUN_001ccc78(BossDodongo* self, PlayState* play) {
         else { self->unk_770--; if(self->unk_770<0) self->unk_770=3; }
     }
 }
+#endif
 
 void BossDodongo_Init(Actor* actor, GameState* state) {
     BossDodongo* self=(BossDodongo*)actor;
@@ -216,8 +223,9 @@ void BossDodongo_Init(Actor* actor, GameState* state) {
     s32 indices[80];
     s32 i;
     void* cmab;
-    ModelManager& manager=GetModelManager();
-    self->texture=ZAR_GetCTXBByIndex(zar,*(s32*)((u8*)&manager+0x41FC));
+    struct ControllerResourceView { char pad0[0xF3C]; s32 textureIndex; };
+    ControllerResourceView* controller=(ControllerResourceView*)((u8*)&GetModelManager()+0x32C0);
+    self->texture=ZAR_GetCTXBByIndex(zar,controller->textureIndex);
     *(BossDodongoEffect**)((u8*)play+0x5C28)=self->effects;
     Actor_ProcessInitChain(actor,BossDodongo_InitChain);
     ActorShape_Init(&actor->shape,250.0f,ActorShadow_DrawCircle,9200.0f);
@@ -227,17 +235,19 @@ void BossDodongo_Init(Actor* actor, GameState* state) {
     for(i=0;i<80;i++) indices[i]=3;
     FUN_00352ee0(actor,play,80,(SkeletonAnimationModel**)self->modelPointers,indices);
     cmab=zar->GetCMABByIndex(1);
+    s8 loop=1;
+    f32 stopped=0.0f;
     for(i=0;i<80;i++) {
         self->effects[i].model=(SkeletonAnimationModel*)self->modelPointers[i];
         ((SkeletonAnimationModel*)self->modelPointers[i])->unk_0C->FUN_00372d94(cmab);
-        ((SkeletonAnimationModel*)self->modelPointers[i])->unk_0C->SetAnimType(1);
-        ((SkeletonAnimationModel*)self->modelPointers[i])->unk_0C->SetAnimSpeed(0.0f);
+        ((SkeletonAnimationModel*)self->modelPointers[i])->unk_0C->SetAnimType(loop);
+        ((SkeletonAnimationModel*)self->modelPointers[i])->unk_0C->SetAnimSpeed(stopped);
     }
     FUN_003490e0(&self->skelAnime,&BossDodongo_Anim1);
     self->unk_7C8=1.0f;
     FUN_00353020(&self->skelAnime,&BossDodongo_Anim1,1.0f,0.0f,(f32)Animation_GetLastFrame(&self->skelAnime,BossDodongo_AnimTable[1]),0,-10.0f);
     self->actionFunc=FUN_0019e118;
-    self->unk_76C=0; self->unk_78C=1; self->unk_764=12;
+    self->unk_76C=0; self->unk_78C=loop; self->unk_764=12;
     self->unk_7EC=995.0f; self->unk_7F0=1000.0f; self->unk_7F4=2.0f;
     actor->colChkInfo.mass=255;
     self->unk_7F8=250.0f;
@@ -285,20 +295,28 @@ void BossDodongo_Draw(Actor* actor, GameState* state) {
     angle=self->unk_80C;
     if(angle!=0.0f) {
         sine=sinf(angle); cosine=cosf(angle);
-        for(i=0;i<3;i++) {
-            a=actor->modelMtx.data[i][0]; b=actor->modelMtx.data[i][1];
-            actor->modelMtx.data[i][0]=a*cosine+b*sine;
-            actor->modelMtx.data[i][1]=b*cosine-a*sine;
-        }
+        a=actor->modelMtx.data[0][0]; b=actor->modelMtx.data[0][1];
+        actor->modelMtx.data[0][0]=a*cosine+b*sine;
+        actor->modelMtx.data[0][1]=b*cosine-a*sine;
+        a=actor->modelMtx.data[1][0]; b=actor->modelMtx.data[1][1];
+        actor->modelMtx.data[1][0]=a*cosine+b*sine;
+        actor->modelMtx.data[1][1]=b*cosine-a*sine;
+        a=actor->modelMtx.data[2][0]; b=actor->modelMtx.data[2][1];
+        actor->modelMtx.data[2][0]=a*cosine+b*sine;
+        actor->modelMtx.data[2][1]=b*cosine-a*sine;
     }
     angle=((f32)self->unk_794*(1.0f/32768.0f))*3.141590118408203f;
     if(angle!=0.0f) {
         sine=sinf(angle); cosine=cosf(angle);
-        for(i=0;i<3;i++) {
-            a=actor->modelMtx.data[i][1]; b=actor->modelMtx.data[i][2];
-            actor->modelMtx.data[i][1]=a*cosine+b*sine;
-            actor->modelMtx.data[i][2]=b*cosine-a*sine;
-        }
+        a=actor->modelMtx.data[0][1]; b=actor->modelMtx.data[0][2];
+        actor->modelMtx.data[0][1]=a*cosine+b*sine;
+        actor->modelMtx.data[0][2]=b*cosine-a*sine;
+        a=actor->modelMtx.data[1][1]; b=actor->modelMtx.data[1][2];
+        actor->modelMtx.data[1][1]=a*cosine+b*sine;
+        actor->modelMtx.data[1][2]=b*cosine-a*sine;
+        a=actor->modelMtx.data[2][1]; b=actor->modelMtx.data[2][2];
+        actor->modelMtx.data[2][1]=a*cosine+b*sine;
+        actor->modelMtx.data[2][2]=b*cosine-a*sine;
     }
     SkelAnime_DrawOpa(&self->skelAnime,&actor->modelMtx,(OverrideLimbDrawOpa)FUN_003815f0,(PostLimbDrawOpa)FUN_00389970,actor,0);
     eff=*(BossDodongoEffect**)((u8*)play+0x5C28);
@@ -361,7 +379,7 @@ void FUN_0029e828(BossDodongo* self, PlayState* play) {
                 Audio_PlayActorSound2(&self->actor,0x0100010C);
                 self->unk_75C=5;
                 damageInfo=elements[i].damageInfo;
-                Math_Vec3s_ToVec3f(&hitPos,&elements[i].hitPos);
+                hitPos.x=(f32)elements[i].hitPos.x; hitPos.y=(f32)elements[i].hitPos.y; hitPos.z=(f32)elements[i].hitPos.z;
                 if(i==0) FUN_003741e4(play,*damageInfo,1,&hitPos,0);
                 else {
                     FUN_003741e4(play,*damageInfo,2,&hitPos,0);
@@ -383,7 +401,7 @@ void FUN_0029e828(BossDodongo* self, PlayState* play) {
                 self->unk_77A=0; self->actionFunc=FUN_00345590; self->unk_7B4=0.0f;
                 self->actor.flags|=1; self->unk_7AA=75;
                 elements=*(BossDodongoHitElement**)((u8*)self+0xA2C);
-                Math_Vec3s_ToVec3f(&hitPos,&elements[i].hitPos);
+                hitPos.x=(f32)elements[i].hitPos.x; hitPos.y=(f32)elements[i].hitPos.y; hitPos.z=(f32)elements[i].hitPos.z;
                 FUN_003741e4(play,*damageInfo,0,&hitPos,0);
                 Audio_PlayActorSound2(&self->actor,0x01000466);
                 self->unk_75C=10;
@@ -407,7 +425,7 @@ void FUN_0029e828(BossDodongo* self, PlayState* play) {
             Actor_SetColorFilter(&self->actor,0x400000,255,0,12);
             self->unk_764-=damage;
             elements=*(BossDodongoHitElement**)((u8*)self+0xA2C);
-            Math_Vec3s_ToVec3f(&hitPos,&elements[0].hitPos);
+            hitPos.x=(f32)elements[0].hitPos.x; hitPos.y=(f32)elements[0].hitPos.y; hitPos.z=(f32)elements[0].hitPos.z;
             FUN_003741e4(play,*damageInfo,0,&hitPos,0);
             self->unk_75C=5;
             FUN_0032d674(play);
@@ -415,7 +433,7 @@ void FUN_0029e828(BossDodongo* self, PlayState* play) {
         }
         if(self->unk_75C==0) {
             elements=*(BossDodongoHitElement**)((u8*)self+0xA2C);
-            Math_Vec3s_ToVec3f(&hitPos,&elements[0].hitPos);
+            hitPos.x=(f32)elements[0].hitPos.x; hitPos.y=(f32)elements[0].hitPos.y; hitPos.z=(f32)elements[0].hitPos.z;
             FUN_003741e4(play,*damageInfo,1,&hitPos,0);
             Audio_PlayActorSound2(&self->actor,0x0100010C);
             self->unk_75C=5;
@@ -428,7 +446,7 @@ void FUN_0029e828(BossDodongo* self, PlayState* play) {
                 self->unk_75C=5;
                 elements=*(BossDodongoHitElement**)((u8*)self+0xA2C);
                 damageInfo=elements[i].damageInfo;
-                Math_Vec3s_ToVec3f(&hitPos,&elements[i].hitPos);
+                hitPos.x=(f32)elements[i].hitPos.x; hitPos.y=(f32)elements[i].hitPos.y; hitPos.z=(f32)elements[i].hitPos.z;
                 FUN_003741e4(play,*damageInfo,2,&hitPos,0);
                 if(!(*damageInfo&5)) FUN_003661a8(play,&hitPos,4);
                 if(FUN_003656fc(play,*damageInfo)) FUN_0032d674(play);
@@ -439,5 +457,6 @@ void FUN_0029e828(BossDodongo* self, PlayState* play) {
 }
 
 }
+
 
 #endif

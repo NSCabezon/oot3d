@@ -49378,6 +49378,14 @@ data 0x04F9000
     {
         *(i.z_Boss_Dodongo.data_005144C0)
     }
+    BossDodongoDustColors +0 /* 0x005144FC */
+    {
+        *z_boss_dodongo_explode.o(+DATA)
+    }
+    z_Boss_Dodongo.data_00514504 +0 /* 0x00514504 */
+    {
+        *(i.z_Boss_Dodongo.data_00514504)
+    }
     z_boss_dodongo.data +0
     {
         *z_boss_dodongo.o(+DATA)

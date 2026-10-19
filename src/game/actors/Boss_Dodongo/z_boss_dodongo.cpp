@@ -32,6 +32,7 @@ extern s32 BossDodongo_Anim11;
 
 GLOBAL_ASM("../src/game/actors/Boss_Dodongo/data_syms.s")
 GLOBAL_ASM("data/z_Boss_Dodongo.data_005144C0.s")
+GLOBAL_ASM("data/z_Boss_Dodongo.data_00514504.s")
 GLOBAL_ASM("data/z_Boss_Dodongo.data_005145B4.s")
 
 ActorInit Boss_Dodongo_InitVars = {
@@ -67,6 +68,7 @@ GLOBAL_ASM("asm/FUN_0029e828.s")
 /* Semantics-correct 368/376 B, 66w draft; original global ASM remains active. */
 #if 0
 void FUN_003dc268(BossDodongo* self, PlayState* play) {
+    Actor* thisx=&self->actor;
     f32 one;
     f32 zero = 0.0f;
     FUN_00370734(&self->skelAnime);
@@ -77,14 +79,15 @@ void FUN_003dc268(BossDodongo* self, PlayState* play) {
     if (FUN_0036e5e0(&self->skelAnime, 17.0f, one)) {
         self->unk_798 = 0x1C;
     }
-    if ((17.0f < self->skelAnime.curFrame) && (35.0f > self->skelAnime.curFrame)) {
-        PlayState* play2=play;
-        Actor_SpawnAsChild(&play2->actorCtx, &self->actor, play2, 0x30,
+    if (self->skelAnime.curFrame > 17.0f) {
+      if (self->skelAnime.curFrame < 35.0f) {
+        Actor_SpawnAsChild(&play->actorCtx, thisx, play, 0x30,
                            self->unk_9BC, self->unk_9C0 - 20.0f, self->unk_9C4,
                            0, self->actor.shape.rot.y, 0, self->unk_77E);
         self->unk_77E++;
         Math_SmoothStepToF(&self->unk_814, zero, one, 8.0f, zero);
     }
+      }
     if (self->unk_7AA == 0) {
         FUN_00353020(&self->skelAnime, &BossDodongo_AnimTable[6], one, zero, 59.0f, 2, -5.0f);
         self->actionFunc = FUN_001ccc78;
@@ -100,30 +103,35 @@ void FUN_00358778(void* ptr, s32 index, s32 arg2, void* data, s32 count);
 
 
 
+
+
 GLOBAL_ASM("asm/FUN_003309e0.s")
 
 /* Generic room-material helper: actor argument is unused. */
 struct BossDodongoMaterialState { char pad0[12]; f32 alpha; char pad10[136]; };
-struct BossDodongoRoomMaterial { char pad0[4]; void* model; char pad8[4]; u16 count; char padE[2]; BossDodongoMaterialState* states; };
+struct BossDodongoRoomMaterial { char pad0[4]; void* model; char pad8[4]; u16 count; char padE[2]; u8* states; };
 struct BossDodongoMaterialColor { f32 rgba[4]; };
 #if 0
 void FUN_003309e0(Actor* actor, PlayState* play, s32 reset) {
-    BossDodongoRoomMaterial* room=(BossDodongoRoomMaterial*)((u8*)play+0x4C38);
+    BossDodongoRoomMaterial* room;
+    f32 zero;
     f32 current;
     BossDodongoMaterialColor color;
     s32 count;
     s32 i;
     if(*((u8*)play+0x4C36)==0) return;
+    room=(BossDodongoRoomMaterial*)((u8*)play+0x4C38);
+    zero=0.0f;
     count=room->count;
     for(i=0;i<count;i++) {
-        if(reset!=0) room->states[i].alpha=0.0f;
+        if(reset!=0) (*(f32*)(room->states+i*152+12))=zero;
         else {
-            current=room->states[i].alpha;
-            Math_SmoothStepToF(&current,0.0f,0.1f,0.1f,0.0f);
-            room->states[i].alpha=current;
+            current=(*(f32*)(room->states+i*152+12));
+            Math_SmoothStepToF(&current,zero,0.1f,0.1f,zero);
+            (*(f32*)(room->states+i*152+12))=current;
         }
     }
-    if(reset!=0) current=0.0f;
+    if(reset!=0) current=zero;
     color=*(BossDodongoMaterialColor*)BossDodongo_ResetDescriptor;
     color.rgba[3]=1.0f-current;
     if(color.rgba[3]<=0.0f) color.rgba[3]=0.0f;
@@ -144,7 +152,7 @@ void FUN_0037100c(PlayState* play, Vec3f* pos) {
     EffectSs_Spawn(play, 0x0B, 0x80, &posCopy);
 }
 
-void FUN_00181770(BossDodongo* self, PlayState* play) {
+void FUN_00181770(BossDodongo* self) {
     f32 frameCount;
 
     frameCount = (f32)Animation_GetLastFrame(&self->skelAnime, BossDodongo_AnimTable[2]);
@@ -187,6 +195,10 @@ void FUN_003d944c(BossDodongo* self, PlayState* play) {
 }
 
 #if 0
+static inline f32 BossDodongo_LastFrameF(SkelAnime* skelAnime, s32 index) {
+    return (f32)Animation_GetLastFrame(skelAnime, index);
+}
+
 void FUN_0013cb28(BossDodongo* self, PlayState* play) {
 
 
@@ -196,10 +208,8 @@ void FUN_0013cb28(BossDodongo* self, PlayState* play) {
     self->unk_78E = 10;
     Math_SmoothStepToF(&self->unk_7C8, 1.3f, 1.0f, 0.1f, 0.001f);
     FUN_00370734(&self->skelAnime);
-    s32 anim11=Animation_GetLastFrame(&self->skelAnime, BossDodongo_AnimTable[11]);
-    firstFrame=(f32)anim11;
-    s32 anim9=Animation_GetLastFrame(&self->skelAnime, BossDodongo_AnimTable[9]);
-    secondFrame=(f32)anim9;
+    firstFrame=BossDodongo_LastFrameF(&self->skelAnime, BossDodongo_AnimTable[11]);
+    secondFrame=BossDodongo_LastFrameF(&self->skelAnime, BossDodongo_AnimTable[9]);
     if (FUN_0036e5e0(&self->skelAnime, firstFrame, 1.0f)) {
         FUN_00353020(&self->skelAnime, &BossDodongo_AnimTable[9], 1.0f, 0.0f,
                      secondFrame, 0, -5.0f);

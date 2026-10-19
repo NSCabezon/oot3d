@@ -19,7 +19,7 @@ extern s16 BossDodongo_ExitParams;
 s32 Animation_GetLastFrame(SkelAnime*,s32);
 void FUN_00353020(SkelAnime*,s32*,f32,f32,f32,s32,f32);
 void FUN_003490e0(SkelAnime*,s32*);
-void FUN_00181770(BossDodongo*,PlayState*);
+void FUN_00181770(BossDodongo*);
 void FUN_0019e118(BossDodongo*,PlayState*);
 void FUN_003da7ac(BossDodongo*,PlayState*);
 void FUN_003dc268(BossDodongo*,PlayState*);
