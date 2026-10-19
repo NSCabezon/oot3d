@@ -5,9 +5,12 @@
 
 struct BgIceShutter;
 
+typedef void (*BgIceShutterActionFunc)(struct BgIceShutter*, PlayState*);
+
 typedef struct BgIceShutter {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x20];
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ BgIceShutterActionFunc actionFunc;
+    /* 0x01C0 */ SkeletonAnimationModel* skelAnimModel;
 } BgIceShutter; // size = 0x1C4
 
 extern ActorInit Bg_Ice_Shutter_InitVars;

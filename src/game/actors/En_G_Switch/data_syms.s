@@ -1,0 +1,10 @@
+	EXPORT EnGSwitch_sCollectedCount
+EnGSwitch_sCollectedCount EQU 0x00523C14
+	EXPORT EnGSwitch_sStatics
+EnGSwitch_sStatics EQU 0x00523C14
+	EXPORT EnGSwitch_sCylinderInit
+EnGSwitch_sCylinderInit EQU 0x00523C1C
+	EXPORT EnGSwitch_sMajorScale
+EnGSwitch_sMajorScale EQU 0x00523C54
+
+	END

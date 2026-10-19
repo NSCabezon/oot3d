@@ -1,0 +1,11 @@
+	EXPORT ObjHamishi_sColChkInfoInit
+ObjHamishi_sColChkInfoInit EQU 0x00535010
+	EXPORT ObjHamishi_sCylinderInit
+ObjHamishi_sCylinderInit EQU 0x00535018
+	EXPORT ObjHamishi_sInitChain
+ObjHamishi_sInitChain EQU 0x00535064
+
+	EXPORT ObjHamishi_sEffectScales
+ObjHamishi_sEffectScales EQU 0x00535050
+
+	END

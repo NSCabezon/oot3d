@@ -8,6 +8,8 @@ void EnAnubiceTag_Destroy(Actor* actor, GameState* state);
 void EnAnubiceTag_Update(Actor* actor, GameState* state);
 void EnAnubiceTag_Draw(Actor* actor, GameState* state);
 
+void FUN_001786c4(EnAnubiceTag* self, PlayState* play); // N64: EnAnubiceTag_SpawnAnubis
+
 ActorInit En_Anubice_Tag_InitVars = {
     ACTOR_EN_ANUBICE_TAG,
     ACTORCAT_SWITCH,
@@ -20,11 +22,29 @@ ActorInit En_Anubice_Tag_InitVars = {
     (ActorFunc)EnAnubiceTag_Draw,
 };
 
-GLOBAL_ASM("asm/EnAnubiceTag_Init.s")
+void EnAnubiceTag_Init(Actor* actor, GameState* state) {
+    EnAnubiceTag* self = (EnAnubiceTag*)actor;
 
-GLOBAL_ASM("asm/EnAnubiceTag_Destroy.s")
+    self->actor.unk_19A = 1; // 3DS addition
 
-GLOBAL_ASM("asm/EnAnubiceTag_Update.s")
+    if (self->actor.params < -1) {
+        self->actor.params = 0;
+    } else if (self->actor.params != 0) {
+        self->extraTriggerRange = self->actor.params * 40.0f;
+    }
+    self->actionFunc = FUN_001786c4;
+}
 
-GLOBAL_ASM("asm/EnAnubiceTag_Draw.s")
+void EnAnubiceTag_Destroy(Actor* actor, GameState* state) {
+}
+
+void EnAnubiceTag_Update(Actor* actor, GameState* state) {
+    EnAnubiceTag* self = (EnAnubiceTag*)actor;
+    PlayState* play = (PlayState*)state;
+
+    self->actionFunc(self, play);
+}
+
+void EnAnubiceTag_Draw(Actor* actor, GameState* state) {
+}
 }

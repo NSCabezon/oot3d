@@ -1,0 +1,12 @@
+	EXPORT BgHidanHamstep_sInitChain
+	EXPORT BgHidanHamstep_sYPosOffsets
+	EXPORT BgHidanHamstep_sTrisInit
+	EXPORT BgHidanHamstep_sActionFuncs
+	EXPORT BgHidanHamstep_sEffectPositions
+BgHidanHamstep_sInitChain EQU 0x005118B0
+BgHidanHamstep_sYPosOffsets EQU 0x005118B4
+BgHidanHamstep_sTrisInit EQU 0x005118C8
+BgHidanHamstep_sActionFuncs EQU 0x005118D8
+BgHidanHamstep_sEffectPositions EQU 0x005118EC
+
+	END

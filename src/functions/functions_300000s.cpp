@@ -18,8 +18,6 @@ GLOBAL_ASM("asm/FUN_003009c4.s")
 
 GLOBAL_ASM("asm/FUN_003009d4.s")
 
-GLOBAL_ASM("asm/MTX34Identity.s")
-
 GLOBAL_ASM("asm/FUN_00300aa8.s")
 
 GLOBAL_ASM("asm/FUN_00300c58.s")
@@ -146,7 +144,6 @@ GLOBAL_ASM("asm/UserHeapTemplate.s")
 
 GLOBAL_ASM("asm/FUN_00303a94.s")
 
-GLOBAL_ASM("asm/__aeabi_atexit.s")
 
 GLOBAL_ASM("asm/memset.s")
 

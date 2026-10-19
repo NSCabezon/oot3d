@@ -1,0 +1,12 @@
+	EXPORT Bg_Ganon_Otyuka_sSides
+	EXPORT Bg_Ganon_Otyuka_sPosOffsets
+	EXPORT Bg_Ganon_Otyuka_sInitChain
+	EXPORT Bg_Ganon_Otyuka_sDustPrimColor
+	EXPORT Bg_Ganon_Otyuka_sDustEnvColor
+Bg_Ganon_Otyuka_sSides EQU 0x004D70AC
+Bg_Ganon_Otyuka_sPosOffsets EQU 0x004D70B0
+Bg_Ganon_Otyuka_sInitChain EQU 0x00510EFC
+Bg_Ganon_Otyuka_sDustPrimColor EQU 0x00510F00
+Bg_Ganon_Otyuka_sDustEnvColor EQU 0x00510F04
+
+	END

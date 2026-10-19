@@ -1,0 +1,10 @@
+	EXPORT BgJya1flift_sIsSpawned
+	EXPORT BgJya1flift_sFinalPositions
+	EXPORT BgJya1flift_sCylinderInit
+	EXPORT BgJya1flift_sInitChain
+BgJya1flift_sIsSpawned EQU 0x005121F4
+BgJya1flift_sFinalPositions EQU 0x005121F8
+BgJya1flift_sCylinderInit EQU 0x00512200
+BgJya1flift_sInitChain EQU 0x00512238
+
+	END

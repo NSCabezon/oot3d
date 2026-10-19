@@ -1,0 +1,8 @@
+	EXPORT BgJyaGoroiwa_sColChkInfoInit
+	EXPORT BgJyaGoroiwa_sJntSphInit
+	EXPORT BgJyaGoroiwa_sInitChain
+BgJyaGoroiwa_sColChkInfoInit EQU 0x005128B0
+BgJyaGoroiwa_sJntSphInit EQU 0x005128B8
+BgJyaGoroiwa_sInitChain EQU 0x005128C8
+
+	END

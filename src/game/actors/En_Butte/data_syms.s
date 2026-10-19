@@ -1,0 +1,14 @@
+	EXPORT sFlyAroundParams
+sFlyAroundParams EQU 0x0052181C
+	EXPORT sTransformationEffect
+sTransformationEffect EQU 0x005217EC
+	EXPORT sFollowLinkParams
+sFollowLinkParams EQU 0x00521858
+	EXPORT EnButte_sInitChain
+EnButte_sInitChain EQU 0x005219AC
+	EXPORT EnButte_sColliderJntSphInit
+EnButte_sColliderJntSphInit EQU 0x0052180C
+	EXPORT EnButte_sModelData
+EnButte_sModelData EQU 0x00521894
+
+	END

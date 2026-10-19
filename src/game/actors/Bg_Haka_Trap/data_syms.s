@@ -1,0 +1,14 @@
+	EXPORT BgHakaTrap_sFogBlack
+	EXPORT BgHakaTrap_sColChkInfoInit
+	EXPORT BgHakaTrap_sCylinderInit
+	EXPORT BgHakaTrap_sTrisElementsInit
+	EXPORT BgHakaTrap_sTrisInit
+	EXPORT BgHakaTrap_FanBlade_Idle
+BgHakaTrap_sFogBlack EQU 0x005113DC
+BgHakaTrap_sColChkInfoInit EQU 0x005113E0
+BgHakaTrap_sCylinderInit EQU 0x005113E8
+BgHakaTrap_sTrisElementsInit EQU 0x00511420
+BgHakaTrap_sTrisInit EQU 0x00511498
+BgHakaTrap_FanBlade_Idle EQU 0x001758EC
+
+	END

@@ -1,0 +1,12 @@
+	EXPORT BgJyaHaheniron_sObjIndex
+	EXPORT BgJyaHaheniron_sJntSphInit
+	EXPORT BgJyaHaheniron_sKakeraScales
+	EXPORT BgJyaHaheniron_sInitChain
+	EXPORT BgJyaHaheniron_sScales
+BgJyaHaheniron_sObjIndex EQU 0x005128E0
+BgJyaHaheniron_sJntSphInit EQU 0x005128EC
+BgJyaHaheniron_sKakeraScales EQU 0x005128FC
+BgJyaHaheniron_sInitChain EQU 0x00512908
+BgJyaHaheniron_sScales EQU 0x0051291C
+
+	END

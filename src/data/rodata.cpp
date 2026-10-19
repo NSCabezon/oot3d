@@ -1,6 +1,8 @@
 #include "non_matchings.hpp"
 
 GLOBAL_ASM("data/rodata_4CA000.s")
+GLOBAL_ASM("data/rodata_4D9728.s")
+GLOBAL_ASM("data/rodata_4D99DC.s")
 
 GLOBAL_ASM("data/rodata_4DF3FC.s")
 

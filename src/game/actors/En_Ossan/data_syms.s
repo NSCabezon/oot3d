@@ -1,0 +1,30 @@
+	EXPORT EnOssan_sTable
+	EXPORT EnOssan_sBtnB
+	EXPORT EnOssan_sObjectIds
+	EXPORT EnOssan_sInitChain
+	EXPORT EnOssan_sMaskPaymentPrice
+	EXPORT EnOssan_sTalkOwner
+	EXPORT EnOssan_sMaskStore
+	EXPORT EnOssan_sMaskItems
+	EXPORT EnOssan_sStores
+	EXPORT EnOssan_sReplaceFuncs
+	EXPORT EnOssan_sPosOffsets
+	EXPORT EnOssan_sInitFuncs
+	EXPORT EnOssan_sStateFunc
+	EXPORT EnOssan_sShopkeeperScale
+EnOssan_sTable EQU 0x0052D4B4
+EnOssan_sBtnB EQU 0x004FC654
+EnOssan_sObjectIds EQU 0x0052D4F4
+EnOssan_sInitChain EQU 0x0052D4DC
+EnOssan_sMaskPaymentPrice EQU 0x0052D4D4
+EnOssan_sTalkOwner EQU 0x0052D538
+EnOssan_sMaskStore EQU 0x0052D810
+EnOssan_sStateFunc EQU 0x0052D9E0
+EnOssan_sShopkeeperScale EQU 0x0052D564
+EnOssan_sPosOffsets EQU 0x0052D95C
+EnOssan_sInitFuncs EQU 0x0052D930
+EnOssan_sStores EQU 0x0052D590
+EnOssan_sReplaceFuncs EQU 0x0052D850
+EnOssan_sMaskItems EQU 0x00524F34
+
+	END

@@ -13,11 +13,9 @@ GLOBAL_ASM("asm/Camera_ChangeStatus.s")
 
 GLOBAL_ASM("asm/FUN_00320db4.s")
 
-GLOBAL_ASM("asm/FUN_00320e28.s")
 
 GLOBAL_ASM("asm/FUN_00320e84.s")
 
-GLOBAL_ASM("asm/caseD_d_00320fa0.s")
 
 GLOBAL_ASM("asm/FUN_003210a4.s")
 
@@ -27,7 +25,7 @@ GLOBAL_ASM("asm/FUN_00321478.s")
 
 GLOBAL_ASM("asm/FUN_00321598.s")
 
-GLOBAL_ASM("asm/FUN_003216b0.s")
+GLOBAL_ASM("../split/asm/FUN_003218b4.s")
 
 GLOBAL_ASM("asm/FUN_003218b8.s")
 
@@ -72,7 +70,6 @@ GLOBAL_ASM("asm/FUN_003234f0.s")
 
 GLOBAL_ASM("asm/caseD_11_003236d4.s")
 
-GLOBAL_ASM("asm/caseD_8_003238ac.s")
 
 GLOBAL_ASM("asm/FUN_003239a4.s")
 
@@ -136,13 +133,12 @@ GLOBAL_ASM("asm/FUN_00326018.s")
 
 GLOBAL_ASM("asm/FUN_00326084.s")
 
-GLOBAL_ASM("asm/FUN_00326138.s")
-
-GLOBAL_ASM("asm/FUN_003262b8.s")
 
 
 
-GLOBAL_ASM("asm/FUN_003264c8.s")
+
+GLOBAL_ASM("../split/asm/FUN_003264c8.s")
+GLOBAL_ASM("../split/asm/FUN_00326524.s")
 
 GLOBAL_ASM("asm/FUN_00326528.s")
 
@@ -181,34 +177,26 @@ GLOBAL_ASM("asm/FUN_003284f8.s")
 
 GLOBAL_ASM("asm/FUN_00328664.s")
 
-GLOBAL_ASM("asm/FUN_00328c18.s")
 
-GLOBAL_ASM("asm/FUN_00328cac.s")
 
-GLOBAL_ASM("asm/FUN_00328d50.s")
 
 
 GLOBAL_ASM("asm/FUN_00328e08.s")
 
-GLOBAL_ASM("asm/FUN_00329154.s")
+GLOBAL_ASM("../split/asm/FUN_003291bc.s")
 
-GLOBAL_ASM("asm/caseD_a_003291c4.s")
 
 GLOBAL_ASM("asm/FUN_003291f4.s")
 
-GLOBAL_ASM("asm/caseD_9_00329cd0.s")
 
 GLOBAL_ASM("asm/FUN_00329d0c.s")
 
-GLOBAL_ASM("asm/FUN_0032a5d0.s")
 
 GLOBAL_ASM("asm/FUN_0032a6f4.s")
 
 GLOBAL_ASM("asm/FUN_0032a998.s")
 
-GLOBAL_ASM("asm/FUN_0032ae1c.s")
 
-GLOBAL_ASM("asm/FUN_0032aee0.s")
 
 GLOBAL_ASM("asm/FUN_0032b060.s")
 
@@ -253,7 +241,8 @@ GLOBAL_ASM("asm/FUN_0032c8e0.s")
 
 GLOBAL_ASM("asm/FUN_0032cacc.s")
 
-GLOBAL_ASM("asm/FUN_0032cc6c.s")
+GLOBAL_ASM("../split/asm/FUN_0032cc6c.s")
+GLOBAL_ASM("../split/asm/FUN_0032cd64.s")
 
 GLOBAL_ASM("asm/FUN_0032cd68.s")
 
@@ -261,7 +250,6 @@ GLOBAL_ASM("asm/FUN_0032cecc.s")
 
 GLOBAL_ASM("asm/FUN_0032d184.s")
 
-GLOBAL_ASM("asm/FUN_0032d278.s")
 
 GLOBAL_ASM("asm/FUN_0032d27c.s")
 
@@ -326,15 +314,11 @@ GLOBAL_ASM("asm/FUN_0032fa9c.s")
 
 GLOBAL_ASM("asm/FUN_0032fac8.s")
 
-GLOBAL_ASM("asm/FUN_0032fb3c.s")
 
 GLOBAL_ASM("asm/FUN_0032fbc0.s")
 
-GLOBAL_ASM("asm/FUN_0032fdf8.s")
 
-GLOBAL_ASM("asm/FUN_0032ffc0.s")
 
-GLOBAL_ASM("asm/FUN_003301b8.s")
 
 GLOBAL_ASM("asm/FUN_00330254.s")
 
@@ -342,7 +326,6 @@ GLOBAL_ASM("asm/FUN_003302a0.s")
 
 GLOBAL_ASM("asm/FUN_00330370.s")
 
-GLOBAL_ASM("asm/FUN_003303cc.s")
 
 GLOBAL_ASM("asm/FUN_00330454.s")
 
@@ -354,7 +337,6 @@ GLOBAL_ASM("asm/FUN_00330710.s")
 
 GLOBAL_ASM("asm/FUN_00330768.s")
 
-GLOBAL_ASM("asm/FUN_003308a4.s")
 
 GLOBAL_ASM("asm/FUN_00330988.s")
 
@@ -465,7 +447,6 @@ GLOBAL_ASM("asm/FUN_00333abc.s")
 
 GLOBAL_ASM("asm/FUN_00333b48.s")
 
-GLOBAL_ASM("asm/FUN_00333ddc.s")
 
 GLOBAL_ASM("asm/__hardfp_acosf.s")
 
@@ -504,7 +485,6 @@ GLOBAL_ASM("asm/FUN_00335044.s")
 
 GLOBAL_ASM("asm/EnterImpl_003351e8.s")
 
-GLOBAL_ASM("asm/FUN_0033526c.s")
 
 
 GLOBAL_ASM("asm/Camera_SetCameraData.s")
@@ -595,9 +575,7 @@ GLOBAL_ASM("asm/Math_CosS.s")
 
 GLOBAL_ASM("asm/FUN_00338f68.s")
 
-GLOBAL_ASM("asm/FUN_00338fa0.s")
 
-GLOBAL_ASM("asm/FUN_00339100.s")
 
 GLOBAL_ASM("asm/__aeabi_uidivmod.s")
 
@@ -621,7 +599,6 @@ GLOBAL_ASM("asm/FUN_0033a05c.s")
 
 GLOBAL_ASM("asm/FUN_0033a480.s")
 
-GLOBAL_ASM("asm/FUN_0033a61c.s")
 
 GLOBAL_ASM("asm/FUN_0033a638.s")
 
@@ -702,7 +679,6 @@ GLOBAL_ASM("asm/FUN_0033ce74.s")
 
 GLOBAL_ASM("asm/FUN_0033cefc.s")
 
-GLOBAL_ASM("asm/FUN_0033d000.s")
 
 GLOBAL_ASM("asm/FUN_0033d13c.s")
 
@@ -788,4 +764,3 @@ GLOBAL_ASM("asm/FUN_0033feac.s")
 
 GLOBAL_ASM("asm/FUN_0033ff0c.s")
 
-GLOBAL_ASM("asm/FUN_0033ff3c.s")

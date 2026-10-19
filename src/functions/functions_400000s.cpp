@@ -136,7 +136,6 @@ GLOBAL_ASM("asm/WriteHWRegsWithMask_00402094.s")
 
 GLOBAL_ASM("asm/RegisterInterruptRelayQueue.s")
 
-GLOBAL_ASM("asm/IsFatalErrMode.s")
 
 GLOBAL_ASM("asm/Enable.s")
 

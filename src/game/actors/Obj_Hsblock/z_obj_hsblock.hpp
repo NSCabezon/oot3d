@@ -5,10 +5,14 @@
 
 struct ObjHsblock;
 
+typedef void (*ObjHsblockActionFunc)(struct ObjHsblock*, PlayState*);
+
 typedef struct ObjHsblock {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x24];
-} ObjHsblock; // size = 0x1C8
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ ObjHsblockActionFunc actionFunc;
+    /* 0x01C0 */ SkeletonAnimationModel* skelAnimModel;
+    /* 0x01C4 */ SkeletonAnimationModel* skelAnimModel2;
+} ObjHsblock; // size = 0x01C8
 
 extern ActorInit Obj_Hsblock_InitVars;
 

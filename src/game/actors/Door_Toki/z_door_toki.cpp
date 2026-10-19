@@ -3,11 +3,9 @@ extern "C" {
 
 #define FLAGS 0x80000000
 
-void DoorToki_Init(Actor* actor, GameState* state);
-void DoorToki_Destroy(Actor* actor, GameState* state);
-void DoorToki_Update(Actor* actor, GameState* state);
-
-GLOBAL_ASM("data/z_Door_Toki.data.s")
+void DoorToki_Init(DoorToki* self, PlayState* play);
+void DoorToki_Destroy(DoorToki* self, PlayState* play);
+void DoorToki_Update(DoorToki* self, PlayState* play);
 
 ActorInit Door_Toki_InitVars = {
     ACTOR_DOOR_TOKI,
@@ -21,9 +19,29 @@ ActorInit Door_Toki_InitVars = {
     NULL,
 };
 
-GLOBAL_ASM("asm/DoorToki_Init.s")
+static InitChainEntry sInitChain[] = {
+    ICHAIN_VEC3F_DIV1000(scale, 1000, ICHAIN_STOP),
+};
 
-GLOBAL_ASM("asm/DoorToki_Destroy.s")
+void DoorToki_Init(DoorToki* self, PlayState* play) {
+    CollisionHeader* colHeader = NULL;
 
-GLOBAL_ASM("asm/DoorToki_Update.s")
+    Actor_ProcessInitChain(&self->dyna.actor, sInitChain);
+    DynaPolyActor_Init(&self->dyna, 0);
+    self->dyna.actor.unk_19A = 1;
+    ReadCollisionHeaderFromZsi(DynaPolyInfo_Alloc(&self->dyna, (GameState*)play, 0), &colHeader);
+    self->dyna.bgId = DynaPoly_SetBgActor(play, &play->colCtx.dyna, &self->dyna.actor, colHeader);
+}
+
+void DoorToki_Destroy(DoorToki* self, PlayState* play) {
+    DynaPoly_DeleteBgActor(play, &play->colCtx.dyna, self->dyna.bgId);
+}
+
+void DoorToki_Update(DoorToki* self, PlayState* play) {
+    if (gSaveContext.eventChkInf[4] & 0x800) {
+        FUN_0036b940(play, &play->colCtx.dyna, self->dyna.bgId);
+    } else {
+        FUN_0036d15c(play, &play->colCtx.dyna, self->dyna.bgId);
+    }
+}
 }

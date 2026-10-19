@@ -20,11 +20,15 @@ ActorInit En_Sda_InitVars = {
     (ActorFunc)EnSda_Draw,
 };
 
-GLOBAL_ASM("asm/EnSda_Init.s")
+void EnSda_Init(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnSda_Destroy.s")
+void EnSda_Destroy(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnSda_Update.s")
+void EnSda_Update(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnSda_Draw.s")
+void EnSda_Draw(Actor* actor, GameState* state) {
+}
 }

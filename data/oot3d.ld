@@ -56,6 +56,10 @@ text 0x00100000
 	{
 		* (i.BgZg_Update)
 	}
+	FUN_0010036c 0x0010036c
+	{
+		* (i.FUN_0010036c)
+	}
 	FUN_0010040c 0x0010040c
 	{
 		* (i.FUN_0010040c)
@@ -143,6 +147,10 @@ text 0x00100000
 	FUN_00103398 0x00103398
 	{
 		* (i.FUN_00103398)
+	}
+	FUN_001033d4 0x001033d4
+	{
+		* (i.FUN_001033d4)
 	}
 	FUN_0010360c 0x0010360c
 	{
@@ -464,6 +472,10 @@ text 0x00100000
 	{
 		* (i.BgHidanFwbig_WaitForPlayer)
 	}
+	FUN_0010abac 0x0010abac
+	{
+		* (i.FUN_0010abac)
+	}
 	FUN_0010abf8 0x0010abf8
 	{
 		* (i.FUN_0010abf8)
@@ -660,6 +672,10 @@ text 0x00100000
 	{
 		* (i.EnTr_CrySpellcast)
 	}
+	FUN_0010E624 0x0010e624
+	{
+		* (i.FUN_0010E624)
+	}
 	EnTr_ChooseAction1 0x0010e64c
 	{
 		* (i.EnTr_ChooseAction1)
@@ -743,6 +759,10 @@ text 0x00100000
 	EnGe1_WaitUntilGateOpened_GateOp 0x0010fc98
 	{
 		* (i.EnGe1_WaitUntilGateOpened_GateOp)
+	}
+	FUN_0010fd24 0x0010fd24
+	{
+		* (i.FUN_0010fd24)
 	}
 	FUN_0010fe18 0x0010fe18
 	{
@@ -956,6 +976,10 @@ text 0x00100000
 	{
 		* (i.FUN_00112ef0)
 	}
+	FUN_00112f90 0x00112f90
+	{
+		* (i.FUN_00112f90)
+	}
 	FUN_00112fcc 0x00112fcc
 	{
 		* (i.FUN_00112fcc)
@@ -1023,6 +1047,10 @@ text 0x00100000
 	FUN_00114930 0x00114930
 	{
 		* (i.FUN_00114930)
+	}
+	FUN_00114ba4 0x00114ba4
+	{
+		* (i.FUN_00114ba4)
 	}
 	FUN_00114bd4 0x00114bd4
 	{
@@ -2016,6 +2044,10 @@ text 0x00100000
 	{
 		* (i.FUN_0012e264)
 	}
+	FUN_0012e2c8 0x0012e2c8
+	{
+		* (i.FUN_0012e2c8)
+	}
 	EnTest_Update 0x0012e2d0
 	{
 		* (i.EnTest_Update)
@@ -2460,6 +2492,10 @@ text 0x00100000
 	{
 		* (i.FUN_00140218)
 	}
+	FUN_00140384 0x00140384
+	{
+		* (i.FUN_00140384)
+	}
 	FUN_001403a0 0x001403a0
 	{
 		* (i.FUN_001403a0)
@@ -2499,6 +2535,10 @@ text 0x00100000
 	FUN_00141d40 0x00141d40
 	{
 		* (i.FUN_00141d40)
+	}
+	FUN_00141da4 0x00141da4
+	{
+		* (i.FUN_00141da4)
 	}
 	FUN_00141dd4 0x00141dd4
 	{
@@ -2560,6 +2600,10 @@ text 0x00100000
 	{
 		* (i.ObjLightswitch_Disappear)
 	}
+	FUN_00143684 0x00143684
+	{
+		* (i.FUN_00143684)
+	}
 	FUN_001436c4 0x001436c4
 	{
 		* (i.FUN_001436c4)
@@ -2599,6 +2643,10 @@ text 0x00100000
 	FUN_00144074 0x00144074
 	{
 		* (i.FUN_00144074)
+	}
+	FUN_001440fc 0x001440fc
+	{
+		* (i.FUN_001440fc)
 	}
 	ObjSwitch_EyeOpening 0x00144128
 	{
@@ -2835,6 +2883,10 @@ text 0x00100000
 	DemoExt_Update 0x001493c8
 	{
 		* (i.DemoExt_Update)
+	}
+	FUN_001493f0 0x001493f0
+	{
+		* (i.FUN_001493f0)
 	}
 	FUN_0014949c 0x0014949c
 	{
@@ -3112,6 +3164,10 @@ text 0x00100000
 	{
 		* (i.FUN_001522b4)
 	}
+	FUN_00152300 0x00152300
+	{
+		* (i.FUN_00152300)
+	}
 	FUN_0015237c 0x0015237c
 	{
 		* (i.FUN_0015237c)
@@ -3348,6 +3404,10 @@ text 0x00100000
 	{
 		* (i.FUN_00159930)
 	}
+	FUN_00159b2c 0x00159b2c
+	{
+		* (i.FUN_00159b2c)
+	}
 	FUN_00159f64 0x00159f64
 	{
 		* (i.FUN_00159f64)
@@ -3483,6 +3543,10 @@ text 0x00100000
 	FUN_0015e154 0x0015e154
 	{
 		* (i.FUN_0015e154)
+	}
+	FUN_0015e1dc 0x0015e1dc
+	{
+		* (i.FUN_0015e1dc)
 	}
 	FUN_0015e24c 0x0015e24c
 	{
@@ -3683,6 +3747,10 @@ text 0x00100000
 	FUN_001616f0 0x001616f0
 	{
 		* (i.FUN_001616f0)
+	}
+	FUN_0016178c 0x0016178c
+	{
+		* (i.FUN_0016178c)
 	}
 	FUN_001617e0 0x001617e0
 	{
@@ -3951,6 +4019,10 @@ text 0x00100000
 	FUN_00167204 0x00167204
 	{
 		* (i.FUN_00167204)
+	}
+	FUN_0016761c 0x0016761c
+	{
+		* (i.FUN_0016761c)
 	}
 	EnPeehat_Update 0x00167644
 	{
@@ -4264,6 +4336,10 @@ text 0x00100000
 	{
 		* (i.FUN_0016e398)
 	}
+	FUN_0016e470 0x0016e470
+	{
+		* (i.FUN_0016e470)
+	}
 	BgDyYoseizo_SetupSpinGrow_Reward 0x0016e480
 	{
 		* (i.BgDyYoseizo_SetupSpinGrow_Reward)
@@ -4448,6 +4524,10 @@ text 0x00100000
 	{
 		* (i.FUN_001747a4)
 	}
+	FUN_001748c4 0x001748c4
+	{
+		* (i.FUN_001748c4)
+	}
 	FUN_001748f4 0x001748f4
 	{
 		* (i.FUN_001748f4)
@@ -4516,6 +4596,10 @@ text 0x00100000
 	{
 		* (i.FUN_001755e4)
 	}
+	FUN_00175674 0x00175674
+	{
+		* (i.FUN_00175674)
+	}
 	FUN_001756b0 0x001756b0
 	{
 		* (i.FUN_001756b0)
@@ -4547,6 +4631,10 @@ text 0x00100000
 	FUN_00176b04 0x00176b04
 	{
 		* (i.FUN_00176b04)
+	}
+	FUN_00176c38 0x00176c38
+	{
+		* (i.FUN_00176c38)
 	}
 	FUN_00176c68 0x00176c68
 	{
@@ -4912,6 +5000,10 @@ text 0x00100000
 	{
 		* (i.FUN_00182158)
 	}
+	FUN_001821fc 0x001821fc
+	{
+		* (i.FUN_001821fc)
+	}
 	EnTr_TurnLookOverShoulder 0x00182278
 	{
 		* (i.EnTr_TurnLookOverShoulder)
@@ -4927,6 +5019,10 @@ text 0x00100000
 	EnBox_FallOnSwitchFlag 0x00182408
 	{
 		* (i.EnBox_FallOnSwitchFlag)
+	}
+	FUN_001824b8 0x001824b8
+	{
+		* (i.FUN_001824b8)
 	}
 	FUN_00182500 0x00182500
 	{
@@ -5080,6 +5176,10 @@ text 0x00100000
 	{
 		* (i.EnIceHono_CapturableFlame)
 	}
+	FUN_001852E8 0x001852e8
+	{
+		* (i.FUN_001852E8)
+	}
 	FUN_00185384 0x00185384
 	{
 		* (i.FUN_00185384)
@@ -5203,6 +5303,10 @@ text 0x00100000
 	FUN_00188ad4 0x00188ad4
 	{
 		* (i.FUN_00188ad4)
+	}
+	FUN_00188cc8 0x00188cc8
+	{
+		* (i.FUN_00188cc8)
 	}
 	FUN_00188d38 0x00188d38
 	{
@@ -5464,10 +5568,6 @@ text 0x00100000
 	{
 		* (i.EnSkj_Destroy)
 	}
-	FUN_0018f08c 0x0018f08c
-	{
-		* (i.FUN_0018f08c)
-	}
 	EnSsh_Init 0x0018f0a4
 	{
 		* (i.EnSsh_Init)
@@ -5572,6 +5672,10 @@ text 0x00100000
 	{
 		* (i.FUN_0019062c)
 	}
+	FUN_00190730 0x00190730
+	{
+		* (i.FUN_00190730)
+	}
 	FUN_00190740 0x00190740
 	{
 		* (i.FUN_00190740)
@@ -5583,6 +5687,10 @@ text 0x00100000
 	FUN_0019088c 0x0019088c
 	{
 		* (i.FUN_0019088c)
+	}
+	FUN_00190990 0x00190990
+	{
+		* (i.FUN_00190990)
 	}
 	func_80A3BEE0 0x001909bc
 	{
@@ -5776,6 +5884,10 @@ text 0x00100000
 	{
 		* (i.FUN_00195dac)
 	}
+	FUN_00195e2c 0x00195e2c
+	{
+		* (i.FUN_00195e2c)
+	}
 	FUN_00195eb8 0x00195eb8
 	{
 		* (i.FUN_00195eb8)
@@ -5824,6 +5936,10 @@ text 0x00100000
 	{
 		* (i.EnSyatekiMan_Start)
 	}
+	FUN_00196A80 0x00196a80
+	{
+		* (i.FUN_00196A80)
+	}
 	FUN_00196afc 0x00196afc
 	{
 		* (i.FUN_00196afc)
@@ -5855,6 +5971,10 @@ text 0x00100000
 	BgPoEvent_BlockWait 0x00197630
 	{
 		* (i.BgPoEvent_BlockWait)
+	}
+	FUN_001976E4 0x001976e4
+	{
+		* (i.FUN_001976E4)
 	}
 	BgPoEvent_BlockIdle 0x0019771c
 	{
@@ -5924,6 +6044,10 @@ text 0x00100000
 	{
 		* (i.FUN_00199688)
 	}
+	FUN_00199700 0x00199700
+	{
+		* (i.FUN_00199700)
+	}
 	FUN_0019975c 0x0019975c
 	{
 		* (i.FUN_0019975c)
@@ -5931,6 +6055,10 @@ text 0x00100000
 	EnWallmas_JumpToCeiling 0x00199874
 	{
 		* (i.EnWallmas_JumpToCeiling)
+	}
+	FUN_001998f4 0x001998f4
+	{
+		* (i.FUN_001998f4)
 	}
 	FUN_0019993c 0x0019993c
 	{
@@ -6300,6 +6428,10 @@ text 0x00100000
 	{
 		* (i.FUN_001a24d4)
 	}
+	FUN_001a250c 0x001a250c
+	{
+		* (i.FUN_001a250c)
+	}
 	ObjSwitch_EyeInit 0x001a2564
 	{
 		* (i.ObjSwitch_EyeInit)
@@ -6583,10 +6715,6 @@ text 0x00100000
 	EnBili_Destroy 0x001ad96c
 	{
 		* (i.EnBili_Destroy)
-	}
-	FUN_001ad994 0x001ad994
-	{
-		* (i.FUN_001ad994)
 	}
 	EnBird_Init 0x001ad9a4
 	{
@@ -7860,6 +7988,10 @@ text 0x00100000
 	{
 		* (i.DemoExt_Destroy)
 	}
+	FUN_001d21c8 0x001d21c8
+	{
+		* (i.FUN_001d21c8)
+	}
 	caseD_2_001d21d4 0x001d21d4
 	{
 		* (i.caseD_2_001d21d4)
@@ -8179,6 +8311,10 @@ text 0x00100000
 	EnXc_Update 0x001dc83c
 	{
 		* (i.EnXc_Update)
+	}
+	FUN_001dc864 0x001dc864
+	{
+		* (i.FUN_001dc864)
 	}
 	EnOkuta_Init 0x001dc8b0
 	{
@@ -8712,6 +8848,10 @@ text 0x00100000
 	{
 		* (i.FUN_001e9198)
 	}
+	FUN_001e921c 0x001e921c
+	{
+		* (i.FUN_001e921c)
+	}
 	FUN_001e923c 0x001e923c
 	{
 		* (i.FUN_001e923c)
@@ -9128,6 +9268,10 @@ text 0x00100000
 	{
 		* (i.DemoGo_Update)
 	}
+	FUN_001f0da0 0x001f0da0
+	{
+		* (i.FUN_001f0da0)
+	}
 	DemoIm_Draw 0x001f0de0
 	{
 		* (i.DemoIm_Draw)
@@ -9227,6 +9371,10 @@ text 0x00100000
 	ElfMsg_Update 0x001f2d4c
 	{
 		* (i.ElfMsg_Update)
+	}
+	FUN_001f2e74 0x001f2e74
+	{
+		* (i.FUN_001f2e74)
 	}
 	EnBdfire_Init 0x001f2e80
 	{
@@ -9551,6 +9699,10 @@ text 0x00100000
 	FUN_001ff7f0 0x001ff7f0
 	{
 		* (i.FUN_001ff7f0)
+	}
+	FUN_001ff874 0x001ff874
+	{
+		* (i.FUN_001ff874)
 	}
 	FUN_001ff8a8 0x001ff8a8
 	{
@@ -9940,6 +10092,10 @@ text 0x00100000
 	{
 		* (i.ObjTimeblock_WaitForSong)
 	}
+	FUN_0020803c 0x0020803c
+	{
+		* (i.FUN_0020803c)
+	}
 	FUN_002080a0 0x002080a0
 	{
 		* (i.FUN_002080a0)
@@ -10232,6 +10388,10 @@ text 0x00100000
 	{
 		* (i.EnBomChu_Destroy)
 	}
+	FUN_0020eb70 0x0020eb70
+	{
+		* (i.FUN_0020eb70)
+	}
 	EnChanger_Init 0x0020ec50
 	{
 		* (i.EnChanger_Init)
@@ -10511,6 +10671,10 @@ text 0x00100000
 	ItemInbox_Destroy 0x00213d50
 	{
 		* (i.ItemInbox_Destroy)
+	}
+	FUN_00213d80 0x00213d80
+	{
+		* (i.FUN_00213d80)
 	}
 	MagicDark_Init 0x00213edc
 	{
@@ -11083,6 +11247,10 @@ text 0x00100000
 	EnMd_PostLimbDraw 0x0021e91c
 	{
 		* (i.EnMd_PostLimbDraw)
+	}
+	FUN_0021e968 0x0021e968
+	{
+		* (i.FUN_0021e968)
 	}
 	EnZl4_PostLimbDraw 0x0021e9b4
 	{
@@ -12260,10 +12428,6 @@ text 0x00100000
 	{
 		* (i.EnMd_OverrideLimbDraw)
 	}
-	FUN_0023bc80 0x0023bc80
-	{
-		* (i.FUN_0023bc80)
-	}
 	FUN_0023bca4 0x0023bca4
 	{
 		* (i.FUN_0023bca4)
@@ -12968,6 +13132,10 @@ text 0x00100000
 	{
 		* (i.EnDntNomal_Init)
 	}
+	FUN_00249364 0x00249364
+	{
+		* (i.FUN_00249364)
+	}
 	EnDodongo_Draw 0x0024936c
 	{
 		* (i.EnDodongo_Draw)
@@ -13120,13 +13288,25 @@ text 0x00100000
 	{
 		* (i.FUN_0024cdec)
 	}
+	FUN_0024cdf0 0x0024cdf0
+	{
+		* (i.FUN_0024cdf0)
+	}
 	caseD_1_0024cdf4 0x0024cdf4
 	{
 		* (i.caseD_1_0024cdf4)
 	}
+	FUN_0024ce80 0x0024ce80
+	{
+		* (i.FUN_0024ce80)
+	}
 	caseD_0_0024cec0 0x0024cec0
 	{
 		* (i.caseD_0_0024cec0)
+	}
+	FUN_0024cf70 0x0024cf70
+	{
+		* (i.FUN_0024cf70)
 	}
 	caseD_c 0x0024d024
 	{
@@ -13695,6 +13875,10 @@ text 0x00100000
 	EnDaiku_InitEscape 0x0025a8e4
 	{
 		* (i.EnDaiku_InitEscape)
+	}
+	FUN_0025ab78 0x0025ab78
+	{
+		* (i.FUN_0025ab78)
 	}
 	ObjTimeblock_WaitForOcarina 0x0025ab7c
 	{
@@ -14372,6 +14556,10 @@ text 0x00100000
 	{
 		* (i.caseD_2_0026b1dc)
 	}
+	FUN_0026b274 0x0026b274
+	{
+		* (i.FUN_0026b274)
+	}
 	EnNiwGirl_Draw 0x0026b40c
 	{
 		* (i.EnNiwGirl_Draw)
@@ -14395,6 +14583,18 @@ text 0x00100000
 	EnNutsball_Update 0x0026bd8c
 	{
 		* (i.EnNutsball_Update)
+	}
+	FUN_0026be60 0x0026be60
+	{
+		* (i.FUN_0026be60)
+	}
+	FUN_0026beb8 0x0026beb8
+	{
+		* (i.FUN_0026beb8)
+	}
+	FUN_0026bebc 0x0026bebc
+	{
+		* (i.FUN_0026bebc)
 	}
 	caseD_12_0026bf1c 0x0026bf1c
 	{
@@ -14683,6 +14883,10 @@ text 0x00100000
 	FUN_00272930 0x00272930
 	{
 		* (i.FUN_00272930)
+	}
+	FUN_00272e34 0x00272e34
+	{
+		* (i.FUN_00272e34)
 	}
 	EnCrow_OverrideLimbDraw 0x00272e8c
 	{
@@ -15376,6 +15580,10 @@ text 0x00100000
 	{
 		* (i.caseD_11_0027d554)
 	}
+	FUN_0027d618 0x0027d618
+	{
+		* (i.FUN_0027d618)
+	}
 	caseD_2_0027d61c 0x0027d61c
 	{
 		* (i.caseD_2_0027d61c)
@@ -15383,6 +15591,14 @@ text 0x00100000
 	caseD_1_0027d748 0x0027d748
 	{
 		* (i.caseD_1_0027d748)
+	}
+	FUN_0027d7f0 0x0027d7f0
+	{
+		* (i.FUN_0027d7f0)
+	}
+	FUN_0027d878 0x0027d878
+	{
+		* (i.FUN_0027d878)
 	}
 	caseD_8_0027d884 0x0027d884
 	{
@@ -15395,6 +15611,10 @@ text 0x00100000
 	caseD_f_0027dbb0 0x0027dbb0
 	{
 		* (i.caseD_f_0027dbb0)
+	}
+	FUN_0027dd34 0x0027dd34
+	{
+		* (i.FUN_0027dd34)
 	}
 	caseD_1_0027dd38 0x0027dd38
 	{
@@ -15564,9 +15784,17 @@ text 0x00100000
 	{
 		* (i.caseD_1_00281938)
 	}
+	FUN_002819cc 0x002819cc
+	{
+		* (i.FUN_002819cc)
+	}
 	caseD_3_00281a5c 0x00281a5c
 	{
 		* (i.caseD_3_00281a5c)
+	}
+	FUN_00281ac8 0x00281ac8
+	{
+		* (i.FUN_00281ac8)
 	}
 	caseD_6_00281bd4 0x00281bd4
 	{
@@ -15748,6 +15976,10 @@ text 0x00100000
 	{
 		* (i.FUN_0028525c)
 	}
+	FUN_002852e4 0x002852e4
+	{
+		* (i.FUN_002852e4)
+	}
 	caseD_16_0028534c 0x0028534c
 	{
 		* (i.caseD_16_0028534c)
@@ -15767,6 +15999,10 @@ text 0x00100000
 	FUN_00285a7c 0x00285a7c
 	{
 		* (i.FUN_00285a7c)
+	}
+	FUN_00285be0 0x00285be0
+	{
+		* (i.FUN_00285be0)
 	}
 	ItemBHeart_Draw 0x00285bec
 	{
@@ -15872,6 +16108,10 @@ text 0x00100000
 	{
 		* (i.FUN_00287938)
 	}
+	FUN_00287978 0x00287978
+	{
+		* (i.FUN_00287978)
+	}
 	FUN_00287980 0x00287980
 	{
 		* (i.FUN_00287980)
@@ -15975,6 +16215,10 @@ text 0x00100000
 	FUN_00288594 0x00288594
 	{
 		* (i.FUN_00288594)
+	}
+	FUN_002885f0 0x002885f0
+	{
+		* (i.FUN_002885f0)
 	}
 	FUN_002886b8 0x002886b8
 	{
@@ -16352,6 +16596,10 @@ text 0x00100000
 	{
 		* (i.caseD_11_0028e5cc)
 	}
+	FUN_0028e6f8 0x0028e6f8
+	{
+		* (i.FUN_0028e6f8)
+	}
 	caseD_0_0028e95c 0x0028e95c
 	{
 		* (i.caseD_0_0028e95c)
@@ -16452,6 +16700,10 @@ text 0x00100000
 	{
 		* (i.FUN_00290ce0)
 	}
+	FUN_00290d3c 0x00290d3c
+	{
+		* (i.FUN_00290d3c)
+	}
 	FUN_00290dc4 0x00290dc4
 	{
 		* (i.FUN_00290dc4)
@@ -16535,6 +16787,10 @@ text 0x00100000
 	FUN_00293210 0x00293210
 	{
 		* (i.FUN_00293210)
+	}
+	FUN_0029328c 0x0029328c
+	{
+		* (i.FUN_0029328c)
 	}
 	caseD_2_002932ec 0x002932ec
 	{
@@ -16640,6 +16896,10 @@ text 0x00100000
 	{
 		* (i.FUN_0029664c)
 	}
+	FUN_00296798 0x00296798
+	{
+		* (i.FUN_00296798)
+	}
 	caseD_d_00296914 0x00296914
 	{
 		* (i.caseD_d_00296914)
@@ -16659,6 +16919,10 @@ text 0x00100000
 	EnDha_TakeDamage 0x00296db0
 	{
 		* (i.EnDha_TakeDamage)
+	}
+	FUN_00296e94 0x00296e94
+	{
+		* (i.FUN_00296e94)
 	}
 	FUN_00296eb4 0x00296eb4
 	{
@@ -17348,6 +17612,10 @@ text 0x00100000
 	{
 		* (i.caseD_d_002a13a0)
 	}
+	FUN_002a1448 0x002a1448
+	{
+		* (i.FUN_002a1448)
+	}
 	caseD_1_002a144c 0x002a144c
 	{
 		* (i.caseD_1_002a144c)
@@ -17460,6 +17728,10 @@ text 0x00100000
 	{
 		* (i.caseD_15_002a4170)
 	}
+	FUN_002a427c 0x002a427c
+	{
+		* (i.FUN_002a427c)
+	}
 	caseD_1c_002a439c 0x002a439c
 	{
 		* (i.caseD_1c_002a439c)
@@ -17487,6 +17759,14 @@ text 0x00100000
 	caseD_4c 0x002a4a24
 	{
 		* (i.caseD_4c)
+	}
+	FUN_002a4a44 0x002a4a44
+	{
+		* (i.FUN_002a4a44)
+	}
+	FUN_002a4b88 0x002a4b88
+	{
+		* (i.FUN_002a4b88)
 	}
 	EnOkarinaTag_Update 0x002a4c88
 	{
@@ -17595,6 +17875,10 @@ text 0x00100000
 	FUN_002a71d0 0x002a71d0
 	{
 		* (i.FUN_002a71d0)
+	}
+	FUN_002a747c 0x002a747c
+	{
+		* (i.FUN_002a747c)
 	}
 	caseD_10_002a76b8 0x002a76b8
 	{
@@ -18024,6 +18308,10 @@ text 0x00100000
 	{
 		* (i.FUN_002ad4d4)
 	}
+	FUN_002ad610 0x002ad610
+	{
+		* (i.FUN_002ad610)
+	}
 	BgSpot18Shutter_Init 0x002ad614
 	{
 		* (i.BgSpot18Shutter_Init)
@@ -18068,6 +18356,10 @@ text 0x00100000
 	{
 		* (i.caseD_0_002ae978)
 	}
+	FUN_002aebe4 0x002aebe4
+	{
+		* (i.FUN_002aebe4)
+	}
 	caseD_3_002aecd8 0x002aecd8
 	{
 		* (i.caseD_3_002aecd8)
@@ -18091,6 +18383,10 @@ text 0x00100000
 	DemoTreLgt_Draw 0x002af248
 	{
 		* (i.DemoTreLgt_Draw)
+	}
+	FUN_002af310 0x002af310
+	{
+		* (i.FUN_002af310)
 	}
 	EnHorseNormal_CycleAnimations 0x002af434
 	{
@@ -18180,9 +18476,17 @@ text 0x00100000
 	{
 		* (i.EnMFire1_Update)
 	}
+	FUN_002b18f0 0x002b18f0
+	{
+		* (i.FUN_002b18f0)
+	}
 	caseD_7_002b1a90 0x002b1a90
 	{
 		* (i.caseD_7_002b1a90)
+	}
+	FUN_002b1b28 0x002b1b28
+	{
+		* (i.FUN_002b1b28)
 	}
 	caseD_b_002b21a4 0x002b21a4
 	{
@@ -24500,6 +24804,10 @@ text 0x00100000
 	{
 		* (i.Math3D_TriLineIntersect)
 	}
+	FUN_00319560 0x00319560
+	{
+		* (i.FUN_00319560)
+	}
 	FUN_00319564 0x00319564
 	{
 		* (i.FUN_00319564)
@@ -24800,6 +25108,10 @@ text 0x00100000
 	{
 		* (i.FUN_003216b0)
 	}
+	FUN_003218b4 0x003218b4
+	{
+		* (i.FUN_003218b4)
+	}
 	FUN_003218b8 0x003218b8
 	{
 		* (i.FUN_003218b8)
@@ -25044,6 +25356,10 @@ text 0x00100000
 	{
 		* (i.FUN_003264c8)
 	}
+	FUN_00326524 0x00326524
+	{
+		* (i.FUN_00326524)
+	}
 	FUN_00326528 0x00326528
 	{
 		* (i.FUN_00326528)
@@ -25055,6 +25371,10 @@ text 0x00100000
 	EnHorse_PlayerCanMove 0x00326b20
 	{
 		* (i.EnHorse_PlayerCanMove)
+	}
+	FUN_00326bc0 0x00326bc0
+	{
+		* (i.FUN_00326bc0)
 	}
 	FUN_00326bc4 0x00326bc4
 	{
@@ -25147,6 +25467,10 @@ text 0x00100000
 	FUN_00329154 0x00329154
 	{
 		* (i.FUN_00329154)
+	}
+	FUN_003291bc 0x003291bc
+	{
+		* (i.FUN_003291bc)
 	}
 	caseD_a_003291c4 0x003291c4
 	{
@@ -25283,6 +25607,10 @@ text 0x00100000
 	FUN_0032cc6c 0x0032cc6c
 	{
 		* (i.FUN_0032cc6c)
+	}
+	FUN_0032cd64 0x0032cd64
+	{
+		* (i.FUN_0032cd64)
 	}
 	FUN_0032cd68 0x0032cd68
 	{
@@ -31100,6 +31428,10 @@ text 0x00100000
 	{
 		* (i.caseD_6_0037d5ac)
 	}
+	FUN_0037d700 0x0037d700
+	{
+		* (i.FUN_0037d700)
+	}
 	caseD_c_0037d980 0x0037d980
 	{
 		* (i.caseD_c_0037d980)
@@ -31140,6 +31472,10 @@ text 0x00100000
 	{
 		* (i.FUN_0037e434)
 	}
+	FUN_0037e448 0x0037e448
+	{
+		* (i.FUN_0037e448)
+	}
 	FUN_0037e450 0x0037e450
 	{
 		* (i.FUN_0037e450)
@@ -31151,6 +31487,10 @@ text 0x00100000
 	FUN_0037e568 0x0037e568
 	{
 		* (i.FUN_0037e568)
+	}
+	FUN_0037e5e0 0x0037e5e0
+	{
+		* (i.FUN_0037e5e0)
 	}
 	caseD_f_0037e71c 0x0037e71c
 	{
@@ -31168,9 +31508,21 @@ text 0x00100000
 	{
 		* (i.caseD_2a)
 	}
+	FUN_0037e95c 0x0037e95c
+	{
+		* (i.FUN_0037e95c)
+	}
+	FUN_0037e9a4 0x0037e9a4
+	{
+		* (i.FUN_0037e9a4)
+	}
 	caseD_15_0037e9a8 0x0037e9a8
 	{
 		* (i.caseD_15_0037e9a8)
+	}
+	FUN_0037ea2c 0x0037ea2c
+	{
+		* (i.FUN_0037ea2c)
 	}
 	FUN_0037ea38 0x0037ea38
 	{
@@ -31220,6 +31572,10 @@ text 0x00100000
 	{
 		* (i.FUN_003806d8)
 	}
+	FUN_00380890 0x00380890
+	{
+		* (i.FUN_00380890)
+	}
 	caseD_20_003809e8 0x003809e8
 	{
 		* (i.caseD_20_003809e8)
@@ -31260,6 +31616,10 @@ text 0x00100000
 	{
 		* (i.ObjMakeoshihiki_Draw)
 	}
+	FUN_003815f0 0x003815f0
+	{
+		* (i.FUN_003815f0)
+	}
 	FUN_003815f8 0x003815f8
 	{
 		* (i.FUN_003815f8)
@@ -31275,6 +31635,10 @@ text 0x00100000
 	EnPoDesert_PostLimbDraw 0x00381b88
 	{
 		* (i.EnPoDesert_PostLimbDraw)
+	}
+	FUN_00381cf4 0x00381cf4
+	{
+		* (i.FUN_00381cf4)
 	}
 	FUN_00381d18 0x00381d18
 	{
@@ -31576,6 +31940,10 @@ text 0x00100000
 	{
 		* (i.caseD_16_003870dc)
 	}
+	FUN_003871a4 0x003871a4
+	{
+		* (i.FUN_003871a4)
+	}
 	EnOkarinaEffect_Update 0x003871a8
 	{
 		* (i.EnOkarinaEffect_Update)
@@ -31876,6 +32244,10 @@ text 0x00100000
 	{
 		* (i.caseD_8_0038d69c)
 	}
+	FUN_0038d6c8 0x0038d6c8
+	{
+		* (i.FUN_0038d6c8)
+	}
 	caseD_a_0038d81c 0x0038d81c
 	{
 		* (i.caseD_a_0038d81c)
@@ -31968,13 +32340,25 @@ text 0x00100000
 	{
 		* (i.EnHorse_Frozen)
 	}
+	FUN_003913a8 0x003913a8
+	{
+		* (i.FUN_003913a8)
+	}
 	caseD_2e 0x003913ac
 	{
 		* (i.caseD_2e)
 	}
+	FUN_00391440 0x00391440
+	{
+		* (i.FUN_00391440)
+	}
 	caseD_4a 0x0039144c
 	{
 		* (i.caseD_4a)
+	}
+	FUN_00391558 0x00391558
+	{
+		* (i.FUN_00391558)
 	}
 	caseD_45 0x0039155c
 	{
@@ -32115,6 +32499,10 @@ text 0x00100000
 	FUN_00394300 0x00394300
 	{
 		* (i.FUN_00394300)
+	}
+	FUN_003944F8 0x003944f8
+	{
+		* (i.FUN_003944F8)
 	}
 	FUN_00394550 0x00394550
 	{
@@ -32284,6 +32672,10 @@ text 0x00100000
 	{
 		* (i.EnHorseGameCheck_Update)
 	}
+	FUN_0039a8dc 0x0039a8dc
+	{
+		* (i.FUN_0039a8dc)
+	}
 	caseD_24_0039a91c 0x0039a91c
 	{
 		* (i.caseD_24_0039a91c)
@@ -32408,6 +32800,22 @@ text 0x00100000
 	{
 		* (i.BgSpot17Funen_Update)
 	}
+	FUN_0039c184 0x0039c184
+	{
+		* (i.FUN_0039c184)
+	}
+	FUN_0039c220 0x0039c220
+	{
+		* (i.FUN_0039c220)
+	}
+	FUN_0039c2d8 0x0039c2d8
+	{
+		* (i.FUN_0039c2d8)
+	}
+	FUN_0039c390 0x0039c390
+	{
+		* (i.FUN_0039c390)
+	}
 	FUN_0039c53c 0x0039c53c
 	{
 		* (i.FUN_0039c53c)
@@ -32415,6 +32823,10 @@ text 0x00100000
 	FUN_0039c5e0 0x0039c5e0
 	{
 		* (i.FUN_0039c5e0)
+	}
+	FUN_0039c8ac 0x0039c8ac
+	{
+		* (i.FUN_0039c8ac)
 	}
 	EnMThunder_Draw 0x0039c9cc
 	{
@@ -32431,6 +32843,10 @@ text 0x00100000
 	caseD_28 0x0039cf74
 	{
 		* (i.caseD_28)
+	}
+	FUN_0039d074 0x0039d074
+	{
+		* (i.FUN_0039d074)
 	}
 	caseD_23_0039d078 0x0039d078
 	{
@@ -32560,6 +32976,10 @@ text 0x00100000
 	{
 		* (i.BgSpot17Bakudankabe_Update)
 	}
+	FUN_0039f204 0x0039f204
+	{
+		* (i.FUN_0039f204)
+	}
 	CollisionCheck_AC_CylVsCyl 0x0039f208
 	{
 		* (i.CollisionCheck_AC_CylVsCyl)
@@ -32644,9 +33064,21 @@ text 0x00100000
 	{
 		* (i.EnHorse_HighJump)
 	}
+	FUN_003a1f84 0x003a1f84
+	{
+		* (i.FUN_003a1f84)
+	}
+	FUN_003a1fc4 0x003a1fc4
+	{
+		* (i.FUN_003a1fc4)
+	}
 	caseD_b_003a22b4 0x003a22b4
 	{
 		* (i.caseD_b_003a22b4)
+	}
+	FUN_003a23cc 0x003a23cc
+	{
+		* (i.FUN_003a23cc)
 	}
 	caseD_3_003a24d0 0x003a24d0
 	{
@@ -32667,6 +33099,14 @@ text 0x00100000
 	caseD_32 0x003a2800
 	{
 		* (i.caseD_32)
+	}
+	FUN_003a28f0 0x003a28f0
+	{
+		* (i.FUN_003a28f0)
+	}
+	FUN_003a28f4 0x003a28f4
+	{
+		* (i.FUN_003a28f4)
 	}
 	FUN_003a28f8 0x003a28f8
 	{
@@ -32740,9 +33180,17 @@ text 0x00100000
 	{
 		* (i.caseD_12_003a36c0)
 	}
+	FUN_003a38d4 0x003a38d4
+	{
+		* (i.FUN_003a38d4)
+	}
 	caseD_17_003a3b0c 0x003a3b0c
 	{
 		* (i.caseD_17_003a3b0c)
+	}
+	FUN_003a3bdc 0x003a3bdc
+	{
+		* (i.FUN_003a3bdc)
 	}
 	FUN_003a3be0 0x003a3be0
 	{
@@ -32955,6 +33403,10 @@ text 0x00100000
 	EnHorse_FleePlayer 0x003a8944
 	{
 		* (i.EnHorse_FleePlayer)
+	}
+	FUN_003a8f5c 0x003a8f5c
+	{
+		* (i.FUN_003a8f5c)
 	}
 	caseD_e_003a9088 0x003a9088
 	{
@@ -33227,6 +33679,14 @@ text 0x00100000
 	FUN_003af690 0x003af690
 	{
 		* (i.FUN_003af690)
+	}
+	FUN_003af700 0x003af700
+	{
+		* (i.FUN_003af700)
+	}
+	FUN_003af754 0x003af754
+	{
+		* (i.FUN_003af754)
 	}
 	FUN_003af7a0 0x003af7a0
 	{
@@ -33712,9 +34172,17 @@ text 0x00100000
 	{
 		* (i.FUN_003bf708)
 	}
+	FUN_003bf92c 0x003bf92c
+	{
+		* (i.FUN_003bf92c)
+	}
 	FUN_003bf948 0x003bf948
 	{
 		* (i.FUN_003bf948)
+	}
+	FUN_003bf9b0 0x003bf9b0
+	{
+		* (i.FUN_003bf9b0)
 	}
 	BgMoriKaitenkabe_Wait 0x003bfa4c
 	{
@@ -34004,6 +34472,10 @@ text 0x00100000
 	{
 		* (i.FUN_003c6128)
 	}
+	FUN_003c6218 0x003c6218
+	{
+		* (i.FUN_003c6218)
+	}
 	FUN_003c6240 0x003c6240
 	{
 		* (i.FUN_003c6240)
@@ -34267,6 +34739,10 @@ text 0x00100000
 	ItemGive_DekuNuts 0x003ce8dc
 	{
 		* (i.ItemGive_DekuNuts)
+	}
+	FUN_003ce918 0x003ce918
+	{
+		* (i.FUN_003ce918)
 	}
 	FUN_003ce92c 0x003ce92c
 	{
@@ -34708,6 +35184,10 @@ text 0x00100000
 	{
 		* (i.FUN_003dc618)
 	}
+	FUN_003dc9ec 0x003dc9ec
+	{
+		* (i.FUN_003dc9ec)
+	}
 	EnBili_Climb 0x003dca88
 	{
 		* (i.EnBili_Climb)
@@ -34940,6 +35420,10 @@ text 0x00100000
 	{
 		* (i.EnWallmas_Stun)
 	}
+	FUN_003e1a70 0x003e1a70
+	{
+		* (i.FUN_003e1a70)
+	}
 	FUN_003e1a74 0x003e1a74
 	{
 		* (i.FUN_003e1a74)
@@ -35139,6 +35623,10 @@ text 0x00100000
 	FUN_003e4d28 0x003e4d28
 	{
 		* (i.FUN_003e4d28)
+	}
+	FUN_003e4e28 0x003e4e28
+	{
+		* (i.FUN_003e4e28)
 	}
 	FUN_003e4ea4 0x003e4ea4
 	{
@@ -35740,6 +36228,10 @@ text 0x00100000
 	{
 		* (i.FUN_003f3fa0)
 	}
+	FUN_003f41b4 0x003f41b4
+	{
+		* (i.FUN_003f41b4)
+	}
 	FUN_003f4210 0x003f4210
 	{
 		* (i.FUN_003f4210)
@@ -35899,6 +36391,10 @@ text 0x00100000
 	FUN_003f87ac 0x003f87ac
 	{
 		* (i.FUN_003f87ac)
+	}
+	FUN_003f87fc 0x003f87fc
+	{
+		* (i.FUN_003f87fc)
 	}
 	EnSsh_Return 0x003f8d10
 	{
@@ -47863,6 +48359,22 @@ rodata 0x004CA000
     {
         *(i.rodata_4CA000)
     }
+    z_en_ik_limbdraw.rodata +0 /* 0x004D96E0 */
+    {
+        *z_en_ik_limbdraw.o(+RO-DATA)
+    }
+    rodata_4D9728 +0 /* 0x004D9728 */
+    {
+        *(i.rodata_4D9728)
+    }
+    z_en_md.rodata +0 /* 0x004D99CC */
+    {
+        *z_en_md.o(+RO-DATA)
+    }
+    rodata_4D99DC +0 /* 0x004D99DC */
+    {
+        *(i.rodata_4D99DC)
+    }
     dsp.rodata 0x004DF3E8
     {
         *(i.dsp.rodata)
@@ -47945,6 +48457,14 @@ data 0x04F9000
     z_Bg_Bdan_Switch_ASM.data +0
     {
         *(i.z_Bg_Bdan_Switch.data)
+    }
+    z_bg_bdan_switch_draw.guard +0 /* 0x00510A98 */
+    {
+        *z_bg_bdan_switch_draw.o(+DATA)
+    }
+    z_Bg_Bdan_Switch.data_00510A9C +0 /* 0x00510A9C */
+    {
+        *(i.z_Bg_Bdan_Switch.data_00510A9C)
     }
     z_bg_bom_guard.data +0
     {
@@ -48170,10 +48690,6 @@ data 0x04F9000
     {
         *z_bg_hidan_fslift.o(+DATA)
     }
-    z_Bg_Hidan_Fslift_ASM.data +0
-    {
-        *(i.z_Bg_Hidan_Fslift.data)
-    }
     z_bg_hidan_fwbig.data +0
     {
         *z_bg_hidan_fwbig.o(+DATA)
@@ -48197,10 +48713,6 @@ data 0x04F9000
     z_Bg_Hidan_Hrock_ASM.data +0
     {
         *(i.z_Bg_Hidan_Hrock.data)
-    }
-    z_Bg_Hidan_Kousi_ASM.data +0
-    {
-        *(i.z_Bg_Hidan_Kousi.data)
     }
     z_bg_hidan_kousi.data +0
     {
@@ -48273,6 +48785,10 @@ data 0x04F9000
     z_Bg_Ice_Shutter_ASM.data +0
     {
         *(i.z_Bg_Ice_Shutter.data)
+    }
+    z_bg_ice_turara_break.guard +0 /* 0x00512160 */
+    {
+        *z_bg_ice_turara_break.o(+DATA)
     }
     z_Bg_Ice_Turara_ASM.data +0
     {
@@ -48350,6 +48866,10 @@ data 0x04F9000
     {
         *(i.z_Bg_Jya_Goroiwa.data)
     }
+    z_bg_jya_haheniron_crumble.guard +0 /* 0x005128D8 */
+    {
+        *z_bg_jya_haheniron_crumble.o(+DATA)
+    }
     z_Bg_Jya_Haheniron.data_005128D8 +0
     {
         *(i.z_Bg_Jya_Haheniron.data_005128D8)
@@ -48413,10 +48933,6 @@ data 0x04F9000
     z_bg_menkuri_kaiten.data +0
     {
         *z_bg_menkuri_kaiten.o(+DATA)
-    }
-    z_Bg_Menkuri_Kaiten_ASM.data +0
-    {
-        *(i.z_Bg_Menkuri_Kaiten.data)
     }
     z_bg_menkuri_nisekabe.data +0
     {
@@ -48654,10 +49170,6 @@ data 0x04F9000
     {
         *z_bg_spot07_taki.o(+DATA)
     }
-    z_Bg_Spot07_Taki_ASM.data +0
-    {
-        *(i.z_Bg_Spot07_Taki.data)
-    }
     z_bg_spot08_bakudankabe.data +0
     {
         *z_bg_spot08_bakudankabe.o(+DATA)
@@ -48738,25 +49250,13 @@ data 0x04F9000
     {
         *z_bg_spot16_doughnut.o(+DATA)
     }
-    z_Bg_Spot16_Doughnut_ASM.data +0
-    {
-        *(i.z_Bg_Spot16_Doughnut.data)
-    }
     z_bg_spot17_bakudankabe.data +0
     {
         *z_bg_spot17_bakudankabe.o(+DATA)
     }
-    z_Bg_Spot17_Bakudankabe_ASM.data +0
-    {
-        *(i.z_Bg_Spot17_Bakudankabe.data)
-    }
     z_bg_spot17_funen.data +0
     {
         *z_bg_spot17_funen.o(+DATA)
-    }
-    z_Bg_Spot17_Funen_ASM.data +0
-    {
-        *(i.z_Bg_Spot17_Funen.data)
     }
     z_bg_spot18_basket.data +0
     {
@@ -48794,10 +49294,6 @@ data 0x04F9000
     {
         *z_bg_sst_floor.o(+DATA)
     }
-    z_Bg_Sst_Floor_ASM.data +0
-    {
-        *(i.z_Bg_Sst_Floor.data)
-    }
     z_bg_toki_hikari.data +0
     {
         *z_bg_toki_hikari.o(+DATA)
@@ -48830,17 +49326,9 @@ data 0x04F9000
     {
         *z_bg_vb_sima.o(+DATA)
     }
-    z_Bg_Vb_Sima_ASM.data +0
-    {
-        *(i.z_Bg_Vb_Sima.data)
-    }
     z_bg_ydan_hasi.data +0
     {
         *z_bg_ydan_hasi.o(+DATA)
-    }
-    z_Bg_Ydan_Hasi_ASM.data +0
-    {
-        *(i.z_Bg_Ydan_Hasi.data)
     }
     z_bg_ydan_maruta.data +0
     {
@@ -49222,10 +49710,6 @@ data 0x04F9000
     {
         *z_en_a_obj.o(+DATA)
     }
-    z_En_A_Obj_ASM.data +0
-    {
-        *(i.z_En_A_Obj.data)
-    }
     z_en_am.data +0
     {
         *z_en_am.o(+DATA)
@@ -49418,6 +49902,14 @@ data 0x04F9000
     {
         *(i.z_En_Bubble.data)
     }
+    z_en_bubble_pop.guard +0 /* 0x005214D0 */
+    {
+        *z_en_bubble_pop.o(+DATA)
+    }
+    z_En_Bubble.data_005214D8 +0 /* 0x005214D8 */
+    {
+        *(i.z_En_Bubble.data_005214D8)
+    }
     z_en_bw.data +0
     {
         *z_en_bw.o(+DATA)
@@ -49534,10 +50026,6 @@ data 0x04F9000
     {
         *z_en_diving_game.o(+DATA)
     }
-    z_En_Diving_Game_ASM.data +0
-    {
-        *(i.z_En_Diving_Game.data)
-    }
     z_en_dns.data +0
     {
         *z_en_dns.o(+DATA)
@@ -49549,10 +50037,6 @@ data 0x04F9000
     z_en_dnt_demo.data +0
     {
         *z_en_dnt_demo.o(+DATA)
-    }
-    z_En_Dnt_Demo_ASM.data +0
-    {
-        *(i.z_En_Dnt_Demo.data)
     }
     z_en_dnt_jiji.data +0
     {
@@ -49605,10 +50089,6 @@ data 0x04F9000
     z_en_ds.data +0
     {
         *z_en_ds.o(+DATA)
-    }
-    z_En_Ds_ASM.data +0
-    {
-        *(i.z_En_Ds.data)
     }
     z_en_du.data +0
     {
@@ -49830,10 +50310,6 @@ data 0x04F9000
     {
         *z_en_zl1.o(+DATA)
     }
-    z_En_Zl1_ASM.data +0
-    {
-        *(i.z_En_Zl1.data)
-    }
     z_en_gm.data +0
     {
         *z_en_gm.o(+DATA)
@@ -49906,10 +50382,6 @@ data 0x04F9000
     {
         *z_en_heishi3.o(+DATA)
     }
-    z_En_Heishi3_ASM.data +0
-    {
-        *(i.z_En_Heishi3.data)
-    }
     z_en_heishi4.data +0
     {
         *z_en_heishi4.o(+DATA)
@@ -49949,6 +50421,14 @@ data 0x04F9000
     z_En_Honotrap_ASM.data +0
     {
         *(i.z_En_Honotrap.data)
+    }
+    z_en_honotrap_update.guard +0 /* 0x00526548 */
+    {
+        *z_en_honotrap_update.o(+DATA)
+    }
+    z_En_Honotrap.data_00526550 +0 /* 0x00526550 */
+    {
+        *(i.z_En_Honotrap.data_00526550)
     }
     z_En_Horse.data_005265BC +0
     {
@@ -50002,17 +50482,9 @@ data 0x04F9000
     {
         *z_en_hs.o(+DATA)
     }
-    z_En_Hs_ASM.data +0
-    {
-        *(i.z_En_Hs.data)
-    }
     z_en_hs2.data +0
     {
         *z_en_hs2.o(+DATA)
-    }
-    z_En_Hs2_ASM.data +0
-    {
-        *(i.z_En_Hs2.data)
     }
     z_en_hy.data +0
     {
@@ -50029,6 +50501,10 @@ data 0x04F9000
     z_En_Ice_Hono_ASM.data +0
     {
         *(i.z_En_Ice_Hono.data)
+    }
+    z_en_ik_limbdraw.guard +0 /* 0x00528120 */
+    {
+        *z_en_ik_limbdraw.o(+DATA)
     }
     z_En_Ik_ASM.data +0
     {
@@ -50082,10 +50558,6 @@ data 0x04F9000
     {
         *z_en_js.o(+DATA)
     }
-    z_En_Js_ASM.data +0
-    {
-        *(i.z_En_Js.data)
-    }
     z_en_jsjutan.data +0
     {
         *z_en_jsjutan.o(+DATA)
@@ -50102,17 +50574,9 @@ data 0x04F9000
     {
         *z_en_kakasi.o(+DATA)
     }
-    z_En_Kakasi2_ASM.data +0
-    {
-        *(i.z_En_Kakasi2.data)
-    }
     z_en_kakasi2.data +0
     {
         *z_en_kakasi2.o(+DATA)
-    }
-    z_En_Kakasi3_ASM.data +0
-    {
-        *(i.z_En_Kakasi3.data)
     }
     z_en_kakasi3.data +0
     {
@@ -50170,10 +50634,6 @@ data 0x04F9000
     {
         *z_en_m_fire1.o(+DATA)
     }
-    z_En_M_Fire1_ASM.data +0
-    {
-        *(i.z_En_M_Fire1.data)
-    }
     z_en_m_thunder.data +0
     {
         *z_en_m_thunder.o(+DATA)
@@ -50229,10 +50689,6 @@ data 0x04F9000
     z_en_mk.data +0
     {
         *z_en_mk.o(+DATA)
-    }
-    z_En_Mk_ASM.data +0
-    {
-        *(i.z_En_Mk.data)
     }
     z_en_mm.data +0
     {
@@ -50313,10 +50769,6 @@ data 0x04F9000
     z_en_nutsball.data +0
     {
         *z_en_nutsball.o(+DATA)
-    }
-    z_En_Nutsball_ASM.data +0
-    {
-        *(i.z_En_Nutsball.data)
     }
     z_en_nwc.data +0
     {
@@ -50410,6 +50862,10 @@ data 0x04F9000
     {
         *(i.z_En_Po_Field.data)
     }
+    z_en_po_relay_disappear.guard +0 /* 0x0052DED8 */
+    {
+        *z_en_po_relay_disappear.o(+DATA)
+    }
     z_En_Po_Relay_ASM.data +0
     {
         *(i.z_En_Po_Relay.data)
@@ -50417,6 +50873,10 @@ data 0x04F9000
     z_en_po_relay.data +0
     {
         *z_en_po_relay.o(+DATA)
+    }
+    z_en_po_sisters_death.guard +0 /* 0x0052DFEC */
+    {
+        *z_en_po_sisters_death.o(+DATA)
     }
     z_En_Po_Sisters_ASM.data +0
     {
@@ -50630,9 +51090,9 @@ data 0x04F9000
     {
         *z_en_syateki_man.o(+DATA)
     }
-    z_En_Syateki_Man_ASM.data +0
+    EnSyatekiManTextData +0
     {
-        *(i.z_En_Syateki_Man.data)
+        *(EnSyatekiManTextData)
     }
     z_en_syateki_niw.data +0
     {
@@ -50750,6 +51210,10 @@ data 0x04F9000
     {
         *z_en_vali.o(+DATA)
     }
+    z_en_vali_die.guard +0 /* 0x0052FC48 */
+    {
+        *z_en_vali_die.o(+DATA)
+    }
     z_En_Vali_ASM.data +0
     {
         *(i.z_En_Vali.data)
@@ -50809,6 +51273,14 @@ data 0x04F9000
     z_En_Wf_ASM.data +0
     {
         *(i.z_En_Wf.data)
+    }
+    z_en_wf_postlimb.guard +0 /* 0x00530278 */
+    {
+        *z_en_wf_postlimb.o(+DATA)
+    }
+    z_En_Wf.data_00530280 +0 /* 0x00530280 */
+    {
+        *(i.z_En_Wf.data_00530280)
     }
     z_en_wf.data +0
     {
@@ -50945,10 +51417,6 @@ data 0x04F9000
     z_item_ocarina.data +0
     {
         *z_item_ocarina.o(+DATA)
-    }
-    z_Item_Shield_ASM.data +0
-    {
-        *(i.z_Item_Shield.data)
     }
     z_item_shield.data +0
     {
@@ -51286,17 +51754,181 @@ data 0x04F9000
     {
         *(i.data_54AC28)
     }
-    z_bg_treemouth.bss +0x00F8C8 /* 0x00569AE8 */
+    z_obj_syokudai_pos.guard +0 /* 0x0055A208 */
+    {
+        *z_obj_syokudai_pos.o(+DATA)
+    }
+    data_55A20C +0 /* 0x0055A20C */
+    {
+        *(i.data_55A20C)
+    }
+    mtx34_identity.guard +0 /* 0x0055A210 */
+    {
+        *(.data__ZZ14MTX34_IdentityvE8identity)
+    }
+    data_55A214 +0 /* 0x0055A214 */
+    {
+        *(i.data_55A214)
+    }
+    model_manager.guard +0 /* 0x0055A21C */
+    {
+        *(.data__ZZ15GetModelManagervE9sInstance)
+    }
+    z_bg_bdan_switch_draw.bss 0x00569908
+    {
+        *z_bg_bdan_switch_draw.o(+BSS)
+    }
+    z_bg_gnd_soulmeiro.bss 0x00569950
+    {
+        *z_bg_gnd_soulmeiro.o(+BSS)
+    }
+    z_bg_haka_trap.bss 0x0056998C
+    {
+        *z_bg_haka_trap.o(+BSS)
+    }
+    z_bg_hidan_dalm.bss 0x005699C8
+    {
+        *z_bg_hidan_dalm.o(+BSS)
+    }
+    z_bg_ice_turara_break.bss 0x005699F8
+    {
+        *z_bg_ice_turara_break.o(+BSS)
+    }
+    z_bg_jya_haheniron_crumble.bss 0x00569A10
+    {
+        *z_bg_jya_haheniron_crumble.o(+BSS)
+    }
+    z_bg_treemouth.bss +0x0000C0 /* 0x00569AE8 */
     {
         *z_bg_treemouth.o(+BSS)
     }
-    z_common_data.bss +0x01DE58 /* 0x00587958 */
+    z_bg_ydan_sp.bss 0x00569B00
+    {
+        *z_bg_ydan_sp.o(+BSS)
+    }
+    z_common_data.bss +0x01DE40 /* 0x00587958 */
     {
         *z_common_data.o(+BSS)
     }
-    err.bss +0x02595C /* 0x005AE878 */
+    z_en_ani.bss 0x00598EAC
+    {
+        *z_en_ani.o(+BSS)
+    }
+    z_en_bili.bss 0x00598F0C
+    {
+        *z_en_bili.o(+BSS)
+    }
+    z_en_cow.bss 0x00598FCC
+    {
+        *z_en_cow.o(+BSS)
+    }
+    z_en_ds.bss 0x005990A4
+    {
+        *z_en_ds.o(+BSS)
+    }
+    z_en_fu_PostLimbDraw.bss 0x00599128
+    {
+        *z_en_fu.o(+BSS)
+    }
+    z_en_ge1.bss 0x0059AEC4
+    {
+        *z_en_ge1.o(+BSS)
+    }
+    z_en_goma.bss 0x0059AF6C
+    {
+        *z_en_goma.o(+BSS)
+    }
+    z_en_honotrap_update.bss 0x0059AFCC
+    {
+        *z_en_honotrap_update.o(+BSS)
+    }
+    z_en_hs.bss 0x0059AFF0
+    {
+        *z_en_hs.o(+BSS)
+    }
+    z_en_hs2.bss 0x0059AFFC
+    {
+        *z_en_hs2.o(+BSS)
+    }
+    z_en_ik_limbdraw.bss 0x0059B014
+    {
+        *z_en_ik_limbdraw.o(+BSS)
+    }
+    z_en_js.bss 0x0059B068
+    {
+        *z_en_js.o(+BSS)
+    }
+    z_en_karebaba.bss 0x0059B3D4
+    {
+        *z_en_karebaba.o(+BSS)
+    }
+    z_en_mk.bss 0x0059B44C
+    {
+        *z_en_mk.o(+BSS)
+    }
+    z_en_mm.bss 0x0059B478
+    {
+        *z_en_mm.o(+BSS)
+    }
+    z_en_mm2.bss 0x0059B484
+    {
+        *z_en_mm2.o(+BSS)
+    }
+    z_en_po_desert.bss 0x0059B52C
+    {
+        *z_en_po_desert.o(+BSS)
+    }
+    z_en_po_relay_disappear.bss 0x0059B5B0
+    {
+        *z_en_po_relay_disappear.o(+BSS)
+    }
+    z_en_po_sisters_death.bss 0x0059B5D4
+    {
+        *z_en_po_sisters_death.o(+BSS)
+    }
+    z_en_ta_FUN_0021734c.bss 0x0059B668
+    {
+        *z_en_ta.o(+BSS)
+    }
+    z_en_toryo.bss 0x0059B718
+    {
+        *z_en_toryo.o(+BSS)
+    }
+    z_en_vali_die.bss 0x0059B730
+    {
+        *z_en_vali_die.o(+BSS)
+    }
+    z_en_vm.bss 0x0059B778
+    {
+        *z_en_vm.o(+BSS)
+    }
+    z_en_wallmas.bss 0x0059B7F0
+    {
+        *z_en_wallmas.o(+BSS)
+    }
+    z_en_wf_postlimb.bss 0x0059B7FC
+    {
+        *z_en_wf_postlimb.o(+BSS)
+    }
+    z_item_etcetera.bss +0x0072A8 /* 0x005A2ABC */
+    {
+        *z_item_etcetera.o(+BSS)
+    }
+    err.bss +0x00BDA4 /* 0x005AE878 */
     {
         *err.o(+BSS)
+    }
+    z_obj_syokudai_pos.bss 0x005BE26C
+    {
+        *z_obj_syokudai_pos.o(+BSS)
+    }
+    mtx34_identity.bss 0x005BE29C
+    {
+        *(.bss__ZZ14MTX34_IdentityvE8identity)
+    }
+    model_manager.bss 0x005BE5B8
+    {
+        *(.bss__ZZ15GetModelManagervE9sInstance)
     }
 }
 GARBAGE_SECTION 0x00832000

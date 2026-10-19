@@ -30,4 +30,8 @@ f32 FLOAT_0054ac20 __attribute__((section(".data_54ac20"))) = 1.0f;
 
 DAT_0054ac24_struct DAT_0054ac24 __attribute__((section(".data_54ac24"))) = { 0, 0, 0 };
 
+// data_54AC28 ends at 0x0055A21C (data_chunks.txt): the last word is the GetModelManager() guard
+// (include/model_manager.hpp), placed by oot3d.ld.
 GLOBAL_ASM("data/data_54AC28.s")
+GLOBAL_ASM("data/data_55A20C.s")
+GLOBAL_ASM("data/data_55A214.s")

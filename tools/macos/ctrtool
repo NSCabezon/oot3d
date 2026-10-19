@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+"""macOS drop-in for the subset of ctrtool used by disassembly/CMakeLists.txt.
+Supports: --exefsdir=DIR --exheader=FILE --plainrgn=FILE [--romfsdir=DIR] ROM.3ds  (NoCrypto NCSD only)"""
+import os, sys, struct
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import extract_lib as X
+
+args = dict(a.split('=', 1) for a in sys.argv[1:] if a.startswith('--') and '=' in a)
+rom = [a for a in sys.argv[1:] if not a.startswith('--')][-1]
+f = open(rom, 'rb')
+hdr = f.read(0x200)
+assert hdr[0x100:0x104] == b'NCSD', 'not an NCSD image'
+base = struct.unpack('<I', hdr[0x120:0x124])[0] * X.MU
+f.seek(base); n = f.read(0x200)
+assert n[0x100:0x104] == b'NCCH' and n[0x18F] & 4, 'only decrypted (NoCrypto) images supported'
+f.seek(base + 0x200); exh = f.read(0x800)
+if '--exheader' in args:
+    open(args['--exheader'], 'wb').write(exh)
+if '--plainrgn' in args:
+    po, pl = struct.unpack('<II', n[0x190:0x198])
+    f.seek(base + po * X.MU); open(args['--plainrgn'], 'wb').write(f.read(pl * X.MU))
+if '--exefsdir' in args:
+    d = args['--exefsdir']; os.makedirs(d, exist_ok=True)
+    eo = struct.unpack('<I', n[0x1A0:0x1A4])[0]
+    f.seek(base + eo * X.MU); eh = f.read(0x200)
+    comp = bool(exh[0xD] & 1)
+    for i in range(10):
+        nm = eh[i * 16:i * 16 + 8].rstrip(b'\0').decode()
+        off, sz = struct.unpack('<II', eh[i * 16 + 8:i * 16 + 16])
+        if not nm:
+            continue
+        f.seek(base + eo * X.MU + 0x200 + off); data = f.read(sz)
+        if nm == '.code' and comp:
+            data = X.blz_decompress(data)
+        open(os.path.join(d, nm.lstrip('.') + '.bin'), 'wb').write(data)
+if '--romfsdir' in args:
+    ro = struct.unpack('<I', n[0x1B0:0x1B4])[0]
+    X.romfs_walk(f, base + ro * X.MU, args['--romfsdir'])
+print('ctrtool(macos shim): done')

@@ -1,0 +1,10 @@
+	EXPORT BgHidanDalm_sInitChain
+	EXPORT BgHidanDalm_sTrisInit
+	EXPORT BgHidanDalm_sTrisElementInit
+	EXPORT EffectSsKiraKira_sSmallYellowColors
+BgHidanDalm_sInitChain EQU 0x005116BC
+BgHidanDalm_sTrisInit EQU 0x005117B4
+BgHidanDalm_sTrisElementInit EQU 0x005116C4
+EffectSsKiraKira_sSmallYellowColors EQU 0x004D916C
+
+	END

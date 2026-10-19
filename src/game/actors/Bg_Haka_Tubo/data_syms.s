@@ -1,0 +1,15 @@
+	EXPORT BgHakaTubo_sData
+	EXPORT BgHakaTubo_sInitChain
+	EXPORT BgHakaTubo_sZeroVec
+	EXPORT BgHakaTubo_sDrawColor
+	EXPORT BgHakaTubo_sPotColliderInit
+	EXPORT BgHakaTubo_sFlamesColliderInit
+
+BgHakaTubo_sData EQU 0x005114C8
+BgHakaTubo_sInitChain EQU 0x005114CC
+BgHakaTubo_sPotColliderInit EQU 0x005114E0
+BgHakaTubo_sFlamesColliderInit EQU 0x00511518
+BgHakaTubo_sDrawColor EQU 0x004D70E4
+BgHakaTubo_sZeroVec EQU 0x00569998
+
+	END

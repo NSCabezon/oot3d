@@ -1,4 +1,7 @@
 #include "non_matchings.hpp"
+extern "C" {
+#include "global.hpp"
+}
 
 GLOBAL_ASM("asm/FUN_003100e4.s")
 
@@ -178,7 +181,6 @@ GLOBAL_ASM("asm/FUN_0031487c.s")
 
 GLOBAL_ASM("asm/FUN_0031488c.s")
 
-GLOBAL_ASM("asm/FUN_00314988.s")
 
 
 GLOBAL_ASM("asm/FUN_00314aa0.s")
@@ -191,7 +193,6 @@ GLOBAL_ASM("asm/FUN_00314c28.s")
 
 GLOBAL_ASM("asm/FUN_00314c68.s")
 
-GLOBAL_ASM("asm/FUN_00314cfc.s")
 
 GLOBAL_ASM("asm/FUN_00314e90.s")
 
@@ -213,12 +214,31 @@ GLOBAL_ASM("asm/FUN_00315738.s")
 
 GLOBAL_ASM("asm/FUN_00315744.s")
 
-GLOBAL_ASM("asm/FUN_003158ac.s")
+extern "C" {
+void FUN_003ce19c(void);
+
+s32 FUN_003158ac(Actor* actor) {
+    f32 range = 100.0f;
+    s32 angleLimit = 0x1554;
+
+    if (*(void**)((u8*)actor + 0xB18) == (void*)FUN_003ce19c) {
+        range = 103.0f;
+        angleLimit |= angleLimit << 1;
+    }
+    if (actor->xyzDistToPlayerSq > range * range) {
+        return 0;
+    }
+    s16 shapeRot = actor->shape.rot.y;
+    if (ABS((s16)(actor->yawTowardsPlayer - shapeRot)) < angleLimit) {
+        return 1;
+    }
+    return 0;
+}
+}
 
 GLOBAL_ASM("asm/Math_ApproachS.s")
 
 
-GLOBAL_ASM("asm/FUN_003159f8.s")
 
 GLOBAL_ASM("asm/FUN_00315ac4.s")
 
@@ -252,7 +272,6 @@ GLOBAL_ASM("asm/FUN_00316d74.s")
 
 GLOBAL_ASM("asm/FUN_00316dc0.s")
 
-GLOBAL_ASM("asm/FUN_003170f4.s")
 
 GLOBAL_ASM("asm/FUN_00317218.s")
 
@@ -267,9 +286,7 @@ GLOBAL_ASM("asm/FUN_0031769c.s")
 GLOBAL_ASM("asm/FUN_00317708.s")
 
 
-GLOBAL_ASM("asm/FUN_00317908.s")
 
-GLOBAL_ASM("asm/FUN_003179d0.s")
 
 GLOBAL_ASM("asm/FUN_00317b28.s")
 
@@ -303,7 +320,8 @@ GLOBAL_ASM("asm/CollisionCheck_SetATvsAC.s")
 
 GLOBAL_ASM("asm/FUN_003192f0.s")
 
-GLOBAL_ASM("asm/Math3D_TriLineIntersect.s")
+GLOBAL_ASM("../split/asm/Math3D_TriLineIntersect.s")
+GLOBAL_ASM("../split/asm/FUN_00319560.s")
 
 GLOBAL_ASM("asm/FUN_00319564.s")
 
@@ -315,13 +333,10 @@ GLOBAL_ASM("asm/FUN_00319ae8.s")
 
 GLOBAL_ASM("asm/FUN_00319b54.s")
 
-GLOBAL_ASM("asm/FUN_00319f20.s")
 
 GLOBAL_ASM("asm/FUN_0031a014.s")
 
-GLOBAL_ASM("asm/FUN_0031a3dc.s")
 
-GLOBAL_ASM("asm/caseD_10_0031a46c.s")
 
 GLOBAL_ASM("asm/CollisionCheck_HitEffects.s")
 
@@ -360,7 +375,6 @@ GLOBAL_ASM("asm/FUN_0031ca6c.s")
 
 GLOBAL_ASM("asm/FUN_0031cb28.s")
 
-GLOBAL_ASM("asm/FUN_0031cddc.s")
 
 GLOBAL_ASM("asm/FUN_0031cebc.s")
 
@@ -397,7 +411,6 @@ GLOBAL_ASM("asm/FUN_0031eb78.s")
 
 GLOBAL_ASM("asm/FUN_0031ebe4.s")
 
-GLOBAL_ASM("asm/FUN_0031ecbc.s")
 
 GLOBAL_ASM("asm/caseD_10_0031ed2c.s")
 

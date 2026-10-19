@@ -1,0 +1,12 @@
+	EXPORT En_Crow_sDeathCount
+	EXPORT En_Crow_sColChkInfoInit
+	EXPORT En_Crow_sJntSphInit
+	EXPORT En_Crow_sInitChain
+	EXPORT En_Crow_sZeroVecAccel
+En_Crow_sDeathCount EQU 0x00521B18
+En_Crow_sColChkInfoInit EQU 0x00521B20
+En_Crow_sJntSphInit EQU 0x00521B28
+En_Crow_sInitChain EQU 0x00521B58
+En_Crow_sZeroVecAccel EQU 0x00598FE4
+
+	END

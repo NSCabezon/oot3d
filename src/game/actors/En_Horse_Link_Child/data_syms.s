@@ -1,0 +1,15 @@
+	EXPORT EnHorseLinkChild_sAnimations
+	EXPORT EnHorseLinkChild_sEyeIndexOrder
+	EXPORT EnHorseLinkChild_sSpeedScale
+	EXPORT EnHorseLinkChild_sInitChain
+	EXPORT EnHorseLinkChild_sStepFrames
+	EXPORT EnHorseLinkChild_sActionFuncs
+
+EnHorseLinkChild_sAnimations EQU 0x0052711C
+EnHorseLinkChild_sEyeIndexOrder EQU 0x00527108
+EnHorseLinkChild_sSpeedScale EQU 0x00527178
+EnHorseLinkChild_sInitChain EQU 0x00527104
+EnHorseLinkChild_sStepFrames EQU 0x00527114
+EnHorseLinkChild_sActionFuncs EQU 0x0052718C
+
+	END

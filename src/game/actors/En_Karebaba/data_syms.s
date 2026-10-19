@@ -1,0 +1,10 @@
+	EXPORT EnKarebaba_sHeadColliderInit
+	EXPORT EnKarebaba_sBodyColliderInit
+	EXPORT EnKarebaba_sColCheckInfoInit
+	EXPORT EnKarebaba_sInitChain
+EnKarebaba_sHeadColliderInit EQU 0x0052B7A0
+EnKarebaba_sBodyColliderInit EQU 0x0052B768
+EnKarebaba_sColCheckInfoInit EQU 0x0052B760
+EnKarebaba_sInitChain EQU 0x0052B7D8
+
+	END

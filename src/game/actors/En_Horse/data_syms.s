@@ -1,0 +1,43 @@
+	EXPORT En_Horse_sAnimationHeaders
+	EXPORT EnHorse_sWalkFrames
+	EXPORT EnHorse_sData
+	EXPORT DAT_0054ad68
+	EXPORT EnHorse_sFaceTable
+	EXPORT EnHorse_sBridgeJumps
+	EXPORT EnHorse_sPlaybackSpeeds
+	EXPORT EnHorse_sTrotFramesA
+	EXPORT EnHorse_sHorseSpawns
+	EXPORT EnHorse_sDataAll
+	EXPORT EnHorse_sIdleAnimIds
+	EXPORT EnHorse_sResetNoInput
+	EXPORT EnHorse_sIngoRace
+	EXPORT EnHorse_sHbaInfo
+	EXPORT EnHorse_sIngoAnimations
+	EXPORT EnHorse_sCutsceneInitFuncs
+	EXPORT EnHorse_sCutsceneActionFuncs
+	EXPORT EnHorse_sCsActionTable
+	EXPORT DAT_00520234
+	EXPORT DAT_00520238
+
+En_Horse_sAnimationHeaders EQU 0x005265E8
+EnHorse_sWalkFrames EQU 0x004D9684
+EnHorse_sData EQU 0x005265BC
+DAT_0054ad68 EQU 0x0054AD68
+EnHorse_sFaceTable EQU 0x005265DC
+EnHorse_sBridgeJumps EQU 0x00526D68
+EnHorse_sPlaybackSpeeds EQU 0x00526610
+EnHorse_sTrotFramesA EQU 0x004D968C
+EnHorse_sHorseSpawns EQU 0x005266CC
+EnHorse_sDataAll EQU 0x005265BC
+EnHorse_sIdleAnimIds EQU 0x005265E0
+EnHorse_sResetNoInput EQU 0x00526DA0
+EnHorse_sIngoRace EQU 0x005265F8
+EnHorse_sHbaInfo EQU 0x00526600
+EnHorse_sIngoAnimations EQU 0x00526DAC
+EnHorse_sCutsceneInitFuncs EQU 0x00526DCC
+EnHorse_sCutsceneActionFuncs EQU 0x00526DE4
+EnHorse_sCsActionTable EQU 0x00526DFC
+DAT_00520234 EQU 0x00520234
+DAT_00520238 EQU 0x00520238
+
+	END

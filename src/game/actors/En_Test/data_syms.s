@@ -1,0 +1,12 @@
+	EXPORT EnTest_sBodyColliderInit
+EnTest_sBodyColliderInit EQU 0x0052F65C
+	EXPORT EnTest_sShieldColliderInit
+EnTest_sShieldColliderInit EQU 0x0052F694
+	EXPORT EnTest_sSwordColliderInit
+EnTest_sSwordColliderInit EQU 0x0052F6CC
+	EXPORT EnTest_sDamageTable
+EnTest_sDamageTable EQU 0x0052F71C
+	EXPORT EnTest_sInitChain
+EnTest_sInitChain EQU 0x0052F73C
+
+	END

@@ -1,0 +1,7 @@
+	EXPORT BgSpot00Hanebasi_sTorchFlameScale
+	EXPORT BgSpot00Hanebasi_sInitChain
+
+BgSpot00Hanebasi_sTorchFlameScale EQU 0x005135B4
+BgSpot00Hanebasi_sInitChain EQU 0x005135B8
+
+	END

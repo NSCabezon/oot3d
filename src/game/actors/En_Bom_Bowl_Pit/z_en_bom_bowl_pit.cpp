@@ -7,6 +7,8 @@ void EnBomBowlPit_Init(Actor* actor, GameState* state);
 void EnBomBowlPit_Destroy(Actor* actor, GameState* state);
 void EnBomBowlPit_Update(Actor* actor, GameState* state);
 
+void FUN_003e870c(EnBomBowlPit* self, PlayState* play); // N64: EnBomBowlPit_WaitGameStarted
+
 GLOBAL_ASM("data/z_En_Bom_Bowl_Pit.data.s")
 
 ActorInit En_Bom_Bowl_Pit_InitVars = {
@@ -21,9 +23,23 @@ ActorInit En_Bom_Bowl_Pit_InitVars = {
     NULL,
 };
 
-GLOBAL_ASM("asm/EnBomBowlPit_Init.s")
+void EnBomBowlPit_Init(Actor* actor, GameState* state) {
+    EnBomBowlPit* self = (EnBomBowlPit*)actor;
 
-GLOBAL_ASM("asm/EnBomBowlPit_Destroy.s")
+    self->actor.unk_19A = 1;
+    self->actionFunc = FUN_003e870c;
+}
 
-GLOBAL_ASM("asm/EnBomBowlPit_Update.s")
+void EnBomBowlPit_Destroy(Actor* actor, GameState* state) {
+}
+
+void EnBomBowlPit_Update(Actor* actor, GameState* state) {
+    EnBomBowlPit* self = (EnBomBowlPit*)actor;
+
+    self->actionFunc(self, (PlayState*)state);
+
+    if (self->timer != 0) {
+        self->timer--;
+    }
+}
 }

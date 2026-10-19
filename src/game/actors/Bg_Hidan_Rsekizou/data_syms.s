@@ -1,0 +1,6 @@
+	EXPORT BgHidanRsekizou_sInitChain
+	EXPORT BgHidanRsekizou_sJntSphInit
+BgHidanRsekizou_sInitChain EQU 0x00511D5C
+BgHidanRsekizou_sJntSphInit EQU 0x00511D4C
+
+	END

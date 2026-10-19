@@ -1,0 +1,13 @@
+	EXPORT DemoKekkai_sCylinderInit
+	EXPORT DemoKekkai_sEventFlags
+	EXPORT DemoKekkai_sCsFrames
+	EXPORT DemoKekkai_sLightYellow
+	EXPORT DemoKekkai_sDarkRed
+
+DemoKekkai_sLightYellow EQU 0x0051C3BC
+DemoKekkai_sDarkRed EQU 0x0051C3C0
+DemoKekkai_sCylinderInit EQU 0x0051C3C4
+DemoKekkai_sEventFlags EQU 0x0051C3FC
+DemoKekkai_sCsFrames EQU 0x0051C418
+
+	END

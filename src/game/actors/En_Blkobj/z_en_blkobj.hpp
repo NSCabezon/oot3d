@@ -5,9 +5,16 @@
 
 struct EnBlkobj;
 
+typedef void (*EnBlkobjActionFunc)(struct EnBlkobj*, PlayState*);
+
 typedef struct EnBlkobj {
     /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x28];
+    /* 0x01A4 */ s32 bgId;
+    /* 0x01A8 */ char unk_1A8[0x14];
+    /* 0x01BC */ s16 alpha;
+    /* 0x01BE */ s16 timer;
+    /* 0x01C0 */ EnBlkobjActionFunc actionFunc;
+    /* 0x01C4 */ SkeletonAnimationModel* skel[2];
 } EnBlkobj; // size = 0x1CC
 
 extern ActorInit En_Blkobj_InitVars;

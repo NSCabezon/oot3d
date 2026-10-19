@@ -1,0 +1,10 @@
+	EXPORT EnWeiyer_sColChkInfoInit
+	EXPORT EnWeiyer_sCylinderInit
+	EXPORT EnWeiyer_sDamageTable
+	EXPORT EnWeiyer_sInitChain
+EnWeiyer_sColChkInfoInit EQU 0x0053014C
+EnWeiyer_sCylinderInit EQU 0x00530154
+EnWeiyer_sDamageTable EQU 0x0053018C
+EnWeiyer_sInitChain EQU 0x005301AC
+
+	END

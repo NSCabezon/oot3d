@@ -1,0 +1,6 @@
+	EXPORT BgBdanSwitch_sInitChain
+	EXPORT BgBdanSwitch_sJntSphInit
+BgBdanSwitch_sInitChain EQU 0x00510AAC
+BgBdanSwitch_sJntSphInit EQU 0x00510A9C
+
+	END

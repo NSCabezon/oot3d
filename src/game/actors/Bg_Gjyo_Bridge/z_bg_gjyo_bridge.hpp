@@ -5,10 +5,13 @@
 
 struct BgGjyoBridge;
 
+typedef void (*BgGjyoBridgeActionFunc)(struct BgGjyoBridge*, PlayState*);
+
 typedef struct BgGjyoBridge {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x20];
-} BgGjyoBridge; // size = 0x1C4
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ BgGjyoBridgeActionFunc actionFunc;
+    /* 0x01C0 */ SkeletonAnimationModel* skelAnimModel;
+} BgGjyoBridge; // size = 0x01C4
 
 extern ActorInit Bg_Gjyo_Bridge_InitVars;
 

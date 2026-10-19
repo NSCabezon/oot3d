@@ -1,0 +1,6 @@
+	EXPORT EnNiwLady_sMissingCuccoTextIds
+	EXPORT EnNiwLady_sTradeItemTextIds
+EnNiwLady_sTradeItemTextIds EQU 0x0052D130
+EnNiwLady_sMissingCuccoTextIds EQU 0x0052D0D4
+
+	END

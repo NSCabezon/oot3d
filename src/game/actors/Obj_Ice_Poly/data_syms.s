@@ -1,0 +1,14 @@
+	EXPORT ObjIcePoly_sOffsetY
+	EXPORT ObjIcePoly_sCylinderInitIce
+	EXPORT ObjIcePoly_sCylinderInitHard
+	EXPORT ObjIcePoly_sScale
+	EXPORT ObjIcePoly_sColorWhite
+	EXPORT ObjIcePoly_sColorGray
+ObjIcePoly_sOffsetY EQU 0x0053518C
+ObjIcePoly_sCylinderInitIce EQU 0x00535194
+ObjIcePoly_sCylinderInitHard EQU 0x005351CC
+ObjIcePoly_sScale EQU 0x00535204
+ObjIcePoly_sColorWhite EQU 0x00535180
+ObjIcePoly_sColorGray EQU 0x00535184
+
+	END

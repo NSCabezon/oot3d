@@ -1,0 +1,22 @@
+	EXPORT BgSpot16Bombstone_sTimer
+	EXPORT BgSpot16Bombstone_sStatics
+	EXPORT BgSpot16Bombstone_sPlayerBomb
+	EXPORT BgSpot16Bombstone_sDebrisParams
+	EXPORT BgSpot16Bombstone_sInitChainBoulder
+	EXPORT BgSpot16Bombstone_sInitChainDebris
+	EXPORT BgSpot16Bombstone_sJntSphInit
+	EXPORT BgSpot16Bombstone_sCylinderInit
+	EXPORT BgSpot16Bombstone_sFragmentScales
+	EXPORT BgSpot16Bombstone_sFragmentParams
+BgSpot16Bombstone_sTimer EQU 0x00513B60
+BgSpot16Bombstone_sStatics EQU 0x00513B60
+BgSpot16Bombstone_sPlayerBomb EQU 0x00513B64
+BgSpot16Bombstone_sDebrisParams EQU 0x00513B70
+BgSpot16Bombstone_sInitChainBoulder EQU 0x00513D9C
+BgSpot16Bombstone_sInitChainDebris EQU 0x00513DA8
+BgSpot16Bombstone_sJntSphInit EQU 0x00513BE8
+BgSpot16Bombstone_sCylinderInit EQU 0x00513BF8
+BgSpot16Bombstone_sFragmentScales EQU 0x00513DBC
+BgSpot16Bombstone_sFragmentParams EQU 0x00513DD0
+
+	END

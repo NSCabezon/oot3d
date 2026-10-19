@@ -7,8 +7,7 @@ void BgSpot01Idosoko_Init(Actor* actor, GameState* state);
 void BgSpot01Idosoko_Destroy(Actor* actor, GameState* state);
 void BgSpot01Idosoko_Update(Actor* actor, GameState* state);
 void BgSpot01Idosoko_Draw(Actor* actor, GameState* state);
-
-GLOBAL_ASM("data/z_Bg_Spot01_Idosoko.data.s")
+void BgSpot01Idosoko_DoNothing(BgSpot01Idosoko* self, PlayState* play);
 
 ActorInit Bg_Spot01_Idosoko_InitVars = {
     ACTOR_BG_SPOT01_IDOSOKO,
@@ -22,14 +21,52 @@ ActorInit Bg_Spot01_Idosoko_InitVars = {
     (ActorFunc)BgSpot01Idosoko_Draw,
 };
 
-GLOBAL_ASM("asm/BgSpot01Idosoko_Init.s")
+static InitChainEntry sInitChain[] = {
+    ICHAIN_VEC3F_DIV1000(scale, 100, ICHAIN_STOP),
+};
 
-GLOBAL_ASM("asm/BgSpot01Idosoko_Destroy.s")
+void BgSpot01Idosoko_Init(Actor* actor, GameState* state) {
+    BgSpot01Idosoko* self = (BgSpot01Idosoko*)actor;
+    PlayState* play = (PlayState*)state;
+    CollisionHeader* colHeader = NULL;
 
-GLOBAL_ASM("asm/BgSpot01Idosoko_Update.s")
+    DynaPolyActor_Init(&self->dyna, 1);
+    Actor_ProcessInitChain(actor, sInitChain);
+    FUN_00372f38(actor, play, &self->skelAnimModel, 2, 0);
+    ReadCollisionHeaderFromZsi(DynaPolyInfo_Alloc(&self->dyna, state, 1), &colHeader);
+    self->dyna.bgId = DynaPoly_SetBgActor(play, &play->colCtx.dyna, actor, colHeader);
+    if (LINK_IS_ADULT) {
+        self->actionFunc = BgSpot01Idosoko_DoNothing;
+    } else {
+        Actor_Kill(actor);
+    }
+}
 
-GLOBAL_ASM("asm/BgSpot01Idosoko_Draw.s")
+void BgSpot01Idosoko_Destroy(Actor* actor, GameState* state) {
+    BgSpot01Idosoko* self = (BgSpot01Idosoko*)actor;
+    PlayState* play = (PlayState*)state;
 
-GLOBAL_ASM("asm/BgSpot01Idosoko_DoNothing.s")
+    DynaPoly_DeleteBgActor(play, &play->colCtx.dyna, self->dyna.bgId);
+    FUN_00350f34(actor, &self->skelAnimModel, 0);
+}
 
+void BgSpot01Idosoko_Update(Actor* actor, GameState* state) {
+    BgSpot01Idosoko* self = (BgSpot01Idosoko*)actor;
+    PlayState* play = (PlayState*)state;
+
+    self->actionFunc(self, play);
+}
+
+void BgSpot01Idosoko_Draw(Actor* actor, GameState* state) {
+    BgSpot01Idosoko* self = (BgSpot01Idosoko*)actor;
+    MTX34 modelMtx;
+
+    MTX34CopyAsm(&modelMtx, &self->dyna.actor.modelMtx);
+    self->skelAnimModel->SetUnkAC(1);
+    self->skelAnimModel->FUN_003721e0(&modelMtx);
+    self->skelAnimModel->FUN_00372170(0);
+}
+
+void BgSpot01Idosoko_DoNothing(BgSpot01Idosoko* self, PlayState* play) {
+}
 }

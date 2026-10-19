@@ -5,7 +5,7 @@ extern "C" {
 
 void BgHidanFirewall_Init(Actor* actor, GameState* state);
 void BgHidanFirewall_Destroy(Actor* actor, GameState* state);
-void BgHidanFirewall_Update(Actor* actor, GameState* state);
+void BgHidanFirewall_Update(BgHidanFirewall* self, PlayState* play);
 void BgHidanFirewall_Draw(Actor* actor, GameState* state);
 
 void BgHidanFirewall_Wait(BgHidanFirewall* self, PlayState* play);
@@ -121,80 +121,67 @@ void BgHidanFirewall_Erupt(BgHidanFirewall* self, PlayState* play) {
     }
 }
 
-#if NON_MATCHING
-/*
-void BgHidanFirewall_Collide(BgHidanFirewall* self, PlayState* play) {
-    s16 phi_a3;
-
-    if (Actor_IsFacingPlayer(&self->actor, 0x4000)) {
-        phi_a3 = self->actor.shape.rot.y;
-    } else {
-        phi_a3 = self->actor.shape.rot.y + 0x8000;
-    }
-
-    FUN_00374bb8(play, &self->actor, 5.0f, phi_a3, 1.0f);
-}
-
-void BgHidanFirewall_ColliderFollowPlayer(BgHidanFirewall* self, PlayState* play) {
+void BgHidanFirewall_Update(BgHidanFirewall* self, PlayState* play) {
+    s16 phi;
     Player* player;
-    Vec3f sp30;
     f32 phi_f0;
-
-    player = GET_PLAYER(play);
-
-    FUN_0036c5d8(&self->actor, &sp30, &player->actor.world.pos);
-    if (sp30.x < -70.0f) {
-        phi_f0 = -70.0f;
-    } else {
-        if (sp30.x > 70.0f) {
-            phi_f0 = 70.0f;
-        } else {
-            phi_f0 = sp30.x;
-        }
-    }
-    sp30.x = phi_f0;
-
-    if (self->actor.params == 0) {
-        if (0.0f < sp30.z) {
-            sp30.z = -25.0f;
-            self->actor.params = -1;
-        } else {
-            sp30.z = 25.0f;
-            self->actor.params = 1;
-        }
-    } else {
-        sp30.z = self->actor.params * 25.0f;
-    }
-    f32 sin = Math_SinS(self->actor.shape.rot.y);
-    f32 cos = Math_CosS(self->actor.shape.rot.y);
-
-    self->collider.dim.pos.x = self->actor.world.pos.x + sp30.x * cos + sp30.z * sin;
-    self->collider.dim.pos.z = self->actor.world.pos.z - sp30.x * sin + sp30.z * cos;
-}
-
-void BgHidanFirewall_Update(Actor* actor, GameState* state) {
-    BgHidanFirewall* self = (BgHidanFirewall*)actor;
-    PlayState* play = (PlayState*)state;
+    f32 sin;
+    f32 cos;
 
     self->unk_1A8 = (self->unk_1A8 + 1) % 8;
 
     if (self->collider.base.atFlags & AT_HIT) {
         self->collider.base.atFlags &= ~AT_HIT;
-        BgHidanFirewall_Collide(self, play);
+        if (Actor_IsFacingPlayer(&self->actor, 0x4000)) {
+            phi = self->actor.shape.rot.y;
+        } else {
+            phi = self->actor.shape.rot.y + 0x8000;
+        }
+        FUN_00374bb8(play, &self->actor, 5.0f, phi, 1.0f);
     }
 
     self->actionFunc(self, play);
     if (self->actionFunc == BgHidanFirewall_Erupt) {
-        BgHidanFirewall_ColliderFollowPlayer(self, play);
+        // ColliderFollowPlayer (inlined). Scoping the address-taken Vec3f to this block lets armcc
+        // tail-call the SFX function below, as in ROM.
+        {
+            Vec3f playerRelativePos;
+            player = GET_PLAYER(play);
+
+            FUN_0036c5d8(&self->actor, &playerRelativePos, &player->actor.world.pos);
+            if (playerRelativePos.x < -70.0f) {
+                phi_f0 = -70.0f;
+            } else {
+                if (70.0f < playerRelativePos.x) {
+                    phi_f0 = 70.0f;
+                } else {
+                    phi_f0 = playerRelativePos.x;
+                }
+            }
+            playerRelativePos.x = phi_f0;
+
+            if (self->actor.params == 0) {
+                if (0.0f < playerRelativePos.z) {
+                    playerRelativePos.z = -25.0f;
+                    self->actor.params = -1;
+                } else {
+                    playerRelativePos.z = 25.0f;
+                    self->actor.params = 1;
+                }
+            } else {
+                playerRelativePos.z = self->actor.params * 25.0f;
+            }
+            sin = Math_SinS(self->actor.shape.rot.y);
+            cos = Math_CosS(self->actor.shape.rot.y);
+
+            self->collider.dim.pos.x = self->actor.world.pos.x + playerRelativePos.x * cos + playerRelativePos.z * sin;
+            self->collider.dim.pos.z = self->actor.world.pos.z - playerRelativePos.x * sin + playerRelativePos.z * cos;
+        }
         CollisionCheck_SetAT(play, &play->colChkCtx, &self->collider.base);
         CollisionCheck_SetOC(play, &play->colChkCtx, &self->collider.base);
         FUN_00373264(&self->actor, 0x100018B);
     }
 }
-*/
-#else
-GLOBAL_ASM("asm/BgHidanFirewall_Update.s")
-#endif
 
 void BgHidanFirewall_Draw(Actor* actor, GameState* state) {
     BgHidanFirewall* self = (BgHidanFirewall*)actor;

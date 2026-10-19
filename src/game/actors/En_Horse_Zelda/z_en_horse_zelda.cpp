@@ -20,11 +20,15 @@ ActorInit En_Horse_Zelda_InitVars = {
     (ActorFunc)EnHorseZelda_Draw,
 };
 
-GLOBAL_ASM("asm/EnHorseZelda_Init.s")
+void EnHorseZelda_Init(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnHorseZelda_Destroy.s")
+void EnHorseZelda_Destroy(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnHorseZelda_Update.s")
+void EnHorseZelda_Update(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnHorseZelda_Draw.s")
+void EnHorseZelda_Draw(Actor* actor, GameState* state) {
+}
 }

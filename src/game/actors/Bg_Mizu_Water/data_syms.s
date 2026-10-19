@@ -1,0 +1,8 @@
+	EXPORT BgMizuWater_sInitChain
+	EXPORT BgMizuWater_sWaterLevels
+	EXPORT BgMizuWater_sWaterBoxIndices
+BgMizuWater_sInitChain EQU 0x00513160
+BgMizuWater_sWaterLevels EQU 0x00513164
+BgMizuWater_sWaterBoxIndices EQU 0x00513184
+
+	END

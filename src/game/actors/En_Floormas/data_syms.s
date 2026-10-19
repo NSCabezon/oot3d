@@ -1,0 +1,9 @@
+	EXPORT EnFloormas_sInitData
+EnFloormas_sInitData EQU 0x00523864
+	EXPORT EnFloormas_sCylinderInit
+EnFloormas_sCylinderInit EQU 0x0052386C
+	EXPORT EnFloormas_sColChkInfo
+EnFloormas_sColChkInfo EQU 0x00523864
+	EXPORT EnFloormas_sInitChain
+EnFloormas_sInitChain EQU 0x005238C4
+	END

@@ -1,0 +1,33 @@
+	EXPORT EnIshi_sDrawFuncs
+	EXPORT EnIshi_sFragmentScales
+	EXPORT EnIshi_sRotSpeed
+	EXPORT EnIshi_sBreakSfxDurations
+	EXPORT EnIshi_sColChkInfoInit
+	EXPORT EnIshi_sRockScales
+	EXPORT EnIshi_sYOffsets
+	EXPORT EnIshi_sDragCoefs
+	EXPORT EnIshi_sBreakSfxIds
+	EXPORT EnIshi_sFragmentSpawnFuncs
+	EXPORT EnIshi_sDustSpawnFuncs
+	EXPORT EnIshi_sCylinderInits
+	EXPORT EnIshi_sLargeFragmentScales
+	EXPORT EnIshi_sInitChains
+	EXPORT EnIshi_sLiftSfxIds
+
+EnIshi_sDrawFuncs EQU 0x00528620
+EnIshi_sFragmentScales EQU 0x005285B8
+EnIshi_sRotSpeed EQU 0x005284B8
+EnIshi_sBreakSfxDurations EQU 0x005284BC
+EnIshi_sColChkInfoInit EQU 0x005284C0
+EnIshi_sRockScales EQU 0x005284C8
+EnIshi_sYOffsets EQU 0x005284D4
+EnIshi_sDragCoefs EQU 0x005284E0
+EnIshi_sBreakSfxIds EQU 0x005284EC
+EnIshi_sFragmentSpawnFuncs EQU 0x005284F8
+EnIshi_sDustSpawnFuncs EQU 0x00528504
+EnIshi_sCylinderInits EQU 0x00528510
+EnIshi_sLargeFragmentScales EQU 0x005285C4
+EnIshi_sInitChains EQU 0x005285D8
+EnIshi_sLiftSfxIds EQU 0x00528614
+
+	END

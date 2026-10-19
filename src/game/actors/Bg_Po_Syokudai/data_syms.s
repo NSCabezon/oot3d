@@ -1,0 +1,10 @@
+	EXPORT BgPoSyokudai_sInitChain
+	EXPORT BgPoSyokudai_sCylinderInit
+	EXPORT BgPoSyokudai_sFlameModelIdx
+	EXPORT BgPoSyokudai_sPrimColors
+BgPoSyokudai_sInitChain EQU 0x005134B0
+BgPoSyokudai_sCylinderInit EQU 0x005134B4
+BgPoSyokudai_sFlameModelIdx EQU 0x005134EC
+BgPoSyokudai_sPrimColors EQU 0x005134FC
+
+	END

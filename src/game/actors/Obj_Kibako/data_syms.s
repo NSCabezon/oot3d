@@ -1,0 +1,12 @@
+	EXPORT ObjKibako_sInfoTable
+	EXPORT ObjKibako_sFloatConst
+	EXPORT ObjKibako_sCCInfoInit
+	EXPORT ObjKibako_sCylinderInit
+	EXPORT ObjKibako_sInitChain
+ObjKibako_sInfoTable EQU 0x0050CD84
+ObjKibako_sFloatConst EQU 0x00535230
+ObjKibako_sCCInfoInit EQU 0x00535234
+ObjKibako_sCylinderInit EQU 0x0053523C
+ObjKibako_sInitChain EQU 0x00535274
+
+	END

@@ -1,0 +1,6 @@
+	EXPORT EnEncount1_sLeeverAngles
+	EXPORT EnEncount1_sLeeverDists
+EnEncount1_sLeeverAngles EQU 0x00523150
+EnEncount1_sLeeverDists EQU 0x0052315C
+
+	END

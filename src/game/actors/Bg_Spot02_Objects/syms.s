@@ -1,0 +1,11 @@
+	EXPORT BgSpot02Objects_sInitChain
+	EXPORT BgSpot02Objects_sQuad
+	EXPORT BgSpot02Objects_sZeroVecGuard
+	EXPORT BgSpot02Objects_sZeroVec
+
+BgSpot02Objects_sInitChain EQU 0x005136CC
+BgSpot02Objects_sQuad EQU 0x004D71AC
+BgSpot02Objects_sZeroVecGuard EQU 0x005136D0
+BgSpot02Objects_sZeroVec EQU 0x00569A88
+
+	END

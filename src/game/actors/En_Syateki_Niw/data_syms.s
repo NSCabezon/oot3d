@@ -1,0 +1,5 @@
+	EXPORT EnSyatekiNiw_sCylinderInit
+EnSyatekiNiw_sCylinderInit EQU 0x0052F528
+
+	EXPORT EnSyatekiNiw_sInitChain
+EnSyatekiNiw_sInitChain EQU 0x0052F560

@@ -1,0 +1,8 @@
+	EXPORT BgSpot01Idohashira_sDrawFuncs
+	EXPORT BgSpot01Idohashira_sInitChain
+	EXPORT BgSpot01Idohashira_sActionFuncs
+BgSpot01Idohashira_sDrawFuncs EQU 0x00513618
+BgSpot01Idohashira_sInitChain EQU 0x0051361C
+BgSpot01Idohashira_sActionFuncs EQU 0x00513624
+
+	END

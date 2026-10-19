@@ -1,0 +1,11 @@
+	EXPORT BgHidanRock_D_8088BF60
+	EXPORT BgHidanRock_D_8088BFC0
+	EXPORT BgHidanRock_sCylinderInit
+	EXPORT BgHidanRock_sInitChain
+
+BgHidanRock_D_8088BF60 EQU 0x005699D4
+BgHidanRock_D_8088BFC0 EQU 0x00511BC4
+BgHidanRock_sCylinderInit EQU 0x00511BD4
+BgHidanRock_sInitChain EQU 0x00511BCC
+
+	END

@@ -13,11 +13,38 @@ if(NOT DEFINED ENV{RVCT40LIB})
     message(FATAL_ERROR "please set RVCT40LIB. Probably to ARMCC_PATH/include/lib")
 endif()
 
-find_program(ARM_ASM NAMES armasm.exe PATHS "$ENV{ARMCC_PATH}/win_32-pentium" REQUIRED NO_DEFAULT_PATH)
-find_program(ARM_AR NAMES armar.exe PATHS "$ENV{ARMCC_PATH}/win_32-pentium" REQUIRED NO_DEFAULT_PATH)
-find_program(ARM_CC NAMES armcc.exe PATHS "$ENV{ARMCC_PATH}/win_32-pentium" REQUIRED NO_DEFAULT_PATH)
-find_program(ARM_LINK NAMES armlink.exe PATHS "$ENV{ARMCC_PATH}/win_32-pentium" REQUIRED NO_DEFAULT_PATH)
-find_program(ARM_FROMELF NAMES fromelf.exe PATHS "$ENV{ARMCC_PATH}/win_32-pentium" REQUIRED NO_DEFAULT_PATH)
+find_program(PYTHON_EXE NAMES python3 python REQUIRED)
+
+if(DEFINED ENV{WIBO})
+    # Non-Windows host (e.g. macOS + wibo-macos under Rosetta 2, or Linux + wibo):
+    # generate tiny shell wrappers that run the Windows RVCT tools through wibo.
+    set(WIBO "$ENV{WIBO}")
+    # Cross build: stop CMake from injecting host (Darwin) flags such as "-arch arm64" / "-isysroot".
+    set(CMAKE_SYSTEM_NAME Generic)
+    set(CMAKE_OSX_ARCHITECTURES "" CACHE STRING "" FORCE)
+    set(CMAKE_OSX_SYSROOT "" CACHE STRING "" FORCE)
+    set(CMAKE_USER_MAKE_RULES_OVERRIDE ${CMAKE_SOURCE_DIR}/tools/macos/rules_override.cmake)
+    set(ARMWRAP_DIR "${CMAKE_BINARY_DIR}/armwrap")
+    foreach(armtool armasm armar armcc armlink fromelf)
+        set(TOOL "$ENV{ARMCC_PATH}/win_32-pentium/${armtool}.exe")
+        if(NOT EXISTS "${TOOL}")
+            message(FATAL_ERROR "missing ${TOOL}")
+        endif()
+        configure_file(${CMAKE_SOURCE_DIR}/tools/macos/armwrap.sh.in ${ARMWRAP_DIR}/${armtool} @ONLY)
+        file(CHMOD ${ARMWRAP_DIR}/${armtool} PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE)
+    endforeach()
+    set(ARM_TOOL_DIR "${ARMWRAP_DIR}")
+    set(ARM_EXE_SUFFIX "")
+else()
+    set(ARM_TOOL_DIR "$ENV{ARMCC_PATH}/win_32-pentium")
+    set(ARM_EXE_SUFFIX ".exe")
+endif()
+
+find_program(ARM_ASM NAMES armasm${ARM_EXE_SUFFIX} PATHS "${ARM_TOOL_DIR}" REQUIRED NO_DEFAULT_PATH)
+find_program(ARM_AR NAMES armar${ARM_EXE_SUFFIX} PATHS "${ARM_TOOL_DIR}" REQUIRED NO_DEFAULT_PATH)
+find_program(ARM_CC NAMES armcc${ARM_EXE_SUFFIX} PATHS "${ARM_TOOL_DIR}" REQUIRED NO_DEFAULT_PATH)
+find_program(ARM_LINK NAMES armlink${ARM_EXE_SUFFIX} PATHS "${ARM_TOOL_DIR}" REQUIRED NO_DEFAULT_PATH)
+find_program(ARM_FROMELF NAMES fromelf${ARM_EXE_SUFFIX} PATHS "${ARM_TOOL_DIR}" REQUIRED NO_DEFAULT_PATH)
 
 set(CMAKE_CXX_COMPILER_ID ARMCC)
 
@@ -58,6 +85,10 @@ file(GLOB_RECURSE csourcefiles CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src
 file(GLOB_RECURSE cxxsourcefiles CONFIGURE_DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
 SET(CXX_FLAGS "--apcs=//interwork --cpu=MPCore --fpmode=fast --vfe --no_rtti --no_rtti_data --cpp --arm --force_new_nothrow --signed_chars --multibyte-chars --locale=japanese --data-reorder --split_sections --forceinline -O3 -Otime")
+if(WIBO)
+    # wibo can't setlocale("japanese"); sources are pure ASCII so this doesn't affect codegen.
+    string(REPLACE " --multibyte-chars --locale=japanese" "" CXX_FLAGS "${CXX_FLAGS}")
+endif()
 
 SET_SOURCE_FILES_PROPERTIES(
     ${cxxsourcefiles}
@@ -77,7 +108,7 @@ add_executable(oot3d ${csourcefiles} ${cxxsourcefiles})
 add_custom_command(
     DEPENDS oot3d ${CMAKE_CURRENT_BINARY_DIR}/oot3d.axf
     COMMAND ${ARM_FROMELF} --bincombined --bincombined_padding=1,0x00 ${CMAKE_CURRENT_BINARY_DIR}/oot3d.axf --output ${CMAKE_CURRENT_BINARY_DIR}/code.bin
-    COMMAND python -c \"with open('${CMAKE_CURRENT_BINARY_DIR}/code.bin', 'a') as code: code.truncate(0x45B000) \"
+    COMMAND ${PYTHON_EXE} -c \"with open('${CMAKE_CURRENT_BINARY_DIR}/code.bin', 'a') as code: code.truncate(0x45B000) \"
     OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/code.bin
     COMMENT "Creating code.bin..."
 )
@@ -96,6 +127,33 @@ add_custom_target(
 
 set(NON_MATCH_ASM_FILES ${CMAKE_CURRENT_BINARY_DIR}/nonmatch)
 set(DISASSEMBLY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/disassembly)
+
+# Extracted ARM code/data stays local. Only span/section metadata is versioned.
+file(READ "${CMAKE_SOURCE_DIR}/tools/local_assets.json" LOCAL_ASSET_RECIPES)
+set(LOCAL_ASSET_FILES)
+string(JSON SPLIT_COUNT LENGTH "${LOCAL_ASSET_RECIPES}" splits)
+math(EXPR SPLIT_LAST "${SPLIT_COUNT} - 1")
+foreach(INDEX RANGE 0 ${SPLIT_LAST})
+    string(JSON SPLIT_NAME GET "${LOCAL_ASSET_RECIPES}" splits ${INDEX} name)
+    list(APPEND LOCAL_ASSET_FILES "${CMAKE_SOURCE_DIR}/split/asm/${SPLIT_NAME}.s")
+endforeach()
+string(JSON DATA_COUNT LENGTH "${LOCAL_ASSET_RECIPES}" data)
+math(EXPR DATA_LAST "${DATA_COUNT} - 1")
+foreach(INDEX RANGE 0 ${DATA_LAST})
+    string(JSON DATA_PATH GET "${LOCAL_ASSET_RECIPES}" data ${INDEX} path)
+    list(APPEND LOCAL_ASSET_FILES "${CMAKE_SOURCE_DIR}/${DATA_PATH}")
+endforeach()
+add_custom_command(
+    OUTPUT "${CMAKE_SOURCE_DIR}/split/generated.stamp"
+    BYPRODUCTS ${LOCAL_ASSET_FILES}
+    COMMAND ${PYTHON_EXE} "${CMAKE_SOURCE_DIR}/tools/regenerate_local_assets.py"
+    COMMAND ${CMAKE_COMMAND} -E touch "${CMAKE_SOURCE_DIR}/split/generated.stamp"
+    DEPENDS disasm "${DISASSEMBLY_DIR}/split_asm.txt"
+            "${CMAKE_SOURCE_DIR}/tools/local_assets.json"
+            "${CMAKE_SOURCE_DIR}/tools/regenerate_local_assets.py"
+    COMMENT "Regenerating local-only ARM assembly and data tails..."
+)
+add_custom_target(local_assets DEPENDS "${CMAKE_SOURCE_DIR}/split/generated.stamp")
 file(MAKE_DIRECTORY ${NON_MATCH_ASM_FILES})
 
 file(GLOB_RECURSE DISASSEMBLY_FILES CONFIGURE_DEPENDS
@@ -109,13 +167,14 @@ foreach(CPP_FILE ${cxxsourcefiles})
     file(STRINGS ${CPP_FILE} ASM_REFS REGEX "^[ \t]*GLOBAL_ASM\\(\"")
     foreach(ASM_REF ${ASM_REFS})
         if(ASM_REF MATCHES "GLOBAL_ASM\\(\"([^\"]+)\"\\)")
-            list(APPEND DEP_FILE_LIST "${DISASSEMBLY_DIR}/${CMAKE_MATCH_1}")
+            get_filename_component(ASM_DEPENDENCY "${DISASSEMBLY_DIR}/${CMAKE_MATCH_1}" ABSOLUTE)
+            list(APPEND DEP_FILE_LIST "${ASM_DEPENDENCY}")
         endif()
     endforeach()
 
     add_custom_command(
         OUTPUT ${NON_MATCH_ASM_FILES}/${FILE_NAME}.s
-        COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/tools/preproc.py ${CPP_FILE} ${NON_MATCH_ASM_FILES}/${FILE_NAME}.s "${DISASSEMBLY_DIR}/"
+        COMMAND ${PYTHON_EXE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/preproc.py ${CPP_FILE} ${NON_MATCH_ASM_FILES}/${FILE_NAME}.s "${DISASSEMBLY_DIR}/"
         DEPENDS ${DEP_FILE_LIST}
     )
     set_source_files_properties(${NON_MATCH_ASM_FILES}/${FILE_NAME}.s PROPERTIES COMPILE_FLAGS "--cpu=MPCore")
@@ -137,4 +196,4 @@ target_link_options(oot3d PUBLIC
 
 target_include_directories(oot3d PUBLIC ${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR}/library/3ds_sdk/include ${CMAKE_SOURCE_DIR}/src/game)
 
-add_dependencies(oot3d disasm)
+add_dependencies(oot3d disasm local_assets)

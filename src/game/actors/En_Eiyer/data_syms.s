@@ -1,0 +1,10 @@
+	EXPORT EnEiyer_sColChkInfoInit
+	EXPORT EnEiyer_sCylinderInit
+	EXPORT EnEiyer_sDamageTable
+	EXPORT EnEiyer_sInitChain
+EnEiyer_sColChkInfoInit EQU 0x00522E08
+EnEiyer_sCylinderInit EQU 0x00522E10
+EnEiyer_sDamageTable EQU 0x00522E48
+EnEiyer_sInitChain EQU 0x00522E68
+
+	END

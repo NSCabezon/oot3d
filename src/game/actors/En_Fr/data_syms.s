@@ -1,0 +1,28 @@
+	EXPORT En_Fr_sEnFrPointers
+	EXPORT En_Fr_DecrementBlinkTimer
+	EXPORT En_Fr_sTimerJumpingOutOfWater
+	EXPORT En_Fr_sPitchTbl0
+	EXPORT En_Fr_sPitchTbl1
+	EXPORT En_Fr_sPitchTbl2
+	EXPORT En_Fr_sPitchTbl3
+	EXPORT En_Fr_sUnk5238D0
+En_Fr_sUnk5238D0 EQU 0x005238D0
+	EXPORT En_Fr_sSongToFrog
+En_Fr_sSongToFrog EQU 0x00523914
+	EXPORT En_Fr_sFrogSongFlags
+En_Fr_sFrogSongFlags EQU 0x00523904
+	EXPORT En_Fr_sLogSpotToFromWater
+En_Fr_sLogSpotToFromWater EQU 0x00523978
+	EXPORT En_Fr_sOcarinaNotes
+En_Fr_sOcarinaNotes EQU 0x005238EF
+	EXPORT En_Fr_sJumpOrder
+En_Fr_sJumpOrder EQU 0x005238FC
+En_Fr_sTimerJumpingOutOfWater EQU 0x005238D5
+En_Fr_sPitchTbl0 EQU 0x005238DB
+En_Fr_sPitchTbl1 EQU 0x005238E0
+En_Fr_sPitchTbl2 EQU 0x005238E5
+En_Fr_sPitchTbl3 EQU 0x005238EA
+En_Fr_sEnFrPointers EQU 0x00599110
+En_Fr_DecrementBlinkTimer EQU 0x0012FFC4, CODE32
+
+	END

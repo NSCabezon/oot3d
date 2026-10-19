@@ -7,7 +7,10 @@ struct ItemOcarina;
 
 typedef struct ItemOcarina {
     /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0xC];
+    /* 0x01A4 */ ActorFunc actionFunc;
+    /* 0x01A8 */ s16 spinRotOffset;
+    /* 0x01AA */ char unk_1AA[0x2];
+    /* 0x01AC */ SkeletonAnimationModel* model;
 } ItemOcarina; // size = 0x1B0
 
 extern ActorInit Item_Ocarina_InitVars;

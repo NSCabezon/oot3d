@@ -7,7 +7,8 @@ struct EnSkjneedle;
 
 typedef struct EnSkjneedle {
     /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x68];
+    /* 0x01A4 */ SkeletonAnimationModel* skelAnimModel;
+    /* 0x01A8 */ char unk_1A8[0x64];
 } EnSkjneedle; // size = 0x20C
 
 extern ActorInit En_Skjneedle_InitVars;

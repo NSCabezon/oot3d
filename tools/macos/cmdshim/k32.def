@@ -1,0 +1,7 @@
+LIBRARY kernel32.dll
+EXPORTS
+GetCommandLineA@0
+CreateProcessA@40
+WaitForSingleObject@8
+GetExitCodeProcess@8
+ExitProcess@4

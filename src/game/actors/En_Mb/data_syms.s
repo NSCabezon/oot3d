@@ -1,0 +1,18 @@
+	EXPORT EnMb_sFrontShieldingTriModels
+	EXPORT EnMb_sBodyColliderInit
+	EXPORT EnMb_sJntSphInit
+	EXPORT EnMb_sTrisInit
+	EXPORT EnMb_sQuadInit
+	EXPORT EnMb_sSpearDamageTable
+	EXPORT EnMb_sClubDamageTable
+	EXPORT EnMb_sInitChain
+EnMb_sFrontShieldingTriModels EQU 0x004D9984
+EnMb_sBodyColliderInit EQU 0x0052C388
+EnMb_sJntSphInit EQU 0x0052C3C0
+EnMb_sTrisInit EQU 0x0052C3D0
+EnMb_sQuadInit EQU 0x0052C3E0
+EnMb_sSpearDamageTable EQU 0x0052C430
+EnMb_sClubDamageTable EQU 0x0052C450
+EnMb_sInitChain EQU 0x0052C470
+
+	END

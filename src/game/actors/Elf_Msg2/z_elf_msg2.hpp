@@ -5,9 +5,11 @@
 
 struct ElfMsg2;
 
+typedef void (*ElfMsg2ActionFunc)(struct ElfMsg2*, PlayState*);
+
 typedef struct ElfMsg2 {
     /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x4];
+    /* 0x01A4 */ ElfMsg2ActionFunc actionFunc;
 } ElfMsg2; // size = 0x1A8
 
 extern ActorInit Elf_Msg2_InitVars;

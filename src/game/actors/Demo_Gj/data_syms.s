@@ -1,0 +1,15 @@
+	EXPORT Demo_Gj_sUpdateFuncs
+	EXPORT Demo_Gj_sUpdateFuncs
+	EXPORT Demo_Gj_sDrawFuncs
+	EXPORT Demo_Gj_sInitChain
+	EXPORT Demo_Gj_sCylinderInit1
+	EXPORT Demo_Gj_sCylinderInit2
+	EXPORT Demo_Gj_sCylinderInit3
+Demo_Gj_sUpdateFuncs EQU 0x0051BA80
+Demo_Gj_sDrawFuncs EQU 0x0051BAD4
+Demo_Gj_sInitChain EQU 0x0051B9C8
+Demo_Gj_sCylinderInit1 EQU 0x0051B9D8
+Demo_Gj_sCylinderInit2 EQU 0x0051BA10
+Demo_Gj_sCylinderInit3 EQU 0x0051BA48
+
+	END

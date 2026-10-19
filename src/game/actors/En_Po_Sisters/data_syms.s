@@ -1,0 +1,15 @@
+	EXPORT D_80ADD7A4
+	EXPORT D_EnPoSisters_RotTbl
+	EXPORT D_EnPoSisters_ColorTbl
+	EXPORT EnPoSisters_sInitChain
+	EXPORT EnPoSisters_sCylinderInit
+	EXPORT EnPoSisters_sColChkInfoInit
+
+D_80ADD7A4 EQU 0x0052E088
+D_EnPoSisters_RotTbl EQU 0x0052E008
+D_EnPoSisters_ColorTbl EQU 0x0052E010
+EnPoSisters_sInitChain EQU 0x0052E000
+EnPoSisters_sCylinderInit EQU 0x0052E030
+EnPoSisters_sColChkInfoInit EQU 0x0052DFF8
+
+	END

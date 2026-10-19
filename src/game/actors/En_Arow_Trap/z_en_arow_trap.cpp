@@ -19,9 +19,31 @@ ActorInit En_Arow_Trap_InitVars = {
     NULL,
 };
 
-GLOBAL_ASM("asm/EnArowTrap_Init.s")
+void EnArowTrap_Init(Actor* actor, GameState* state) {
+    EnArowTrap* self = (EnArowTrap*)actor;
 
-GLOBAL_ASM("asm/EnArowTrap_Destroy.s")
+    Actor_SetScale(actor, 0.01f);
+    self->unk_1A4 = 0;
+    self->attackTimer = 80;
+    actor->focus.pos = actor->world.pos;
+}
 
-GLOBAL_ASM("asm/EnArowTrap_Update.s")
+void EnArowTrap_Destroy(Actor* actor, GameState* state) {
+}
+
+void EnArowTrap_Update(Actor* actor, GameState* state) {
+    PlayState* play = (PlayState*)state;
+    EnArowTrap* self = (EnArowTrap*)actor;
+
+    if (self->actor.xzDistToPlayer <= 400.0f) {
+        self->attackTimer--;
+
+        if (self->attackTimer == 0) {
+            Actor_Spawn(&play->actorCtx, play, ACTOR_EN_ARROW, self->actor.world.pos.x, self->actor.world.pos.y,
+                        self->actor.world.pos.z, self->actor.shape.rot.x, self->actor.shape.rot.y,
+                        self->actor.shape.rot.z, -1, 1); // ARROW_NORMAL_SILENT
+            self->attackTimer = 80;
+        }
+    }
+}
 }

@@ -1,0 +1,6 @@
+	EXPORT BgMizuMovebg_sUnkFlags
+	EXPORT BgMizuMovebg_sAnimSpeedMask
+BgMizuMovebg_sUnkFlags EQU 0x00512FF8
+BgMizuMovebg_sAnimSpeedMask EQU 0x0051303C
+
+	END

@@ -13,7 +13,11 @@ typedef struct Actor1D9 {
     /* 0x01C0 */ char jointTable[0xD0];
     /* 0x0290 */ char morphTable[0xD0];
     /* 0x0360 */ SkelAnime skelAnime;
-    /* 0x03E4 */ char unk_3E4[0x10];
+    /* 0x03E4 */ f32 timer;
+    /* 0x03E8 */ f32 swayOffset;
+    /* 0x03EC */ u8 swayState;
+    /* 0x03ED */ u8 unk_3ED;
+    /* 0x03EE */ char unk_3EE[0x6];
 } Actor1D9; // size = 0x3F4
 
 extern ActorInit Actor_1D9_InitVars;

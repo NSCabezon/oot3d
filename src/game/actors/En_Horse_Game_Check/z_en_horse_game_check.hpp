@@ -11,7 +11,7 @@ typedef s32 (*EnHorseGameCheckFunc)(struct EnHorseGameCheckBase* self, GameState
 
 typedef struct EnHorseGameCheckBase {
     /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ s8 type;
+    /* 0x01A4 */ u8 type;
     /* 0x01A8 */ s32 unk_1A8;
 } EnHorseGameCheckBase; // size = 0x01AC
 

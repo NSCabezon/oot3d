@@ -47,4 +47,10 @@
 
 #define ADJUST_FRAMECOUNT(x) ((s32)((f32)(3 * x) / SREG(30) + 0.5f))
 
+
+#ifndef CLAMP_MAX
+#define CLAMP(x, min, max) ((x) < (min) ? (min) : (x) > (max) ? (max) : (x))
+#define CLAMP_MAX(x, max) ((x) > (max) ? (max) : (x))
+#define CLAMP_MIN(x, min) ((x) < (min) ? (min) : (x))
+#endif
 #endif

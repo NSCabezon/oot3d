@@ -1,0 +1,10 @@
+	EXPORT EnHoll_sActionFuncs
+	EXPORT EnHoll_sInitChain
+	EXPORT EnHoll_sHorizontalVisibleNarrowTriggerDists
+	EXPORT EnHoll_sDrawState
+EnHoll_sActionFuncs EQU 0x00526488
+EnHoll_sInitChain EQU 0x005264A4
+EnHoll_sHorizontalVisibleNarrowTriggerDists EQU 0x004D9664
+EnHoll_sDrawState EQU 0x00526480
+
+	END

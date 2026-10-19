@@ -1,0 +1,4 @@
+	EXPORT kk3AnimRef
+kk3AnimRef EQU 0x004D97A8
+
+	END

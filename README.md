@@ -4,7 +4,7 @@ This is a WIP decompilation of The Legend of Zelda: Ocarina of Time 3D.
 The purpose of the project is to recreate a source code base for the game from scratch, using information found inside the game along with static and/or dynamic analysis.
 The only build currently supported is the USA version.
 
-It builds the following ROM:
+The reference build targets the following binaries:
 
 
 * **oot3d.axf**
@@ -18,6 +18,26 @@ A prior copy of the game is required to extract the needed assets.
 Website: <https://zelda.deco.mp/>
 
 Discord: <https://discord.zelda.deco.mp>
+
+## Fork progress
+
+Verified on **2026-10-19** against the USA reference build:
+
+| Metric | Current progress |
+| --- | --- |
+| `.text` implemented in C/C++ | **16.750%** — 665,224 bytes |
+| Functions implemented in C/C++ | **3,341 / 12,158 (27.48%)** |
+
+The complete local rebuild has one known mismatch, `FUN_00249af8` (four words),
+and zero differing bytes outside functions. Function counts use the current split
+boundaries; percentages describe decompilation progress, not a complete ROM port.
+
+This fork includes matching actor implementations and macOS RVCT build support.
+The original project is [zeldaret/oot3d](https://github.com/zeldaret/oot3d).
+ROMs, extracted data, generated assembly and build outputs are kept locally.
+`tools/local_assets.json` contains only section names and span metadata;
+`tools/regenerate_local_assets.py` recreates split assembly and small data tails
+from the user's own extracted game during the build.
 
 ## Installation
 These instructions and the tools in this repository all assume a Windows development environment. Cross-platform support may be added in the future.
@@ -47,6 +67,29 @@ A variety of useful cmake targets are available. Run `cmake --build build -t [ta
 * To build `code.bin`, set `[target]` = `code`
 * To check matching, set `[target]` = `check`
 
+
+## macOS build notes
+
+The local macOS build uses **RVCT 4.0 Build 839**, `wibo-macos` under Rosetta 2,
+CMake and Python 3. Supply your own RVCT installation and game copy. The first
+disassembly pass also needs Docker or a compatible engine running Linux/amd64
+containers. The command shim is built from source with Homebrew `llvm` and `lld`:
+
+```sh
+git submodule update --init --recursive
+sh tools/macos/cmdshim/build.sh
+export ARMCC_PATH=/path/to/rvct
+export RVCT40INC=/path/to/rvct/include
+export RVCT40LIB=/path/to/rvct/lib
+export WIBO=/path/to/wibo-macos
+cmake -S . -B build
+cmake --build build --target code --parallel 1
+```
+
+`ARMCC_PATH/win_32-pentium` must contain the Windows RVCT tools. Place the game
+at `disassembly/baserom.3ds` as described above. Generated local assets are not
+versioned. The upstream `check` target still checks for a fully identical binary;
+the known mismatch described above means this fork does not yet pass that hash.
 
 ## Contributing
 TODO

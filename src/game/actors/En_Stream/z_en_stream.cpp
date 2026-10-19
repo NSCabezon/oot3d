@@ -53,6 +53,16 @@ void EnStream_Destroy(Actor* actor, GameState* state) {
     FUN_00350f34(&self->actor, &self->skelAnimModel, 0);
 }
 
+// Struct-returning subtraction: the temporary keeps posDifference in memory long enough that armcc
+// orders the loads per component (and reloads pos.y in SuckPlayer), as in the ROM.
+static inline Vec3f EnStream_VecSub(Vec3f* a, Vec3f* b) {
+    Vec3f r;
+    r.x = a->x - b->x;
+    r.y = a->y - b->y;
+    r.z = a->z - b->z;
+    return r;
+}
+
 static s32 EnStream_PlayerIsInRange(Vec3f* vortexWorldPos, Vec3f* playerWorldPos, Vec3f* posDifference, f32 vortexYScale) {
     f32 upperBounds = 160 * vortexYScale * 50.0f;
     f32 lowerBounds = 0 * vortexYScale * 50.0f;
@@ -63,9 +73,7 @@ static s32 EnStream_PlayerIsInRange(Vec3f* vortexWorldPos, Vec3f* playerWorldPos
 
     smallConstant = 28.0f;
     
-    posDifference->x = playerWorldPos->x - vortexWorldPos->x;
-    posDifference->y = playerWorldPos->y - vortexWorldPos->y;
-    posDifference->z = playerWorldPos->z - vortexWorldPos->z;
+    *posDifference = EnStream_VecSub(playerWorldPos, vortexWorldPos);
     xzDist = sqrtf(SQ(posDifference->x) + SQ(posDifference->z));
 
     if (lowerBounds <= posDifference->y && posDifference->y <= upperBounds) {
@@ -84,7 +92,11 @@ static s32 EnStream_PlayerIsInRange(Vec3f* vortexWorldPos, Vec3f* playerWorldPos
     return ret;
 }
 
-#ifdef NON_MATCHING
+// Float-arg inline wrapper: gives the ROM register choice for the atan2 args.
+static inline f32 EnStream_Atan(f32 x, f32 z) {
+    return Math_FAtan2F(x, z);
+}
+
 void EnStream_SuckPlayer(EnStream* self, PlayState* play) {
     Player* player = GET_PLAYER(play);
     Actor* actor = &self->actor;
@@ -97,7 +109,7 @@ void EnStream_SuckPlayer(EnStream* self, PlayState* play) {
     if (ret != 0) {
         xzDist = sqrtf(SQ(posDifference.x) + SQ(posDifference.z));
         yDistWithOffset = player->actor.world.pos.y - (actor->world.pos.y - 90.0f);
-        temp = Math_FAtan2F(-posDifference.x, -posDifference.z) * (0x8000 / M_PI);
+        temp = EnStream_Atan(-posDifference.x, -posDifference.z) * (0x8000 / M_PI);
         player->pushedYaw = temp;
         if (xzDist > 3.0f) {
             Math_SmoothStepToF(&player->pushedSpeed, 3.0f, 0.5f, xzDist, 0.0f);
@@ -117,10 +129,6 @@ void EnStream_SuckPlayer(EnStream* self, PlayState* play) {
         EnStream_SetupAction(self, EnStream_WaitForPlayer);
     }
 }
-#else
-void EnStream_SuckPlayer(EnStream* self, PlayState* play);
-GLOBAL_ASM("asm/EnStream_SuckPlayer.s")
-#endif
 
 void EnStream_WaitForPlayer(EnStream* self, PlayState* play) {
     Player* player = GET_PLAYER(play);

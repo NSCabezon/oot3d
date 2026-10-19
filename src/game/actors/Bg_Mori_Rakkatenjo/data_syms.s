@@ -1,0 +1,8 @@
+	EXPORT BgMoriRakkatenjo_sCamSetting
+	EXPORT BgMoriRakkatenjo_sInitChain
+	EXPORT BgMoriRakkatenjo_sBounceVel
+BgMoriRakkatenjo_sCamSetting EQU 0x005133A4
+BgMoriRakkatenjo_sInitChain EQU 0x005133A8
+BgMoriRakkatenjo_sBounceVel EQU 0x005133B4
+
+	END

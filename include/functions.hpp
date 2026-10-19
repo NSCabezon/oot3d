@@ -48,12 +48,15 @@ void Math_Vec3s_ToVec3f(Vec3f* dest, Vec3s* src);
 
 void VEC3TransformAsm(Vector3f*, MTX34*, Vector3f*);
 
-ZARInfo* FUN_00372f38(Actor* actor, PlayState* play, SkeletonAnimationModel** skelAnimModel, s32 arg3,
-                      s32 arg4);
-void FUN_00350f34(Actor* actor, SkeletonAnimationModel** skelAnimModel, s32 arg2);
-void FUN_003508b8(Actor* actor, SkeletonAnimationModel* skelAnimModel, s32 arg2);
+// Model list loaders/freers take a NULL/0-terminated variable argument list:
+//   FUN_00372f38(actor, play, &model0, cmbIndex0, &model1, cmbIndex1, ..., 0)   loads up to N models
+//   FUN_00350f34(actor, &model0, &model1, ..., 0)                               frees them
+//   FUN_003508b8(actor, model0, model1, ..., 0)                                 frees (by value)
+ZARInfo* FUN_00372f38(Actor* actor, PlayState* play, ...);
+void FUN_00350f34(Actor* actor, ...);
+void FUN_003508b8(Actor* actor, ...);
 void MTX34CopyAsm(MTX34* dst, MTX34* src);
-void FUN_00370734(SkelAnime* skelAnime);
+s32 FUN_00370734(SkelAnime* skelAnime); // SkelAnime update, returns "animation finished"
 void FUN_00353c9c(Actor* actor, PlayState* play, SkelAnime* skelAnime, s32 cmbIndex, s32 csabIndex,
                   void* jointTable, void* morphTable, s32 limbCount);
 void SkelAnime_SetFaceAnimations(FaceAnimations* param_1, SkelAnime* skelAnime, s32 param_3, s32 param_4, s32 param_5);
@@ -61,6 +64,8 @@ void SkelAnime_DrawOpa(SkelAnime* skelAnime, MTX34* modelMtx, OverrideLimbDrawOp
                        PostLimbDrawOpa postLimbDraw, Actor* actor, s32 arg5);
 void FUN_003717ac(SkelAnime* skelAnime, struct_80034EC0_Entry* animations, s32 index);
 s32 Animation_OnFrameImpl(SkelAnime* skelAnime, f32 frame, f32 updateRate);
+s32 FUN_0036e5e0(SkelAnime* skelAnime, f32 frame, f32 updateRate); // Animation_OnFrame-like; distinct from Animation_OnFrameImpl
+void FUN_00370084(s16* pValue, s16 target, s16 scale, s16 step);  // N64 Math_ApproachS (the header's Math_ApproachS is another fn)
 Camera* Gameplay_GetCamera(PlayState* play, s16 camId);
 void FUN_00367494(PlayState* play, CutsceneContext* csCtx);
 s32 FUN_0036e980(PlayState* play, Actor* actor, u8 arg2);
@@ -86,7 +91,7 @@ void FUN_0035af20(PlayState* play, s32 arg1, s16 arg2, s16 arg3, f32 f0, f32 f1,
                   f32 f5);
 void FUN_00365860(Actor* actor);
 void FUN_0036b96c(Actor* actor);
-void FUN_003731e0(SkelAnime* skelAnime);
+s32 FUN_003731e0(SkelAnime* skelAnime); // SkelAnime update variant, returns "animation finished"
 void FUN_0036788c(void* arg0);
 void FUN_003542c4(void* arg0, s32 arg1, s32 arg2);
 EnItem00* Item_DropCollectible(PlayState* play, Vec3f* spawnPos, s16 params);
@@ -169,3 +174,10 @@ void FUN_00312fc4(void* address, size_t size);
 void FUN_00311c70(u32 arg0);
 
 float sqrtf(float arg);
+
+// Added by decomp-spike pilot (2026-10-12)
+void Actor_ChangeType(PlayState* play, ActorContext* actorCtx, Actor* actor, u8 actorCategory); // N64: Actor_ChangeCategory
+void FUN_0036f4f0(PlayState* play); // N64: Play_TriggerRespawn
+void Gameplay_TriggerVoidOut(PlayState* play);
+void Audio_SetBGM(u32 arg0, u32 arg1); // N64: SEQCMD_STOP_SEQUENCE wrapper
+s32 FUN_0033caf8(Player* player); // N64: func_8002DEEC (player busy / in cutscene check)

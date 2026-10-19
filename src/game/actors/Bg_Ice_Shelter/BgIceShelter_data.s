@@ -1,0 +1,40 @@
+	EXPORT BgIceShelter_sSteamColors
+	EXPORT BgIceShelter_sSteamPrimColor
+	EXPORT BgIceShelter_sSteamEnvColor
+	EXPORT BgIceShelter_signs
+	EXPORT BgIceShelter_sSteamCircleAngles
+	EXPORT BgIceShelter_sSteamLinePositions
+	EXPORT BgIceShelter_sMeltingRates
+	EXPORT BgIceShelter_sSteamEffectScales
+	EXPORT BgIceShelter_sSteamSpawnFuncs
+	EXPORT BgIceShelter_sDrawColor
+	EXPORT BgIceShelter_sRedIceScales
+	EXPORT BgIceShelter_sCylinderInit1
+	EXPORT BgIceShelter_sCylinderInit2
+	EXPORT BgIceShelter_sCylinderRadii
+	EXPORT BgIceShelter_sCylinderHeights
+	EXPORT BgIceShelter_sInitChain
+	EXPORT BgIceShelter_sKingZoraScaleGuard
+	EXPORT BgIceShelter_sKingZoraRedIceScale
+; Tables live in the raw data dump of z_Bg_Ice_Shelter.data.s (0x512028..0x51213C).
+BgIceShelter_sDrawColor EQU 0x004D7140
+BgIceShelter_sSteamColors EQU 0x00512028
+BgIceShelter_sSteamPrimColor EQU 0x00512028
+BgIceShelter_sSteamEnvColor EQU 0x0051202C
+BgIceShelter_signs EQU 0x00512034
+BgIceShelter_sSteamCircleAngles EQU 0x005120E0
+BgIceShelter_sSteamLinePositions EQU 0x005120F0
+BgIceShelter_sMeltingRates EQU 0x00512100
+BgIceShelter_sSteamEffectScales EQU 0x00512114
+BgIceShelter_sSteamSpawnFuncs EQU 0x00512128
+
+BgIceShelter_sRedIceScales EQU 0x0051203C
+BgIceShelter_sCylinderInit1 EQU 0x00512050
+BgIceShelter_sCylinderInit2 EQU 0x00512088
+BgIceShelter_sCylinderRadii EQU 0x005120C0
+BgIceShelter_sCylinderHeights EQU 0x005120CA
+BgIceShelter_sInitChain EQU 0x005120D4
+BgIceShelter_sKingZoraScaleGuard EQU 0x00512030
+BgIceShelter_sKingZoraRedIceScale EQU 0x005699EC
+
+	END

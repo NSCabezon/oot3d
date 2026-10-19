@@ -1,0 +1,4 @@
+	EXPORT BgSpot11Bakudankabe_sCylinderInit
+BgSpot11Bakudankabe_sCylinderInit EQU 0x005139A0
+
+	END

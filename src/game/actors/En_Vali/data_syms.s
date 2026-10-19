@@ -1,0 +1,12 @@
+	EXPORT EnVali_sColChkInfoInit
+	EXPORT EnVali_sColliderQuadInit
+	EXPORT EnVali_sCylinderInit
+	EXPORT EnVali_sInitChain
+	EXPORT EnVali_sShockScaleTable
+EnVali_sColChkInfoInit EQU 0x0052FC60
+EnVali_sColliderQuadInit EQU 0x0052FC68
+EnVali_sCylinderInit EQU 0x0052FCB8
+EnVali_sInitChain EQU 0x0052FD88
+EnVali_sShockScaleTable EQU 0x0052FD10
+
+	END

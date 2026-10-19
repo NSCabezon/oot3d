@@ -1,0 +1,12 @@
+	EXPORT DoorShutter_sTypeStyles
+	EXPORT DoorShutter_sInitChain
+	EXPORT DoorShutter_sBossDoorInfo
+	EXPORT DoorShutter_sStyleInfo
+	EXPORT DoorShutter_sGfxRanges
+DoorShutter_sTypeStyles EQU 0x0051C65C
+DoorShutter_sInitChain EQU 0x0051C668
+DoorShutter_sBossDoorInfo EQU 0x0051C6C0
+DoorShutter_sStyleInfo EQU 0x004D880C
+DoorShutter_sGfxRanges EQU 0x004D8850
+
+	END

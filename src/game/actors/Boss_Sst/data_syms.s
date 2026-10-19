@@ -1,0 +1,19 @@
+	EXPORT BossSst_AnimationTable
+BossSst_AnimationTable EQU 0x005161F8
+	EXPORT BossSst_AnimationTable2
+BossSst_AnimationTable2 EQU 0x005161C0
+	EXPORT BossSst_HandAnimationTable
+BossSst_HandAnimationTable EQU 0x005161B0
+	EXPORT BossSst_AnimationTableA
+BossSst_AnimationTableA EQU 0x005161C8
+	EXPORT BossSst_AnimationTableB
+BossSst_AnimationTableB EQU 0x005161D8
+	EXPORT BossSst_AnimationTableC
+BossSst_AnimationTableC EQU 0x005161E8
+	EXPORT BossSst_HandPointers
+BossSst_HandPointers EQU 0x00516200
+	EXPORT BossSst_HeadPointer
+BossSst_HeadPointer EQU 0x005161A4
+	EXPORT BossSst_AssetBase
+BossSst_AssetBase EQU 0x00516174
+	END

@@ -1,0 +1,27 @@
+	EXPORT BgJyaCobra_sTextureModelData
+BgJyaCobra_sTextureModelData EQU 0x00512474
+	EXPORT BgJyaCobra_sShadowRot0
+BgJyaCobra_sShadowRot0 EQU 0x00512468
+	EXPORT BgJyaCobra_sShadowRot2
+BgJyaCobra_sShadowRot2 EQU 0x0051246E
+	EXPORT BgJyaCobra_sShadowScale
+BgJyaCobra_sShadowScale EQU 0x005127A4
+	EXPORT BgJyaCobra_sRayRot
+BgJyaCobra_sRayRot EQU 0x0051245C
+	EXPORT BgJyaCobra_sInitChain
+BgJyaCobra_sInitChain EQU 0x00512794
+	EXPORT BgJyaCobra_sTopShadowAlpha
+BgJyaCobra_sTopShadowAlpha EQU 0x00512784
+	EXPORT BgJyaCobra_sLightEnabled
+BgJyaCobra_sLightEnabled EQU 0x512454
+	EXPORT BgJyaCobra_sLightYaw
+BgJyaCobra_sLightYaw EQU 0x512462
+	EXPORT BgJyaCobra_sSideMask
+BgJyaCobra_sSideMask EQU 0x51258c
+	EXPORT BgJyaCobra_sSmallMask
+BgJyaCobra_sSmallMask EQU 0x512605
+	EXPORT BgJyaCobra_sSidePoints
+BgJyaCobra_sSidePoints EQU 0x512610
+	EXPORT BgJyaCobra_sBasePoints
+BgJyaCobra_sBasePoints EQU 0x512748
+	END

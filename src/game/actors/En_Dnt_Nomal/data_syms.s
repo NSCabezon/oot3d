@@ -1,0 +1,16 @@
+	EXPORT EnDntNomal_sBodyCylinderInit
+	EXPORT EnDntNomal_sTargetQuadInit
+	EXPORT EnDntNomal_sAnim_3C8
+	EXPORT EnDntNomal_sAnim_3CC
+	EXPORT EnDntNomal_sAnim_3D0
+	EXPORT EnDntNomal_sAnim_3E0
+	EXPORT EnDntNomal_sAnim_3E8
+EnDntNomal_sBodyCylinderInit EQU 0x00522618
+EnDntNomal_sTargetQuadInit EQU 0x00522650
+EnDntNomal_sAnim_3C8 EQU 0x005263C8
+EnDntNomal_sAnim_3CC EQU 0x005263CC
+EnDntNomal_sAnim_3D0 EQU 0x005263D0
+EnDntNomal_sAnim_3E0 EQU 0x005263E0
+EnDntNomal_sAnim_3E8 EQU 0x005263E8
+
+	END

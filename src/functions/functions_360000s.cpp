@@ -2,9 +2,7 @@
 
 GLOBAL_ASM("asm/FUN_00360084.s")
 
-GLOBAL_ASM("asm/FUN_003600d4.s")
 
-GLOBAL_ASM("asm/FUN_003600e4.s")
 
 GLOBAL_ASM("asm/FUN_00360190.s")
 
@@ -61,12 +59,10 @@ GLOBAL_ASM("asm/FUN_0036270c.s")
 
 GLOBAL_ASM("asm/FUN_0036279c.s")
 
-GLOBAL_ASM("asm/FUN_00362998.s")
 
 GLOBAL_ASM("asm/FUN_00362a4c.s")
 
 
-GLOBAL_ASM("asm/FUN_00362ab4.s")
 
 GLOBAL_ASM("asm/FUN_00362cb0.s")
 
@@ -74,7 +70,6 @@ GLOBAL_ASM("asm/FUN_00362de8.s")
 
 GLOBAL_ASM("asm/FUN_00362f48.s")
 
-GLOBAL_ASM("asm/FUN_00363108.s")
 
 GLOBAL_ASM("asm/FUN_003631d0.s")
 
@@ -89,11 +84,9 @@ GLOBAL_ASM("asm/Object_GetIndex.s")
 
 GLOBAL_ASM("asm/FUN_00363cb8.s")
 
-GLOBAL_ASM("asm/FUN_00363d50.s")
 
 GLOBAL_ASM("asm/Actor_WorldDistXZToPoint.s")
 
-GLOBAL_ASM("asm/FUN_00363e8c.s")
 
 GLOBAL_ASM("asm/FUN_00363ec4.s")
 
@@ -107,23 +100,16 @@ GLOBAL_ASM("asm/FUN_003641d0.s")
 
 GLOBAL_ASM("asm/EffectSsDeadDb_Spawn.s")
 
-GLOBAL_ASM("asm/FUN_00364394.s")
 
 GLOBAL_ASM("asm/FUN_0036442c.s")
 
-GLOBAL_ASM("asm/FUN_00364538.s")
 
-GLOBAL_ASM("asm/FUN_0036461c.s")
 
 GLOBAL_ASM("asm/BodyBreak_SpawnParts.s")
 
-GLOBAL_ASM("asm/FUN_00364938.s")
 
-GLOBAL_ASM("asm/FUN_00364a2c.s")
 
-GLOBAL_ASM("asm/FUN_00364aa4.s")
 
-GLOBAL_ASM("asm/FUN_00364b1c.s")
 
 GLOBAL_ASM("asm/FUN_00364c18.s")
 
@@ -151,7 +137,6 @@ GLOBAL_ASM("asm/FUN_00365d20.s")
 
 GLOBAL_ASM("asm/EffectSsKakera_Spawn.s")
 
-GLOBAL_ASM("asm/FUN_00366044.s")
 
 GLOBAL_ASM("asm/Animation_PlayLoopSetSpeed.s")
 
@@ -161,13 +146,9 @@ GLOBAL_ASM("asm/FUN_003661a8.s")
 
 GLOBAL_ASM("asm/FUN_0036627c.s")
 
-GLOBAL_ASM("asm/FUN_003662d4.s")
 
-GLOBAL_ASM("asm/FUN_00366318.s")
 
-GLOBAL_ASM("asm/FUN_003664d4.s")
 
-GLOBAL_ASM("asm/FUN_0036651c.s")
 
 GLOBAL_ASM("asm/FUN_0036654c.s")
 
@@ -185,7 +166,6 @@ GLOBAL_ASM("asm/FUN_00366748.s")
 
 GLOBAL_ASM("asm/FUN_003667ec.s")
 
-GLOBAL_ASM("asm/FUN_00366c24.s")
 
 
 GLOBAL_ASM("asm/FUN_00366f60.s")
@@ -258,7 +238,6 @@ GLOBAL_ASM("asm/FUN_003685a0.s")
 
 GLOBAL_ASM("asm/FUN_003685f4.s")
 
-GLOBAL_ASM("asm/FUN_003686a8.s")
 
 GLOBAL_ASM("asm/FUN_00368704.s")
 
@@ -367,9 +346,7 @@ GLOBAL_ASM("asm/FUN_0036aaa4.s")
 
 GLOBAL_ASM("asm/FUN_0036ab8c.s")
 
-GLOBAL_ASM("asm/FUN_0036ac40.s")
 
-GLOBAL_ASM("asm/FUN_0036ac64.s")
 
 GLOBAL_ASM("asm/FUN_0036adf4.s")
 
@@ -447,23 +424,17 @@ GLOBAL_ASM("asm/FUN_0036cae4.s")
 
 GLOBAL_ASM("asm/FUN_0036cb80.s")
 
-GLOBAL_ASM("asm/FUN_0036cbc4.s")
 
-GLOBAL_ASM("asm/FUN_0036ccb8.s")
 
 GLOBAL_ASM("asm/FUN_0036cd8c.s")
 
-GLOBAL_ASM("asm/FUN_0036cda4.s")
 
-GLOBAL_ASM("asm/FUN_0036cec4.s")
 
 GLOBAL_ASM("asm/OnePointCutscene_Attention.s")
 
 GLOBAL_ASM("asm/FUN_0036d15c.s")
 
-GLOBAL_ASM("asm/FUN_0036d188.s")
 
-GLOBAL_ASM("asm/FUN_0036d260.s")
 
 GLOBAL_ASM("asm/FUN_0036d288.s")
 
@@ -514,20 +485,16 @@ GLOBAL_ASM("asm/FUN_0036ef10.s")
 
 GLOBAL_ASM("asm/Player_GetMask.s")
 
-GLOBAL_ASM("asm/FUN_0036efa8.s")
 
 GLOBAL_ASM("asm/FUN_0036f00c.s")
 
 GLOBAL_ASM("asm/Actor_IsFacingPlayer.s")
 
-GLOBAL_ASM("asm/FUN_0036f1b4.s")
 
 
 GLOBAL_ASM("asm/FUN_0036f2f8.s")
 
-GLOBAL_ASM("asm/FUN_0036f32c.s")
 
-GLOBAL_ASM("asm/FUN_0036f364.s")
 
 GLOBAL_ASM("asm/Lights_PointGlowSetInfo.s")
 

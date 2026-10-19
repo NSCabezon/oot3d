@@ -5,9 +5,11 @@
 
 struct BgMizuUzu;
 
+typedef void (*BgMizuUzuActionFunc)(struct BgMizuUzu*, PlayState*);
+
 typedef struct BgMizuUzu {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x1C];
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ BgMizuUzuActionFunc actionFunc;
 } BgMizuUzu; // size = 0x1C0
 
 extern ActorInit Bg_Mizu_Uzu_InitVars;

@@ -20,11 +20,15 @@ ActorInit En_Horse_Ganon_InitVars = {
     (ActorFunc)EnHorseGanon_Draw,
 };
 
-GLOBAL_ASM("asm/EnHorseGanon_Init.s")
+void EnHorseGanon_Init(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnHorseGanon_Destroy.s")
+void EnHorseGanon_Destroy(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnHorseGanon_Update.s")
+void EnHorseGanon_Update(Actor* actor, GameState* state) {
+}
 
-GLOBAL_ASM("asm/EnHorseGanon_Draw.s")
+void EnHorseGanon_Draw(Actor* actor, GameState* state) {
+}
 }

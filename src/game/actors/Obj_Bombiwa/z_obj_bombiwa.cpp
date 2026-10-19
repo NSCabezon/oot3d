@@ -94,13 +94,10 @@ void ObjBombiwa_Destroy(Actor* actor, GameState* state) {
     FUN_00350f34(&self->actor, &self->skelAnimModel, 0);
 }
 
-#ifdef NON_MATCHING
-/*
 static void ObjBombiwa_Break(ObjBombiwa* self, PlayState* play) {
     Vec3f pos;
     Vec3f velocity;
     s16 arg5;
-    s16 scale;
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(sEffectScales); i++) {
@@ -110,13 +107,12 @@ static void ObjBombiwa_Break(ObjBombiwa* self, PlayState* play) {
         velocity.x = (Rand_ZeroOne() - 0.5f) * 15.0f;
         velocity.y = (Rand_ZeroOne() * 16.0f) + 5.0f;
         velocity.z = (Rand_ZeroOne() - 0.5f) * 15.0f;
-        scale = sEffectScales[i];
-        if (10 < scale) {
+        if (sEffectScales[i] > 10) {
             arg5 = 0x221;
         } else {
-            arg5 = 33;
+            arg5 = 0x21;
         }
-        EffectSsKakera_Spawn(play, &pos, &velocity, &pos, -400, arg5, 10, 2, 0, scale, 1, 0, 80, -1,
+        EffectSsKakera_Spawn(play, &pos, &velocity, &pos, -400, arg5, 10, 2, 0, sEffectScales[i], 1, 0, 80, -1,
                              OBJECT_BOMBIWA, NULL);
     }
     FUN_0037378c(play, &self->actor.world.pos, 60.0f, 8, 100, 160, 1);
@@ -125,9 +121,8 @@ static void ObjBombiwa_Break(ObjBombiwa* self, PlayState* play) {
 void ObjBombiwa_Update(Actor* actor, GameState* state) {
     ObjBombiwa* self = (ObjBombiwa*)actor;
     PlayState* play = (PlayState*)state;
-    u8 acFlags = self->collider.base.acFlags;
 
-    if ((FUN_00346d94(play, &self->actor) != NULL) ||
+    if ((FUN_00346d94(play, actor) != NULL) ||
         ((self->collider.base.acFlags & 0x2) && (self->collider.info.acHitInfo->toucher.dmgFlags & 0x40000040))) {
         if ((play->sceneNum == 0x59) && ((actor->params & 0x3F) == 0x16)) {
             Actor* otherActor;
@@ -145,24 +140,20 @@ void ObjBombiwa_Update(Actor* actor, GameState* state) {
 
         ObjBombiwa_Break(self, play);
 
-        Flags_SetSwitch(play, self->actor.params & 0x3F);
-        Audio_PlaySoundAtPosition(play, &self->actor.world.pos, 80, 0x1000167);
-        if (((self->actor.params >> 0xF) & 1) != 0) {
+        Flags_SetSwitch(play, actor->params & 0x3F);
+        Audio_PlaySoundAtPosition(play, &actor->world.pos, 80, 0x1000167);
+        if (((actor->params >> 0xF) & 1) != 0) {
             FUN_00372244(&play->unk_5FCC, 0x1E, 0x1000487);
         }
-        Actor_Kill(&self->actor);
+        Actor_Kill(actor);
     } else {
         self->collider.base.acFlags &= ~0x2;
-        if (self->actor.xzDistToPlayer < 800.0f) {
+        if (actor->xzDistToPlayer < 800.0f) {
             CollisionCheck_SetAC(play, &play->colChkCtx, &self->collider.base);
             CollisionCheck_SetOC(play, &play->colChkCtx, &self->collider.base);
         }
     }
 }
-*/
-#else
-GLOBAL_ASM("asm/ObjBombiwa_Update.s")
-#endif
 
 void ObjBombiwa_Draw(Actor* actor, GameState* state) {
     ObjBombiwa* self = (ObjBombiwa*)actor;

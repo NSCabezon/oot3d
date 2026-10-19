@@ -24,7 +24,18 @@ ActorInit En_Bx_InitVars = {
 
 GLOBAL_ASM("asm/EnBx_Init.s")
 
-GLOBAL_ASM("asm/EnBx_Destroy.s")
+void FUN_003685a0(void* arg);
+
+void EnBx_Destroy(Actor* actor, GameState* state) {
+    EnBx* self = (EnBx*)actor;
+    PlayState* play = (PlayState*)state;
+
+    FUN_003685a0(&self->unk_3C8);
+    ((FaceAnimations*)&self->unk_460)->Destroy();
+    SkelAnime_Free2(&self->skelAnime);
+    FUN_003508b8(actor, 0);
+    Collider_DestroyCylinder(play, &self->collider);
+}
 
 GLOBAL_ASM("asm/EnBx_Update.s")
 

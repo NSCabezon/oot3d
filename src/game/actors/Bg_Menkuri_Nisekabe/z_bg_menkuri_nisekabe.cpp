@@ -8,8 +8,6 @@ void BgMenkuriNisekabe_Destroy(Actor* actor, GameState* state);
 void BgMenkuriNisekabe_Update(Actor* actor, GameState* state);
 void BgMenkuriNisekabe_Draw(Actor* actor, GameState* state);
 
-GLOBAL_ASM("data/z_Bg_Menkuri_Nisekabe.data.s")
-
 ActorInit Bg_Menkuri_Nisekabe_InitVars = {
     ACTOR_BG_MENKURI_NISEKABE,
     ACTORCAT_PROP,
@@ -22,11 +20,49 @@ ActorInit Bg_Menkuri_Nisekabe_InitVars = {
     (ActorFunc)BgMenkuriNisekabe_Draw,
 };
 
-GLOBAL_ASM("asm/BgMenkuriNisekabe_Init.s")
+static s32 sModelIndices[] = { 1, 2 };
 
-GLOBAL_ASM("asm/BgMenkuriNisekabe_Destroy.s")
+void BgMenkuriNisekabe_Init(Actor* actor, GameState* state) {
+    BgMenkuriNisekabe* self = (BgMenkuriNisekabe*)actor;
+    PlayState* play = (PlayState*)state;
 
-GLOBAL_ASM("asm/BgMenkuriNisekabe_Update.s")
+    Actor_SetScale(&self->actor, 0.1f);
+    s32 idx = sModelIndices[actor->params & 0xFF];
+    FUN_00372f38(actor, play, &self->skelAnimModel, idx, 0);
+}
 
-GLOBAL_ASM("asm/BgMenkuriNisekabe_Draw.s")
+void BgMenkuriNisekabe_Destroy(Actor* actor, GameState* state) {
+    BgMenkuriNisekabe* self = (BgMenkuriNisekabe*)actor;
+
+    FUN_00350f34(&self->actor, &self->skelAnimModel, 0);
+}
+
+void BgMenkuriNisekabe_Update(Actor* actor, GameState* state) {
+    BgMenkuriNisekabe* self = (BgMenkuriNisekabe*)actor;
+    PlayState* play = (PlayState*)state;
+
+    if (play->actorCtx.unk_03 != 0) {
+        self->actor.flags |= 0x80;
+    } else {
+        self->actor.flags &= ~0x80;
+    }
+}
+
+void BgMenkuriNisekabe_Draw(Actor* actor, GameState* state) {
+    BgMenkuriNisekabe* self = (BgMenkuriNisekabe*)actor;
+    MTX34 modelMtx;
+
+    MTX34CopyAsm(&modelMtx, &self->actor.modelMtx);
+    if ((self->actor.flags & 0x80) == 0x80) {
+        if (self->skelAnimModel != NULL) {
+            self->skelAnimModel->SetUnkAC(1);
+            self->skelAnimModel->FUN_003721e0(&modelMtx);
+            self->skelAnimModel->FUN_00372170(0);
+        }
+    } else if (self->skelAnimModel != NULL) {
+        self->skelAnimModel->SetUnkAC(1);
+        self->skelAnimModel->FUN_003721e0(&modelMtx);
+        self->skelAnimModel->FUN_00372170(0);
+    }
+}
 }

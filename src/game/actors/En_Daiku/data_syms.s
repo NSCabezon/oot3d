@@ -1,0 +1,14 @@
+	EXPORT EnDaiku_sAnimInfo
+	EXPORT EnDaiku_sEscapeSubCamParams
+	EXPORT EnDaiku_sColorTable
+	EXPORT EnDaiku_sCylinderInit
+	EXPORT EnDaiku_sColChkInit
+	EXPORT EnDaiku_sDamageTable
+EnDaiku_sAnimInfo EQU 0x00521C98
+EnDaiku_sEscapeSubCamParams EQU 0x00521CE8
+EnDaiku_sColorTable EQU 0x004D9300
+EnDaiku_sCylinderInit EQU 0x00521C54
+EnDaiku_sColChkInit EQU 0x00521C8C
+EnDaiku_sDamageTable EQU 0x0059901C
+
+	END

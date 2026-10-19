@@ -1,0 +1,8 @@
+	EXPORT ObjTimeblock_sRanges
+	EXPORT ObjTimeblock_sInitChain
+	EXPORT ObjTimeblock_sSizeOptions
+ObjTimeblock_sRanges EQU 0x00535928
+ObjTimeblock_sInitChain EQU 0x00535948
+ObjTimeblock_sSizeOptions EQU 0x00535904
+
+	END

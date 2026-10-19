@@ -1,0 +1,16 @@
+	EXPORT EnDaikuKakariko_sNeckMax
+	EXPORT EnDaikuKakariko_sInitFlags
+	EXPORT EnDaikuKakariko_sCylinderInit
+	EXPORT EnDaikuKakariko_sDamageTable
+	EXPORT EnDaikuKakariko_sColChkInit
+	EXPORT EnDaikuKakariko_sMaskReactionSets
+	EXPORT EnDaikuKakariko_sAnimationInfo
+	EXPORT EnDaikuKakariko_sColors
+EnDaikuKakariko_sAnimationInfo EQU 0x00521D9C
+EnDaikuKakariko_sColors EQU 0x004D9340
+EnDaikuKakariko_sNeckMax EQU 0x00521D48
+EnDaikuKakariko_sMaskReactionSets EQU 0x00521DFC
+EnDaikuKakariko_sInitFlags EQU 0x00521D50
+EnDaikuKakariko_sCylinderInit EQU 0x00521D58
+EnDaikuKakariko_sColChkInit EQU 0x00521D90
+EnDaikuKakariko_sDamageTable EQU 0x00599054

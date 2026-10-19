@@ -1,0 +1,9 @@
+	AREA |.text|, CODE, READONLY
+	EXPORT EnZl1_sEyeIdxTable
+	EXPORT EnZl1_sCueAnimIdx
+	EXPORT EnZl1_sCueAnimIdx2
+EnZl1_sEyeIdxTable EQU 0x004D9624
+EnZl1_sCueAnimIdx EQU 0x004D9632
+EnZl1_sCueAnimIdx2 EQU 0x004D9628
+
+	END

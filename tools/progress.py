@@ -1,6 +1,9 @@
 import argparse
 import json
-import git
+try:
+    import git
+except ImportError:  # only needed for csv output
+    git = None
 from pathlib import Path
 import math
 
@@ -54,7 +57,7 @@ def GetAllNonMatchingASMFunctionSourceFiles(nonmatchFiles: list[Path]) -> list[P
         with open(nonmatchFile, 'r') as nonmatch:
             nonmatchLines: list[str] = nonmatch.readlines()
             for line in nonmatchLines:
-                if line.startswith("\tGET") and line.count("disassembly\\asm") > 0:
+                if line.startswith("\tGET") and (line.count("disassembly\\asm") > 0 or line.count("disassembly/asm") > 0):
                     nonmatchASMFunctionSourceFiles.append(Path(line.split(' ')[-1].strip()))
     
     return nonmatchASMFunctionSourceFiles

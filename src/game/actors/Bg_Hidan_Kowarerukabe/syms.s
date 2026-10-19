@@ -1,0 +1,13 @@
+	AREA |.text|, CODE, READONLY
+	EXPORT BgHidanKowarerukabe_sModelIdx
+	EXPORT BgHidanKowarerukabe_sDynaInfoIdx
+	EXPORT BgHidanKowarerukabe_sJntSphInit
+	EXPORT BgHidanKowarerukabe_sInitChain
+	EXPORT BgHidanKowarerukabe_sTable
+BgHidanKowarerukabe_sModelIdx EQU 0x00511B08
+BgHidanKowarerukabe_sDynaInfoIdx EQU 0x00511B2C
+BgHidanKowarerukabe_sJntSphInit EQU 0x00511B1C
+BgHidanKowarerukabe_sInitChain EQU 0x00511B68
+BgHidanKowarerukabe_sTable EQU 0x00511B40
+
+	END

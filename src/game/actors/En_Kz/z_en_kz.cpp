@@ -391,9 +391,7 @@ void EnKz_StartTimer(EnKz* self, PlayState* play) {
     }
 }
 
-#ifdef NON_MATCHING
-/*
-void EnKz_UpdateEyes(EnKz* self) {
+static void EnKz_UpdateEyes(EnKz* self) {
     s16 zero = 0;
 
     if (DECR(self->blinkTimer) == 0) {
@@ -405,8 +403,8 @@ void EnKz_UpdateEyes(EnKz* self) {
     }
 }
 
-static s32 func_80A9C95C(PlayState* play, EnKz* self, s16* arg2, f32 unkf, callback1_800343CC callback1,
-                         callback2_800343CC callback2) {
+static s32 EnKz_GetTalkText(PlayState* play, EnKz* self, s16* arg2, f32 unkf, callback1_800343CC callback1,
+                            callback2_800343CC callback2) {
     Player* player = GET_PLAYER(play);
     s16 sp32;
     s16 sp30;
@@ -425,7 +423,7 @@ static s32 func_80A9C95C(PlayState* play, EnKz* self, s16* arg2, f32 unkf, callb
 
     yaw = Math_Vec3f_Yaw(&self->actor.home.pos, &player->actor.world.pos);
     yaw -= self->actor.shape.rot.y;
-    if ((__fabsf(yaw) > 1638.0f) || (self->actor.xzDistToPlayer < 265.0f)) {
+    if ((__fabsf(yaw) > 1638.0f) || (self->actor.xzDistToPlayer < 245.0f)) {
         self->actor.flags &= ~1;
         return 0;
     }
@@ -449,10 +447,10 @@ static s32 func_80A9C95C(PlayState* play, EnKz* self, s16* arg2, f32 unkf, callb
     return 0;
 }
 
-static void func_80A9CB18(EnKz* self, PlayState* play) {
+static void EnKz_UpdateTalk(EnKz* self, PlayState* play) {
     Player* player = GET_PLAYER(play);
 
-    if (func_80A9C95C(play, self, &self->unk_D14, 340.0f, EnKz_GetText, FUN_00173370)) {
+    if (EnKz_GetTalkText(play, self, &self->unk_D14, 340.0f, EnKz_GetText, FUN_00173370)) {
         if ((self->actor.textId == 0x401A) && !(gSaveContext.eventChkInf[3] & 8)) {
             if (FUN_0036bc84(play) == EXCH_ITEM_LETTER_RUTO) {
                 self->actor.textId = 0x401B;
@@ -476,6 +474,10 @@ static void func_80A9CB18(EnKz* self, PlayState* play) {
 
             self->isTrading = false;
             if (gSaveContext.infTable[19] & 0x200) {
+                if (!CHECK_QUEST_ITEM(QUEST_MEDALLION_WATER) && !CHECK_OWNED_EQUIP(EQUIP_TUNIC, 2)) {
+                    self->actor.textId = 0x40B4;
+                    return;
+                }
                 self->actor.textId = CHECK_QUEST_ITEM(QUEST_SONG_SERENADE) ? 0x4045 : 0x401A;
                 player->actor.textId = self->actor.textId;
             } else {
@@ -499,14 +501,10 @@ void EnKz_Update(Actor* actor, GameState* state) {
     EnKz_UpdateEyes(self);
     Actor_MoveForward(&self->actor);
     if (self->actionFunc != EnKz_StartTimer) {
-        func_80A9CB18(self, play);
+        EnKz_UpdateTalk(self, play);
     }
     self->actionFunc(self, play);
 }
-*/
-#else
-GLOBAL_ASM("asm/EnKz_Update.s")
-#endif
 
 s32 EnKz_OverrideLimbDraw(PlayState* play, s32 limbIndex, MTX34* mtx, void* actor) {
     return 0;

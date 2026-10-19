@@ -1,0 +1,8 @@
+	EXPORT BgSpot08Bakudankabe_sJntSphInit
+	EXPORT BgSpot08Bakudankabe_sBurstPos
+	EXPORT BgSpot08Bakudankabe_sInitChain
+BgSpot08Bakudankabe_sJntSphInit EQU 0x00513880
+BgSpot08Bakudankabe_sBurstPos EQU 0x00513890
+BgSpot08Bakudankabe_sInitChain EQU 0x005138B4
+
+	END

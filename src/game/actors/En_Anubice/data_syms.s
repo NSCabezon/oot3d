@@ -1,0 +1,4 @@
+	EXPORT EnAnubice_sCylinderInit
+	EXPORT EnAnubice_sDamageTable
+EnAnubice_sCylinderInit EQU 0x00520608
+EnAnubice_sDamageTable EQU 0x00520640

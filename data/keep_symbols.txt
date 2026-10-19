@@ -11,6 +11,7 @@
 --keep=FUN_001002c4
 --keep=BgZg_Draw
 --keep=BgZg_Update
+--keep=FUN_0010036c
 --keep=FUN_0010040c
 --keep=FUN_00100434
 --keep=EnHorseNormal_Update
@@ -33,6 +34,7 @@
 --keep=FUN_001032bc
 --keep=FUN_0010335c
 --keep=FUN_00103398
+--keep=FUN_001033d4
 --keep=FUN_0010360c
 --keep=FUN_00103778
 --keep=FUN_00103780
@@ -113,6 +115,7 @@
 --keep=FUN_0010a998
 --keep=EnCrow_Die
 --keep=BgHidanFwbig_WaitForPlayer
+--keep=FUN_0010abac
 --keep=FUN_0010abf8
 --keep=EnFirefly_DisturbDiveAttack
 --keep=EnDntJiji_Up
@@ -162,6 +165,7 @@
 --keep=DemoKankyo_DoNothing2
 --keep=EnJj_OpenMouth
 --keep=EnTr_CrySpellcast
+--keep=FUN_0010E624
 --keep=EnTr_ChooseAction1
 --keep=ArrowIce_Fly
 --keep=ArrowFire_Fly
@@ -183,6 +187,7 @@
 --keep=EnJj_WaitToOpenMouth
 --keep=OceffSpot_End
 --keep=EnGe1_WaitUntilGateOpened_GateOp
+--keep=FUN_0010fd24
 --keep=FUN_0010fe18
 --keep=FUN_0010feb0
 --keep=ObjLightswitch_TurnOn
@@ -236,6 +241,7 @@
 --keep=EnBdfire_DrawFire
 --keep=FUN_00112e88
 --keep=FUN_00112ef0
+--keep=FUN_00112f90
 --keep=FUN_00112fcc
 --keep=EnArowTrap_Update
 --keep=EnDha_Update
@@ -253,6 +259,7 @@
 --keep=FUN_001141f4
 --keep=FUN_00114908
 --keep=FUN_00114930
+--keep=FUN_00114ba4
 --keep=FUN_00114bd4
 --keep=BuyEvent_ShieldDiscount
 --keep=FUN_00114c78
@@ -500,6 +507,7 @@
 --keep=DemoIk_Draw
 --keep=DemoIk_Update
 --keep=FUN_0012e264
+--keep=FUN_0012e2c8
 --keep=EnTest_Update
 --keep=EnTite_Update
 --keep=EnBird_Update
@@ -610,6 +618,7 @@
 --keep=FUN_0013ff98
 --keep=EnWallmas_WaitForSwitchFlag
 --keep=FUN_00140218
+--keep=FUN_00140384
 --keep=FUN_001403a0
 --keep=FUN_00140d10
 --keep=FUN_00140f84
@@ -620,6 +629,7 @@
 --keep=FUN_00141458
 --keep=FUN_001419ac
 --keep=FUN_00141d40
+--keep=FUN_00141da4
 --keep=FUN_00141dd4
 --keep=FUN_00141e6c
 --keep=FUN_00141ebc
@@ -635,6 +645,7 @@
 --keep=FUN_00143374
 --keep=ObjLightswitch_DisappearDelay
 --keep=ObjLightswitch_Disappear
+--keep=FUN_00143684
 --keep=FUN_001436c4
 --keep=FUN_00143768
 --keep=FUN_00143800
@@ -645,6 +656,7 @@
 --keep=EnHonotrap_FlameMove
 --keep=ObjSwitch_CrystalOff
 --keep=FUN_00144074
+--keep=FUN_001440fc
 --keep=ObjSwitch_EyeOpening
 --keep=FUN_001441b0
 --keep=ObjSwitch_FloorPress
@@ -704,6 +716,7 @@
 --keep=FUN_00149340
 --keep=DemoExt_Draw
 --keep=DemoExt_Update
+--keep=FUN_001493f0
 --keep=FUN_0014949c
 --keep=FUN_0014953c
 --keep=EnDns_Wait
@@ -771,6 +784,7 @@
 --keep=FUN_001520b0
 --keep=FUN_00152130
 --keep=FUN_001522b4
+--keep=FUN_00152300
 --keep=FUN_0015237c
 --keep=FUN_00152b30
 --keep=FUN_00153a50
@@ -830,6 +844,7 @@
 --keep=FUN_00159734
 --keep=EnOkuta_Appear
 --keep=FUN_00159930
+--keep=FUN_00159b2c
 --keep=FUN_00159f64
 --keep=FUN_0015abf8
 --keep=FUN_0015ad68
@@ -863,6 +878,7 @@
 --keep=FUN_0015e078
 --keep=FUN_0015e11c
 --keep=FUN_0015e154
+--keep=FUN_0015e1dc
 --keep=FUN_0015e24c
 --keep=EnIceHono_SpreadFlames
 --keep=EnHonotrap_FlameVanish
@@ -913,6 +929,7 @@
 --keep=DemoGeff_Draw
 --keep=DemoGeff_Update
 --keep=FUN_001616f0
+--keep=FUN_0016178c
 --keep=FUN_001617e0
 --keep=FUN_00161828
 --keep=EnDns_Talk
@@ -978,6 +995,7 @@
 --keep=EnNy_Init
 --keep=EnNy_Destroy
 --keep=FUN_00167204
+--keep=FUN_0016761c
 --keep=EnPeehat_Update
 --keep=EnRd_Init
 --keep=EnRd_Destroy
@@ -1055,6 +1073,7 @@
 --keep=EnZo_OverrideLimbDraw
 --keep=FUN_0016dc98
 --keep=FUN_0016e398
+--keep=FUN_0016e470
 --keep=BgDyYoseizo_SetupSpinGrow_Reward
 --keep=FUN_0016e630
 --keep=FUN_0016e678
@@ -1097,6 +1116,7 @@
 --keep=FUN_00174660
 --keep=FUN_001746d4
 --keep=FUN_001747a4
+--keep=FUN_001748c4
 --keep=FUN_001748f4
 --keep=FUN_00174964
 --keep=FUN_00174b4c
@@ -1114,6 +1134,7 @@
 --keep=EnDntJiji_SetupBurrow
 --keep=BgIceTurara_Wait
 --keep=FUN_001755e4
+--keep=FUN_00175674
 --keep=FUN_001756b0
 --keep=FUN_00175844
 --keep=EnDodongo_EndBreatheFire
@@ -1122,6 +1143,7 @@
 --keep=FUN_00176a54
 --keep=FUN_00176ac0
 --keep=FUN_00176b04
+--keep=FUN_00176c38
 --keep=FUN_00176c68
 --keep=FUN_00176cdc
 --keep=FUN_00176d30
@@ -1213,10 +1235,12 @@
 --keep=FUN_00181fd0
 --keep=FUN_00182064
 --keep=FUN_00182158
+--keep=FUN_001821fc
 --keep=EnTr_TurnLookOverShoulder
 --keep=DoorAna_GrabLink
 --keep=FUN_001823c0
 --keep=EnBox_FallOnSwitchFlag
+--keep=FUN_001824b8
 --keep=FUN_00182500
 --keep=FUN_00182938
 --keep=FUN_00182b3c
@@ -1255,6 +1279,7 @@
 --keep=FUN_00184ec8
 --keep=FUN_00184ff8
 --keep=EnIceHono_CapturableFlame
+--keep=FUN_001852E8
 --keep=FUN_00185384
 --keep=FUN_001853ac
 --keep=FUN_00185468
@@ -1286,6 +1311,7 @@
 --keep=FUN_00188704
 --keep=FUN_001889a0
 --keep=FUN_00188ad4
+--keep=FUN_00188cc8
 --keep=FUN_00188d38
 --keep=BossVa_Draw
 --keep=FUN_001895a4
@@ -1349,7 +1375,6 @@
 --keep=EnSkb_Destroy
 --keep=EnSkj_Init
 --keep=EnSkj_Destroy
---keep=FUN_0018f08c
 --keep=EnSsh_Init
 --keep=EnSsh_Destroy
 --keep=EnSth_Init
@@ -1375,9 +1400,11 @@
 --keep=FUN_00190550
 --keep=FUN_001905d4
 --keep=FUN_0019062c
+--keep=FUN_00190730
 --keep=FUN_00190740
 --keep=FUN_00190888
 --keep=FUN_0019088c
+--keep=FUN_00190990
 --keep=func_80A3BEE0
 --keep=FUN_00190a20
 --keep=FUN_00190b48
@@ -1425,6 +1452,7 @@
 --keep=FUN_00195b90
 --keep=FUN_00195cd8
 --keep=FUN_00195dac
+--keep=FUN_00195e2c
 --keep=FUN_00195eb8
 --keep=FUN_001960e8
 --keep=FUN_00196208
@@ -1437,6 +1465,7 @@
 --keep=FUN_00196978
 --keep=FUN_001969cc
 --keep=EnSyatekiMan_Start
+--keep=FUN_00196A80
 --keep=FUN_00196afc
 --keep=FUN_00196ba8
 --keep=BgPoEvent_BlockFall
@@ -1445,6 +1474,7 @@
 --keep=FUN_00196f54
 --keep=BgGndIceblock_Slide
 --keep=BgPoEvent_BlockWait
+--keep=FUN_001976E4
 --keep=BgPoEvent_BlockIdle
 --keep=FUN_001979d0
 --keep=BgGndIceblock_Idle
@@ -1462,8 +1492,10 @@
 --keep=FUN_00199308
 --keep=FUN_001995ec
 --keep=FUN_00199688
+--keep=FUN_00199700
 --keep=FUN_0019975c
 --keep=EnWallmas_JumpToCeiling
+--keep=FUN_001998f4
 --keep=FUN_0019993c
 --keep=FUN_00199aa8
 --keep=FUN_00199b8c
@@ -1555,6 +1587,7 @@
 --keep=FUN_001a23f4
 --keep=FUN_001a2418
 --keep=FUN_001a24d4
+--keep=FUN_001a250c
 --keep=ObjSwitch_EyeInit
 --keep=FUN_001a25b4
 --keep=ObjTimeblock_AltBehaviourNotVisible
@@ -1625,7 +1658,6 @@
 --keep=EnAm_Update
 --keep=EnBili_Init
 --keep=EnBili_Destroy
---keep=FUN_001ad994
 --keep=EnBird_Init
 --keep=EnBoom_Init
 --keep=EnBoom_Destroy
@@ -1940,6 +1972,7 @@
 --keep=DemoEffect_DrawSpiritualStones
 --keep=DemoExt_Init
 --keep=DemoExt_Destroy
+--keep=FUN_001d21c8
 --keep=caseD_2_001d21d4
 --keep=DemoShd_Init
 --keep=DemoShd_Destroy
@@ -2018,6 +2051,7 @@
 --keep=EnOssan_Destroy
 --keep=EnXc_Draw
 --keep=EnXc_Update
+--keep=FUN_001dc864
 --keep=EnOkuta_Init
 --keep=EnOkuta_Destroy
 --keep=EnOwl_Draw
@@ -2149,6 +2183,7 @@
 --keep=FUN_001e8ef4
 --keep=EnPoField_SoulIdle
 --keep=FUN_001e9198
+--keep=FUN_001e921c
 --keep=FUN_001e923c
 --keep=BgDyYoseizo_GreetPlayer_NoReward
 --keep=FUN_001e93d4
@@ -2252,6 +2287,7 @@
 --keep=FUN_001f09ac
 --keep=DemoGo_Draw
 --keep=DemoGo_Update
+--keep=FUN_001f0da0
 --keep=DemoIm_Draw
 --keep=DemoIm_Update
 --keep=DemoSa_Draw
@@ -2277,6 +2313,7 @@
 --keep=FUN_001f2b28
 --keep=ElfMsg_Draw
 --keep=ElfMsg_Update
+--keep=FUN_001f2e74
 --keep=EnBdfire_Init
 --keep=EnBdfire_Destroy
 --keep=EnBili_Draw
@@ -2356,6 +2393,7 @@
 --keep=FUN_001ff768
 --keep=FUN_001ff780
 --keep=FUN_001ff7f0
+--keep=FUN_001ff874
 --keep=FUN_001ff8a8
 --keep=FUN_001ff980
 --keep=FUN_001ffb00
@@ -2453,6 +2491,7 @@
 --keep=ObjSwitch_CrystalTurnOn
 --keep=ObjSwitch_CrystalTurnOff
 --keep=ObjTimeblock_WaitForSong
+--keep=FUN_0020803c
 --keep=FUN_002080a0
 --keep=FUN_002081a4
 --keep=FUN_00208228
@@ -2525,6 +2564,7 @@
 --keep=EnArrow_Update
 --keep=EnBomChu_Init
 --keep=EnBomChu_Destroy
+--keep=FUN_0020eb70
 --keep=EnChanger_Init
 --keep=FUN_0020f064
 --keep=EnChanger_Destroy
@@ -2591,6 +2631,7 @@
 --keep=FUN_00213614
 --keep=ItemInbox_Init
 --keep=ItemInbox_Destroy
+--keep=FUN_00213d80
 --keep=MagicDark_Init
 --keep=MagicDark_Destroy
 --keep=MagicFire_Init
@@ -2734,6 +2775,7 @@
 --keep=FUN_0021e5c0
 --keep=FUN_0021e8e4
 --keep=EnMd_PostLimbDraw
+--keep=FUN_0021e968
 --keep=EnZl4_PostLimbDraw
 --keep=FUN_0021ea58
 --keep=FUN_0021eb44
@@ -3021,7 +3063,6 @@
 --keep=Camera_Normal3
 --keep=Camera_Normal4
 --keep=EnMd_OverrideLimbDraw
---keep=FUN_0023bc80
 --keep=FUN_0023bca4
 --keep=EnZl4_OverrideLimbDraw
 --keep=FUN_0023bd6c
@@ -3195,6 +3236,7 @@
 --keep=FUN_00249048
 --keep=EnDodongo_Death
 --keep=EnDntNomal_Init
+--keep=FUN_00249364
 --keep=EnDodongo_Draw
 --keep=EnDodongo_Update
 --keep=FUN_00249af8
@@ -3229,8 +3271,11 @@
 --keep=EnMThunder_Init
 --keep=EnMThunder_Destroy
 --keep=FUN_0024cdec
+--keep=FUN_0024cdf0
 --keep=caseD_1_0024cdf4
+--keep=FUN_0024ce80
 --keep=caseD_0_0024cec0
+--keep=FUN_0024cf70
 --keep=caseD_c
 --keep=EnPoDesert_Init
 --keep=EnPoDesert_Destroy
@@ -3371,6 +3416,7 @@
 --keep=FUN_0025a824
 --keep=FUN_0025a888
 --keep=EnDaiku_InitEscape
+--keep=FUN_0025ab78
 --keep=ObjTimeblock_WaitForOcarina
 --keep=FUN_0025ac68
 --keep=FUN_0025adb0
@@ -3540,12 +3586,16 @@
 --keep=EnKarebaba_Update
 --keep=EnLight_UpdateSwitch
 --keep=caseD_2_0026b1dc
+--keep=FUN_0026b274
 --keep=EnNiwGirl_Draw
 --keep=EnNiwGirl_Update
 --keep=EnNiwLady_Draw
 --keep=EnNiwLady_Update
 --keep=FUN_0026bb68
 --keep=EnNutsball_Update
+--keep=FUN_0026be60
+--keep=FUN_0026beb8
+--keep=FUN_0026bebc
 --keep=caseD_12_0026bf1c
 --keep=caseD_1_0026bfc4
 --keep=caseD_9_0026c1d8
@@ -3615,6 +3665,7 @@
 --keep=FUN_00272854
 --keep=FUN_00272908
 --keep=FUN_00272930
+--keep=FUN_00272e34
 --keep=EnCrow_OverrideLimbDraw
 --keep=EnCrow_PostLimbDraw
 --keep=FUN_00273070
@@ -3788,11 +3839,15 @@
 --keep=caseD_17_0027d4b8
 --keep=caseD_10_0027d52c
 --keep=caseD_11_0027d554
+--keep=FUN_0027d618
 --keep=caseD_2_0027d61c
 --keep=caseD_1_0027d748
+--keep=FUN_0027d7f0
+--keep=FUN_0027d878
 --keep=caseD_8_0027d884
 --keep=caseD_e_0027da2c
 --keep=caseD_f_0027dbb0
+--keep=FUN_0027dd34
 --keep=caseD_1_0027dd38
 --keep=caseD_0_0027de44
 --keep=caseD_1_0027df24
@@ -3833,7 +3888,9 @@
 --keep=Actor1D9_Draw
 --keep=Actor1D9_Update
 --keep=caseD_1_00281938
+--keep=FUN_002819cc
 --keep=caseD_3_00281a5c
+--keep=FUN_00281ac8
 --keep=caseD_6_00281bd4
 --keep=caseD_47
 --keep=EnOkarinaTag_Init
@@ -3879,11 +3936,13 @@
 --keep=EnWonderTalk_Destroy
 --keep=FUN_00284fd0
 --keep=FUN_0028525c
+--keep=FUN_002852e4
 --keep=caseD_16_0028534c
 --keep=EnDh_Attack
 --keep=EnDh_Damage
 --keep=FUN_00285978
 --keep=FUN_00285a7c
+--keep=FUN_00285be0
 --keep=ItemOcarina_Draw
 --keep=ItemOcarina_Update
 --keep=FUN_00285d84
@@ -3908,6 +3967,7 @@
 --keep=FUN_00287550
 --keep=EnOkuta_OverrideLimbDraw
 --keep=FUN_00287938
+--keep=FUN_00287978
 --keep=FUN_00287980
 --keep=FUN_00287984
 --keep=FUN_00287ab8
@@ -3934,6 +3994,7 @@
 --keep=FUN_00288414
 --keep=FUN_002884f8
 --keep=FUN_00288594
+--keep=FUN_002885f0
 --keep=FUN_002886b8
 --keep=BgPoEvent_AmyWait
 --keep=FUN_0028887c
@@ -4026,6 +4087,7 @@
 --keep=caseD_f_0028e374
 --keep=caseD_10_0028e4a0
 --keep=caseD_11_0028e5cc
+--keep=FUN_0028e6f8
 --keep=caseD_0_0028e95c
 --keep=caseD_1_0028ee04
 --keep=caseD_2_0028ee64
@@ -4051,6 +4113,7 @@
 --keep=FUN_00290afc
 --keep=FUN_00290bbc
 --keep=FUN_00290ce0
+--keep=FUN_00290d3c
 --keep=FUN_00290dc4
 --keep=EnAnubiceFire_Init
 --keep=EnAnubiceFire_Destroy
@@ -4072,6 +4135,7 @@
 --keep=caseD_4_002930a8
 --keep=caseD_14_00293124
 --keep=FUN_00293210
+--keep=FUN_0029328c
 --keep=caseD_2_002932ec
 --keep=caseD_35
 --keep=caseD_3d
@@ -4098,11 +4162,13 @@
 --keep=FUN_00295e58
 --keep=FUN_00295fec
 --keep=FUN_0029664c
+--keep=FUN_00296798
 --keep=caseD_d_00296914
 --keep=caseD_e_002969bc
 --keep=FUN_00296a7c
 --keep=EnDh_Walk
 --keep=EnDha_TakeDamage
+--keep=FUN_00296e94
 --keep=FUN_00296eb4
 --keep=MagicWind_Draw
 --keep=EnOssan_InitKokiriShopkeeper
@@ -4275,6 +4341,7 @@
 --keep=caseD_b_002a1288
 --keep=caseD_c_002a12f8
 --keep=caseD_d_002a13a0
+--keep=FUN_002a1448
 --keep=caseD_1_002a144c
 --keep=FUN_002a18e4
 --keep=caseD_4_002a1980
@@ -4301,6 +4368,7 @@
 --keep=EnGanonOrgan_Draw
 --keep=EnGanonOrgan_Update
 --keep=caseD_15_002a4170
+--keep=FUN_002a427c
 --keep=caseD_1c_002a439c
 --keep=caseD_25
 --keep=caseD_36
@@ -4308,6 +4376,8 @@
 --keep=caseD_40
 --keep=caseD_43
 --keep=caseD_4c
+--keep=FUN_002a4a44
+--keep=FUN_002a4b88
 --keep=EnOkarinaTag_Update
 --keep=EnPeehat_StateExplode
 --keep=EnPeehat_Ground_StateLanding
@@ -4335,6 +4405,7 @@
 --keep=EnYabusameMark_Destroy
 --keep=FUN_002a7124
 --keep=FUN_002a71d0
+--keep=FUN_002a747c
 --keep=caseD_10_002a76b8
 --keep=caseD_22
 --keep=caseD_24
@@ -4436,6 +4507,7 @@
 --keep=BgSpot15Rrbox_Draw
 --keep=BgSpot15Rrbox_Update
 --keep=FUN_002ad4d4
+--keep=FUN_002ad610
 --keep=BgSpot18Shutter_Init
 --keep=BgSpot18Shutter_Destroy
 --keep=Actor1D8_Draw
@@ -4447,12 +4519,14 @@
 --keep=caseD_13_002ae53c
 --keep=caseD_14_002ae7c4
 --keep=caseD_0_002ae978
+--keep=FUN_002aebe4
 --keep=caseD_3_002aecd8
 --keep=caseD_4_002aeda4
 --keep=caseD_5_002aeea8
 --keep=caseD_2_002aefac
 --keep=caseD_1b_002af150
 --keep=DemoTreLgt_Draw
+--keep=FUN_002af310
 --keep=EnHorseNormal_CycleAnimations
 --keep=EnHorseNormal_FollowPath
 --keep=FUN_002af630
@@ -4475,7 +4549,9 @@
 --keep=EnFloormas_DrawHighlighted
 --keep=FUN_002b175c
 --keep=EnMFire1_Update
+--keep=FUN_002b18f0
 --keep=caseD_7_002b1a90
+--keep=FUN_002b1b28
 --keep=caseD_b_002b21a4
 --keep=caseD_2b
 --keep=caseD_1e
@@ -6045,6 +6121,7 @@
 --keep=CollisionCheck_SetATvsAC
 --keep=FUN_003192f0
 --keep=Math3D_TriLineIntersect
+--keep=FUN_00319560
 --keep=FUN_00319564
 --keep=Math3D_TriChkPointParaZ
 --keep=Math3D_TriChkPointParaX
@@ -6120,6 +6197,7 @@
 --keep=FUN_00321478
 --keep=FUN_00321598
 --keep=FUN_003216b0
+--keep=FUN_003218b4
 --keep=FUN_003218b8
 --keep=CollisionCheck_RedBloodUnused
 --keep=CollisionCheck_SpawnRedBlood
@@ -6181,9 +6259,11 @@
 --keep=EnTite_SetupTurnTowardPlayer
 --keep=EnTite_SetupIdle
 --keep=FUN_003264c8
+--keep=FUN_00326524
 --keep=FUN_00326528
 --keep=EnHorse_StickDirection
 --keep=EnHorse_PlayerCanMove
+--keep=FUN_00326bc0
 --keep=FUN_00326bc4
 --keep=FUN_00326d58
 --keep=FUN_00326e74
@@ -6207,6 +6287,7 @@
 --keep=FUN_00328ddc
 --keep=FUN_00328e08
 --keep=FUN_00329154
+--keep=FUN_003291bc
 --keep=caseD_a_003291c4
 --keep=FUN_003291f4
 --keep=caseD_9_00329cd0
@@ -6241,6 +6322,7 @@
 --keep=FUN_0032c8e0
 --keep=FUN_0032cacc
 --keep=FUN_0032cc6c
+--keep=FUN_0032cd64
 --keep=FUN_0032cd68
 --keep=FUN_0032cecc
 --keep=FUN_0032d184
@@ -7657,6 +7739,7 @@
 --keep=caseD_4_0037d110
 --keep=caseD_5_0037d360
 --keep=caseD_6_0037d5ac
+--keep=FUN_0037d700
 --keep=caseD_c_0037d980
 --keep=caseD_d_0037dad4
 --keep=caseD_13_0037db6c
@@ -7667,13 +7750,18 @@
 --keep=FUN_0037e020
 --keep=FUN_0037e308
 --keep=FUN_0037e434
+--keep=FUN_0037e448
 --keep=FUN_0037e450
 --keep=FUN_0037e568
+--keep=FUN_0037e5e0
 --keep=caseD_f_0037e71c
 --keep=caseD_1f
 --keep=caseD_21_0037e91c
 --keep=caseD_2a
+--keep=FUN_0037e95c
+--keep=FUN_0037e9a4
 --keep=caseD_15_0037e9a8
+--keep=FUN_0037ea2c
 --keep=FUN_0037ea38
 --keep=FUN_0037eea0
 --keep=EnPeehat_Adult_StateDie
@@ -7686,6 +7774,7 @@
 --keep=EnYabusameMark_Update
 --keep=FUN_00380604
 --keep=FUN_003806d8
+--keep=FUN_00380890
 --keep=caseD_20_003809e8
 --keep=caseD_21_00380bdc
 --keep=caseD_15_00380fac
@@ -7696,10 +7785,12 @@
 --keep=FUN_003813c4
 --keep=FUN_00381434
 --keep=ObjMakeoshihiki_Draw
+--keep=FUN_003815f0
 --keep=FUN_003815f8
 --keep=FUN_00381a8c
 --keep=EnPoDesert_OverrideLimbDraw
 --keep=EnPoDesert_PostLimbDraw
+--keep=FUN_00381cf4
 --keep=FUN_00381d18
 --keep=EnSkj_WaitForOfferResponse
 --keep=FUN_00381dbc
@@ -7770,6 +7861,7 @@
 --keep=caseD_3f
 --keep=caseD_3a
 --keep=caseD_16_003870dc
+--keep=FUN_003871a4
 --keep=EnOkarinaEffect_Update
 --keep=EnPeehat_Ground_StateSeekPlayer
 --keep=FUN_00387388
@@ -7845,6 +7937,7 @@
 --keep=caseD_6_0038d644
 --keep=caseD_7_0038d670
 --keep=caseD_8_0038d69c
+--keep=FUN_0038d6c8
 --keep=caseD_a_0038d81c
 --keep=FUN_0038d8a4
 --keep=FUN_0038e8e4
@@ -7868,8 +7961,11 @@
 --keep=EnHorse_FollowPlayer
 --keep=EnHorse_Idle
 --keep=EnHorse_Frozen
+--keep=FUN_003913a8
 --keep=caseD_2e
+--keep=FUN_00391440
 --keep=caseD_4a
+--keep=FUN_00391558
 --keep=caseD_45
 --keep=EnPeehat_Larva_StateSeekPlayer
 --keep=EnPeehat_StateBoomerangStunned
@@ -7905,6 +8001,7 @@
 --keep=FUN_00394190
 --keep=FUN_00394288
 --keep=FUN_00394300
+--keep=FUN_003944F8
 --keep=FUN_00394550
 --keep=FUN_003945c4
 --keep=FUN_00394628
@@ -7947,6 +8044,7 @@
 --keep=FUN_0039a7b0
 --keep=FUN_0039a858
 --keep=EnHorseGameCheck_Update
+--keep=FUN_0039a8dc
 --keep=caseD_24_0039a91c
 --keep=caseD_2f
 --keep=caseD_49
@@ -7978,12 +8076,18 @@
 --keep=EnSyatekiMan_GivePrize
 --keep=BgHeavyBlock_DrawPiece
 --keep=BgSpot17Funen_Update
+--keep=FUN_0039c184
+--keep=FUN_0039c220
+--keep=FUN_0039c2d8
+--keep=FUN_0039c390
 --keep=FUN_0039c53c
 --keep=FUN_0039c5e0
+--keep=FUN_0039c8ac
 --keep=EnMThunder_Draw
 --keep=EnMThunder_Update
 --keep=caseD_4_0039ce8c
 --keep=caseD_28
+--keep=FUN_0039d074
 --keep=caseD_23_0039d078
 --keep=caseD_33
 --keep=EnPeehat_Flying_SetStateGround
@@ -8016,6 +8120,7 @@
 --keep=BgSpot11Bakudankabe_Update
 --keep=BgSpot17Bakudankabe_Draw
 --keep=BgSpot17Bakudankabe_Update
+--keep=FUN_0039f204
 --keep=CollisionCheck_AC_CylVsCyl
 --keep=CollisionCheck_AC_CylVsQuad
 --keep=CollisionCheck_AC_CylVsTris
@@ -8037,12 +8142,17 @@
 --keep=EnHorse_MountedWalk
 --keep=EnHorse_LowJump
 --keep=EnHorse_HighJump
+--keep=FUN_003a1f84
+--keep=FUN_003a1fc4
 --keep=caseD_b_003a22b4
+--keep=FUN_003a23cc
 --keep=caseD_3_003a24d0
 --keep=caseD_5_003a25a0
 --keep=caseD_27_003a26f4
 --keep=caseD_29
 --keep=caseD_32
+--keep=FUN_003a28f0
+--keep=FUN_003a28f4
 --keep=FUN_003a28f8
 --keep=FUN_003a2a2c
 --keep=FUN_003a2c98
@@ -8060,7 +8170,9 @@
 --keep=CollisionCheck_SetTrisHitFX
 --keep=caseD_5_003a34dc
 --keep=caseD_12_003a36c0
+--keep=FUN_003a38d4
 --keep=caseD_17_003a3b0c
+--keep=FUN_003a3bdc
 --keep=FUN_003a3be0
 --keep=FUN_003a3d88
 --keep=FUN_003a3f1c
@@ -8114,6 +8226,7 @@
 --keep=EnHorse_MountedTrot
 --keep=EnHorse_MountedRearing
 --keep=EnHorse_FleePlayer
+--keep=FUN_003a8f5c
 --keep=caseD_e_003a9088
 --keep=FUN_003a90f0
 --keep=FUN_003a93cc
@@ -8181,6 +8294,8 @@
 --keep=EnGe1_TalkNoHorse_Archery
 --keep=FUN_003af608
 --keep=FUN_003af690
+--keep=FUN_003af700
+--keep=FUN_003af754
 --keep=FUN_003af7a0
 --keep=FUN_003af83c
 --keep=FUN_003af8f4
@@ -8300,7 +8415,9 @@
 --keep=FUN_003bf500
 --keep=FUN_003bf620
 --keep=FUN_003bf708
+--keep=FUN_003bf92c
 --keep=FUN_003bf948
+--keep=FUN_003bf9b0
 --keep=BgMoriKaitenkabe_Wait
 --keep=FUN_003bfb70
 --keep=FUN_003bfe54
@@ -8370,6 +8487,7 @@
 --keep=FUN_003c54f0
 --keep=FUN_003c586c
 --keep=FUN_003c6128
+--keep=FUN_003c6218
 --keep=FUN_003c6240
 --keep=FUN_003c6320
 --keep=FUN_003c6944
@@ -8436,6 +8554,7 @@
 --keep=FUN_003ce7e8
 --keep=FUN_003ce888
 --keep=ItemGive_DekuNuts
+--keep=FUN_003ce918
 --keep=FUN_003ce92c
 --keep=EnDns_SetupWait
 --keep=EnDns_Burrow
@@ -8545,6 +8664,7 @@
 --keep=FUN_003dc3e0
 --keep=FUN_003dc540
 --keep=FUN_003dc618
+--keep=FUN_003dc9ec
 --keep=EnBili_Climb
 --keep=EnWallmas_ReturnToCeiling
 --keep=FUN_003dccac
@@ -8603,6 +8723,7 @@
 --keep=EnFirefly_Stunned
 --keep=FUN_003e1884
 --keep=EnWallmas_Stun
+--keep=FUN_003e1a70
 --keep=FUN_003e1a74
 --keep=FUN_003e1bac
 --keep=FUN_003e1c50
@@ -8652,6 +8773,7 @@
 --keep=FUN_003e48f8
 --keep=FUN_003e4bc4
 --keep=FUN_003e4d28
+--keep=FUN_003e4e28
 --keep=FUN_003e4ea4
 --keep=EnDodongo_Idle
 --keep=EnFirefly_Perch
@@ -8800,6 +8922,7 @@
 --keep=FUN_003f35f0
 --keep=DemoKankyo_SetupType
 --keep=FUN_003f3fa0
+--keep=FUN_003f41b4
 --keep=FUN_003f4210
 --keep=FUN_003f4414
 --keep=FUN_003f450c
@@ -8839,6 +8962,7 @@
 --keep=FUN_003f84d4
 --keep=FUN_003f87a8
 --keep=FUN_003f87ac
+--keep=FUN_003f87fc
 --keep=EnSsh_Return
 --keep=FUN_003f8e24
 --keep=FUN_003f9060

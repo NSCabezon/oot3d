@@ -20,14 +20,41 @@ ActorInit En_Scene_Change_InitVars = {
     (ActorFunc)EnSceneChange_Draw,
 };
 
-GLOBAL_ASM("asm/EnSceneChange_Init.s")
+void EnSceneChange_DoNothing(EnSceneChange* self, GameState* state);
 
-GLOBAL_ASM("asm/EnSceneChange_Destroy.s")
+void EnSceneChange_Init(Actor* actor, GameState* state) {
+    EnSceneChange* self = (EnSceneChange*)actor;
 
-GLOBAL_ASM("asm/EnSceneChange_Update.s")
+    self->actor.unk_19A = 1;
+    self->skelAnimModel = NULL;
+    self->actionFunc = EnSceneChange_DoNothing;
+}
 
-GLOBAL_ASM("asm/EnSceneChange_Draw.s")
+void EnSceneChange_Destroy(Actor* actor, GameState* state) {
+    EnSceneChange* self = (EnSceneChange*)actor;
 
-GLOBAL_ASM("asm/EnSceneChange_DoNothing.s")
+    FUN_00350f34(&self->actor, &self->skelAnimModel, 0);
+}
+
+void EnSceneChange_Update(Actor* actor, GameState* state) {
+    EnSceneChange* self = (EnSceneChange*)actor;
+
+    self->actionFunc(self, state);
+}
+
+void EnSceneChange_Draw(Actor* actor, GameState* state) {
+    EnSceneChange* self = (EnSceneChange*)actor;
+    MTX34 modelMtx;
+
+    MTX34CopyAsm(&modelMtx, &self->actor.modelMtx);
+    if (self->skelAnimModel != NULL) {
+        self->skelAnimModel->SetUnkAC(1);
+        self->skelAnimModel->FUN_003721e0(&modelMtx);
+        self->skelAnimModel->FUN_00372170(0);
+    }
+}
+
+void EnSceneChange_DoNothing(EnSceneChange* self, GameState* state) {
+}
 
 }

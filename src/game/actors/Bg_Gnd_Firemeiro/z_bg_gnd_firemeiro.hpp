@@ -5,9 +5,15 @@
 
 struct BgGndFiremeiro;
 
+typedef void (*BgGndFiremeiroActionFunc)(struct BgGndFiremeiro*, PlayState*);
+
 typedef struct BgGndFiremeiro {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x30];
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ Vec3f initPos;
+    /* 0x01C8 */ u16 timer;
+    /* 0x01CA */ char unk_1CA[0x2];
+    /* 0x01CC */ BgGndFiremeiroActionFunc actionFunc;
+    /* 0x01D0 */ SkeletonAnimationModel* skelAnimModel;
 } BgGndFiremeiro; // size = 0x1D4
 
 extern ActorInit Bg_Gnd_Firemeiro_InitVars;

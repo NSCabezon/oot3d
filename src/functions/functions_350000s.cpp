@@ -13,7 +13,6 @@ GLOBAL_ASM("asm/FUN_0035021c.s")
 
 GLOBAL_ASM("asm/CollisionCheck_SetInfo2.s")
 
-GLOBAL_ASM("asm/FUN_00350348.s")
 
 GLOBAL_ASM("asm/FUN_0035046c.s")
 
@@ -94,13 +93,9 @@ GLOBAL_ASM("asm/FUN_003528dc.s")
 
 GLOBAL_ASM("asm/Math_StepToAngleS.s")
 
-GLOBAL_ASM("asm/FUN_00352aa8.s")
 
-GLOBAL_ASM("asm/FUN_00352b58.s")
 
-GLOBAL_ASM("asm/FUN_00352c20.s")
 
-GLOBAL_ASM("asm/FUN_00352ce8.s")
 
 GLOBAL_ASM("asm/Health_ChangeBy.s")
 
@@ -126,15 +121,12 @@ GLOBAL_ASM("asm/FUN_003534b8.s")
 GLOBAL_ASM("asm/Item_DropCollectible2.s")
 
 
-GLOBAL_ASM("asm/FUN_00353804.s")
 
 GLOBAL_ASM("asm/Math3D_PointInSquare2D.s")
 
 GLOBAL_ASM("asm/Magic_Fill.s")
 
-GLOBAL_ASM("asm/FUN_003539d8.s")
 
-GLOBAL_ASM("asm/FUN_00353aa4.s")
 
 
 GLOBAL_ASM("asm/FUN_00353c6c.s")
@@ -237,7 +229,6 @@ GLOBAL_ASM("asm/FUN_00357540.s")
 
 GLOBAL_ASM("asm/FUN_003575e8.s")
 
-GLOBAL_ASM("asm/FUN_00357680.s")
 
 
 GLOBAL_ASM("asm/Collider_UpdateSpheres.s")
@@ -248,7 +239,6 @@ GLOBAL_ASM("asm/FUN_00357a28.s")
 
 GLOBAL_ASM("asm/FUN_00357a50.s")
 
-GLOBAL_ASM("asm/FUN_00357a70.s")
 
 GLOBAL_ASM("asm/FUN_00357a84.s")
 
@@ -312,7 +302,6 @@ GLOBAL_ASM("asm/Lights_PointNoGlowSetInfo.s")
 GLOBAL_ASM("asm/FUN_00359220.s")
 
 
-GLOBAL_ASM("asm/FUN_00359420.s")
 
 GLOBAL_ASM("asm/FUN_00359450.s")
 
@@ -379,11 +368,9 @@ GLOBAL_ASM("asm/FUN_0035b1cc.s")
 
 GLOBAL_ASM("asm/FUN_0035b2d0.s")
 
-GLOBAL_ASM("asm/FUN_0035b3b0.s")
 
 GLOBAL_ASM("asm/FUN_0035b494.s")
 
-GLOBAL_ASM("asm/FUN_0035b578.s")
 
 
 
@@ -415,7 +402,6 @@ GLOBAL_ASM("asm/FUN_0035c528.s")
 
 GLOBAL_ASM("asm/Path_OrientAndGetDistSq.s")
 
-GLOBAL_ASM("asm/Path_CopyLastPoint.s")
 
 GLOBAL_ASM("asm/FUN_0035c704.s")
 
@@ -423,7 +409,6 @@ GLOBAL_ASM("asm/FUN_0035c9b8.s")
 
 GLOBAL_ASM("asm/FUN_0035cf48.s")
 
-GLOBAL_ASM("asm/FUN_0035d0bc.s")
 
 GLOBAL_ASM("asm/FUN_0035d178.s")
 
@@ -447,9 +432,7 @@ GLOBAL_ASM("asm/Math3D_Vec3fNormalizedReflect.s")
 
 GLOBAL_ASM("asm/EffectSsDtBubble_SpawnCustomColor.s")
 
-GLOBAL_ASM("asm/FUN_0035dd04.s")
 
-GLOBAL_ASM("asm/FUN_0035dd44.s")
 
 GLOBAL_ASM("asm/FUN_0035ddb4.s")
 
@@ -507,17 +490,13 @@ GLOBAL_ASM("asm/FUN_0035f10c.s")
 
 GLOBAL_ASM("asm/FUN_0035f228.s")
 
-GLOBAL_ASM("asm/FUN_0035f250.s")
 
-GLOBAL_ASM("asm/FUN_0035f268.s")
 
 GLOBAL_ASM("asm/FUN_0035f324.s")
 
-GLOBAL_ASM("asm/FUN_0035f5e4.s")
 
 GLOBAL_ASM("asm/FUN_0035f7a8.s")
 
-GLOBAL_ASM("asm/FUN_0035f830.s")
 
 GLOBAL_ASM("asm/FUN_0035f97c.s")
 

@@ -1,0 +1,12 @@
+	EXPORT EnHonotrap_sColChkInfoInit
+EnHonotrap_sColChkInfoInit EQU 0x00526550
+	EXPORT EnHonotrap_sTrisInit
+EnHonotrap_sTrisInit EQU 0x00526558
+	EXPORT EnHonotrap_sCylinderInit
+EnHonotrap_sCylinderInit EQU 0x00526568
+	EXPORT EnHonotrap_sInitChain
+EnHonotrap_sInitChain EQU 0x005265A0
+	EXPORT EnHonotrap_sEyeScale
+EnHonotrap_sEyeScale EQU 0x005265AC
+
+	END

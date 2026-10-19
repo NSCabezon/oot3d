@@ -1,0 +1,6 @@
+	EXPORT BgMoriHashira4_sUnkTimer
+	EXPORT BgMoriHashira4_sInitChain
+BgMoriHashira4_sUnkTimer EQU 0x00513314
+BgMoriHashira4_sInitChain EQU 0x00513318
+
+	END

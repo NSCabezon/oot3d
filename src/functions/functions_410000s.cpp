@@ -509,7 +509,6 @@ GLOBAL_ASM("asm/__vldtr_initializeStateValidator.s")
 
 GLOBAL_ASM("asm/glEnable.s")
 
-GLOBAL_ASM("asm/FUN_0041507c.s")
 
 GLOBAL_ASM("asm/FUN_0041509c.s")
 

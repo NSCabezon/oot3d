@@ -1,0 +1,12 @@
+	EXPORT ObjTsubo_sObjectIds
+	EXPORT ObjTsubo_sColChkInfoInit
+	EXPORT ObjTsubo_sCylinderInit
+	EXPORT ObjTsubo_sInitChain
+	EXPORT ObjTsubo_sModelIds
+ObjTsubo_sObjectIds EQU 0x00535964
+ObjTsubo_sColChkInfoInit EQU 0x00535970
+ObjTsubo_sCylinderInit EQU 0x00535978
+ObjTsubo_sInitChain EQU 0x005359B0
+ObjTsubo_sModelIds EQU 0x004DBC5C
+
+	END

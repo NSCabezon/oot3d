@@ -1,0 +1,17 @@
+	EXPORT EnGoroiwa_sWaitDurations
+	EXPORT EnGoroiwa_sSpeeds
+	EXPORT EnGoroiwa_sYOffsets
+	EXPORT EnGoroiwa_sColChkInfoInit
+	EXPORT EnGoroiwa_sInitYOffsets
+	EXPORT EnGoroiwa_sJntSphInit
+	EXPORT EnGoroiwa_sInitChain
+
+EnGoroiwa_sWaitDurations EQU 0x00525FA0
+EnGoroiwa_sSpeeds EQU 0x00525FAC
+EnGoroiwa_sYOffsets EQU 0x00525FB4
+EnGoroiwa_sColChkInfoInit EQU 0x00525FA4
+EnGoroiwa_sInitYOffsets EQU 0x00525FC4
+EnGoroiwa_sJntSphInit EQU 0x00525FDC
+EnGoroiwa_sInitChain EQU 0x00525FEC
+
+	END

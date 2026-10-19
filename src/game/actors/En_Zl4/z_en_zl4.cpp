@@ -24,7 +24,14 @@ ActorInit En_Zl4_InitVars = {
 
 GLOBAL_ASM("asm/EnZl4_Init.s")
 
-GLOBAL_ASM("asm/EnZl4_Destroy.s")
+void EnZl4_Destroy(Actor* thisx, GameState* state) {
+    PlayState* play = (PlayState*)state;
+    EnZl4* self = (EnZl4*)thisx;
+
+    Collider_DestroyCylinder(play, &self->collider);
+    SkelAnime_Free2(&self->skelAnime);
+    self->faceAnim.Destroy();
+}
 
 GLOBAL_ASM("asm/EnZl4_Update.s")
 

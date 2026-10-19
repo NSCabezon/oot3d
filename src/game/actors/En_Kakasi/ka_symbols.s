@@ -1,0 +1,4 @@
+	EXPORT kaAnimRef
+kaAnimRef EQU 0x004D97A8
+
+	END

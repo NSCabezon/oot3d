@@ -1,0 +1,4 @@
+	EXPORT Demo6K_sObjectIds
+Demo6K_sObjectIds EQU 0x0051B3D8
+	EXPORT Demo6K_sModelIndex
+Demo6K_sModelIndex EQU 0x0051B3B0

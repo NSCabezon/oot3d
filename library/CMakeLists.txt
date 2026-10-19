@@ -19,3 +19,10 @@ target_compile_options(3ds_sdk PRIVATE $<$<COMPILE_LANGUAGE:C>:
     --signed_chars --multibyte-chars --locale=japanese
     --data-reorder --split_sections
     >)
+
+if(WIBO)
+    # wibo can't setlocale("japanese"); sources are pure ASCII so this doesn't affect codegen.
+    get_target_property(sdk_opts 3ds_sdk COMPILE_OPTIONS)
+    list(REMOVE_ITEM sdk_opts --multibyte-chars --locale=japanese)
+    set_target_properties(3ds_sdk PROPERTIES COMPILE_OPTIONS "${sdk_opts}")
+endif()

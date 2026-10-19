@@ -1,0 +1,2 @@
+	EXPORT EnTrap_sCylinderInit
+EnTrap_sCylinderInit EQU 0x0052FB98

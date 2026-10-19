@@ -28,5 +28,11 @@ GLOBAL_ASM("asm/EnSkjneedle_Destroy.s")
 
 GLOBAL_ASM("asm/EnSkjneedle_Update.s")
 
-GLOBAL_ASM("asm/EnSkjneedle_Draw.s")
+void EnSkjneedle_Draw(Actor* actor, GameState* state) {
+    EnSkjneedle* self = (EnSkjneedle*)actor;
+
+    self->skelAnimModel->SetUnkAC(1);
+    self->skelAnimModel->FUN_003721e0(&actor->modelMtx);
+    self->skelAnimModel->FUN_00372170(0);
+}
 }

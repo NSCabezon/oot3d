@@ -5,9 +5,13 @@
 
 struct BgBomGuard;
 
+typedef void (*BgBomGuardActionFunc)(struct BgBomGuard*, PlayState*);
+
 typedef struct BgBomGuard {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x2C];
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ BgBomGuardActionFunc actionFunc;
+    /* 0x01C0 */ u8 isActive;
+    /* 0x01C4 */ Vec3f homePos;
 } BgBomGuard; // size = 0x1D0
 
 extern ActorInit Bg_Bom_Guard_InitVars;

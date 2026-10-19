@@ -1,0 +1,15 @@
+	EXPORT BgGndIceblock_sBlockPositions
+	EXPORT BgGndIceblock_sInitChain
+	EXPORT BgGndIceblock_sWhite
+	EXPORT BgGndIceblock_sGray
+	EXPORT BgGndIceblock_sZeroVec
+	EXPORT BgGndIceblock_sGrayB
+
+BgGndIceblock_sBlockPositions EQU 0x00510FF4
+BgGndIceblock_sInitChain EQU 0x00511000
+BgGndIceblock_sWhite EQU 0x00510FF6
+BgGndIceblock_sGray EQU 0x00510FFA
+BgGndIceblock_sZeroVec EQU 0x00569944
+BgGndIceblock_sGrayB EQU 0x00510FFA
+
+	END

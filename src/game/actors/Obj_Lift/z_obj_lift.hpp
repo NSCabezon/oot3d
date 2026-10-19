@@ -5,10 +5,15 @@
 
 struct ObjLift;
 
+typedef void (*ObjLiftActionFunc)(struct ObjLift* self, PlayState* play);
+
 typedef struct ObjLift {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x28];
-} ObjLift; // size = 0x1CC
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ ObjLiftActionFunc actionFunc;
+    /* 0x01C0 */ SkeletonAnimationModel* skelAnimModel;
+    /* 0x01C4 */ Vec3s shakeOrientation;
+    /* 0x01CA */ s16 timer;
+} ObjLift; // size = 0x01CC
 
 extern ActorInit Obj_Lift_InitVars;
 

@@ -5,10 +5,13 @@
 
 struct BgSpot18Shutter;
 
+typedef void (*BgSpot18ShutterActionFunc)(struct BgSpot18Shutter*, PlayState*);
+
 typedef struct BgSpot18Shutter {
-    /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x20];
-} BgSpot18Shutter; // size = 0x1C4
+    /* 0x0000 */ DynaPolyActor dyna;
+    /* 0x01BC */ BgSpot18ShutterActionFunc actionFunc;
+    /* 0x01C0 */ SkeletonAnimationModel* skelAnimModel;
+} BgSpot18Shutter; // size = 0x01C4
 
 extern ActorInit Bg_Spot18_Shutter_InitVars;
 

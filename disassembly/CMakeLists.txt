@@ -10,8 +10,16 @@ set(TOOLS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/tools)
 
 set(DISASM_CONFIG ${CMAKE_CURRENT_SOURCE_DIR}/oot3d.cfg)
 
-find_program(CTRTOOL ctrtool ${TOOLS_DIR})
-find_program(N3DSDISASM n3dsdisasm ${TOOLS_DIR})
+find_program(PYTHON_EXE NAMES python3 python REQUIRED)
+if(APPLE)
+    # The bundled ctrtool/n3dsdisasm are Linux/Windows x86-64 binaries.
+    # ctrtool -> pure-python shim; n3dsdisasm -> Linux binary run in a linux/amd64 container.
+    set(CTRTOOL ${CMAKE_CURRENT_SOURCE_DIR}/../tools/macos/ctrtool)
+    set(N3DSDISASM ${CMAKE_CURRENT_SOURCE_DIR}/../tools/macos/n3dsdisasm)
+else()
+    find_program(CTRTOOL ctrtool ${TOOLS_DIR})
+    find_program(N3DSDISASM n3dsdisasm ${TOOLS_DIR})
+endif()
 
 add_custom_command(
     DEPENDS ${BASEROM}
@@ -32,7 +40,7 @@ add_custom_target(
 
 add_custom_command(
     DEPENDS extract_baserom
-    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && python ${TOOLS_DIR}/exefs2elf.py
+    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && ${PYTHON_EXE} ${TOOLS_DIR}/exefs2elf.py
     OUTPUT ${BASEROM_DIR}/baserom.elf
     COMMENT "Creating baserom.elf..."
 )
@@ -56,7 +64,7 @@ add_custom_target(
 
 add_custom_command(
     DEPENDS n3dsdisasm ${BASEROM_DIR}/baserom_before_fixes.s
-    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && python ./tools/baserom_fixes.py ${BASEROM_DIR}/baserom_before_fixes.s ${BASEROM_DIR}/baserom.s
+    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && ${PYTHON_EXE} ./tools/baserom_fixes.py ${BASEROM_DIR}/baserom_before_fixes.s ${BASEROM_DIR}/baserom.s
     OUTPUT ${BASEROM_DIR}/baserom.s
     COMMENT "Applying specific fixes to baserom_before_fixes.s to create baserom.s..."
 )
@@ -68,8 +76,8 @@ add_custom_target(
 
 add_custom_command(
     DEPENDS n3dsdisasm_post_fixes
-    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && python ./tools/gcc_to_arm_asm.py ${BASEROM_DIR}/baserom.s asm
-    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && python ./tools/split_arm_data_chunks.py
+    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && ${PYTHON_EXE} ./tools/gcc_to_arm_asm.py ${BASEROM_DIR}/baserom.s asm
+    COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && ${PYTHON_EXE} ./tools/split_arm_data_chunks.py
     COMMAND cd ${CMAKE_CURRENT_SOURCE_DIR} && touch split_asm.txt
     OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/split_asm.txt
     COMMENT "Splitting baserom.s and data chunks..."

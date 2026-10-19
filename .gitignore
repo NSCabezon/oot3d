@@ -14,3 +14,15 @@ asm
 *.o
 *.s
 *.bin
+
+# Generated local assets and editor files
+.DS_Store
+*.cpp-E
+*.cpp-e
+*.obj
+*.lib
+*.axf
+split/asm/
+split/generated.stamp
+*_data_tail.s
+tools/macos/cmdshim/cmd.exe

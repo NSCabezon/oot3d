@@ -5,7 +5,7 @@ extern "C" {
 
 void ObjectKankyo_Init(Actor* actor, GameState* state);
 void ObjectKankyo_Destroy(Actor* actor, GameState* state);
-void ObjectKankyo_Update(Actor* actor, GameState* state);
+void ObjectKankyo_Update(Actor* thisx, PlayState* play);
 void ObjectKankyo_Draw(Actor* actor, GameState* state);
 
 GLOBAL_ASM("data/z_Object_Kankyo.data.s")
@@ -26,7 +26,11 @@ GLOBAL_ASM("asm/ObjectKankyo_Init.s")
 
 GLOBAL_ASM("asm/ObjectKankyo_Destroy.s")
 
-GLOBAL_ASM("asm/ObjectKankyo_Update.s")
+void ObjectKankyo_Update(Actor* thisx, PlayState* play) {
+    ObjectKankyo* self = (ObjectKankyo*)thisx;
+
+    self->actionFunc(self, play);
+}
 
 GLOBAL_ASM("asm/ObjectKankyo_Draw.s")
 }

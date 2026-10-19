@@ -1,0 +1,6 @@
+	EXPORT BgBdanObjects_sInitChain
+	EXPORT BgBdanObjects_sCylinderInit
+BgBdanObjects_sInitChain EQU 0x00510A08
+BgBdanObjects_sCylinderInit EQU 0x00510A10
+
+	END

@@ -1,0 +1,15 @@
+	EXPORT BgYdanSp_sInitChain
+	EXPORT BgYdanSp_sFloorTris
+	EXPORT BgYdanSp_sWallTris
+	EXPORT BgYdanSp_sTrisInit
+	EXPORT BgYdanSp_sPushConstants
+	EXPORT BgYdanSp_sYawRanges
+BgYdanSp_sInitChain EQU 0x00514250
+BgYdanSp_sFloorTris EQU 0x00514278
+BgYdanSp_sWallTris EQU 0x005142B4
+BgYdanSp_sTrisInit EQU 0x005142F0
+BgYdanSp_sPushConstants EQU 0x00514268
+BgYdanSp_sYawRanges EQU 0x00514300
+	EXPORT BgYdanSp_sData
+BgYdanSp_sData EQU 0x00514250
+	END
