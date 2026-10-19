@@ -17,8 +17,6 @@ A prior copy of the game is required to extract the needed assets.
 
 Website: <https://zelda.deco.mp/>
 
-Discord: <https://discord.zelda.deco.mp>
-
 ## Fork progress
 
 Verified on **2026-10-19** against the USA reference build:
@@ -90,8 +88,3 @@ cmake --build build --target code --parallel 1
 at `disassembly/baserom.3ds` as described above. Generated local assets are not
 versioned. The upstream `check` target still checks for a fully identical binary;
 the known mismatch described above means this fork does not yet pass that hash.
-
-## Contributing
-TODO
-
-Most discussions happen on our [Discord Server](https://discord.zelda.deco.mp), where you are welcome to ask if you need help getting started, or if you have any questions regarding this project and other decompilation projects.
