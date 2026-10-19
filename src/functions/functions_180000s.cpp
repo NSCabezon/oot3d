@@ -128,7 +128,6 @@ GLOBAL_ASM("asm/FUN_00184ff8.s")
 GLOBAL_ASM("asm/FUN_00185468.s")
 
 
-GLOBAL_ASM("asm/FUN_001857ec.s")
 
 
 
@@ -253,7 +252,6 @@ GLOBAL_ASM("asm/FUN_00193f0c.s")
 
 
 
-GLOBAL_ASM("asm/caseD_3.s")
 
 
 

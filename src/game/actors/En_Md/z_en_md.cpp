@@ -115,7 +115,7 @@ void FUN_003725e0(PlayState* play);
 void FUN_0037073c(PlayState* play, u16 action);
 void FUN_003d2ae4(EnMd* self, PlayState* play);
 void FUN_00196354(EnMd* self, GameState* state);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 s32 FUN_0036bb28(Actor* actor, PlayState* play, f32 arg2);
 
 typedef struct {

@@ -37,7 +37,7 @@ void FUN_0034e01c(MTX34* mtx, Vec3s* rot);
 void SkelAnime_SetCurrentFrame2(SkelAnime* skelAnime, f32 frame);
 s32 Inventory_HasEmptyBottle(void);
 void Rupees_ChangeBy(s16 amount);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 void GraphicsContext_UnknownStub(GraphicsContext* gfxCtx); // N64 Gfx_SetupDL_37Opa (empty on 3DS)
 void* ZAR_GetCMBByIndex(void* zar, s32 index);
 void FUN_00353e78(void* zar, PlayState* play, SkelAnime* skelAnime, void* cmb, void* p, s32 a, void* b, void* c, s32 d);

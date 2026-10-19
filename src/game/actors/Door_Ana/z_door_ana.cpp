@@ -208,7 +208,7 @@ void DoorAna_GrabLink(DoorAna* self, PlayState* play) {
 }
 
 s32 Flags_GetEnv(PlayState* play, s32 flag);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 
 void DoorAna_WaitClosed(DoorAna* self, PlayState* play) {
     s32 openGrotto = false;

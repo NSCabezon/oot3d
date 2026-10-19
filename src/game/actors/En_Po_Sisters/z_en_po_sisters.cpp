@@ -589,7 +589,7 @@ void FUN_003ca1e4(EnPoSisters* self, PlayState* play) {
 // D_80ADD7A4 (Vec3s[4], 0x0052E088) lives in the data chunk; EQU in data_syms.s.
 extern Vec3s D_80ADD7A4[];
 void Flags_UnsetSwitch(PlayState* play, s32 flag);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 void Audio_PlaySoundAtPosition(PlayState* play, Vec3f* pos, s32 duration, u32 sfxId);
 void Actor_Kill(Actor* actor);
 

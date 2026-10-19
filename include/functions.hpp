@@ -131,7 +131,7 @@ void EffectSsKakera_Spawn(PlayState* play, Vec3f* pos, Vec3f* velocity, Vec3f* a
                           s16 objId, void* dList);
 void FUN_0037378c(PlayState* play, Vec3f* arg1, f32 arg2, s32 arg3, s16 arg4, s16 arg5, u8 arg6);
 void Audio_PlaySoundAtPosition(PlayState* play, Vec3f* pos, s32 duration, u32 sfxId);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 s32 GiveItem(Actor* actor, PlayState* play, s32 getItemId, f32 xyRange, f32 yRange);
 void DynaPolyActor_Init(DynaPolyActor* dynaActor, s32 flags);
 void* DynaPolyInfo_Alloc(DynaPolyActor* dynaActor, GameState* state, s32 index);

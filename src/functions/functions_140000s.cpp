@@ -467,7 +467,6 @@ GLOBAL_ASM("asm/FUN_0016e678.s")
 
 
 
-GLOBAL_ASM("asm/caseD_2_0016ea9c.s")
 
 GLOBAL_ASM("asm/FUN_0016eb58.s")
 

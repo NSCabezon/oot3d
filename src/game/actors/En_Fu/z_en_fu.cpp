@@ -40,7 +40,7 @@ s32 FUN_00369a48(Actor* actor, PlayState* play);
 void FUN_0034e01c(MTX34* mtx, Vec3s* rot);
 void FUN_003523dc(s32 instrument);
 void FUN_0037073c(PlayState* play, s32 action);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 void FUN_00367c7c(PlayState* play, u16 textId, Actor* actor);
 void Animation_Change_00375c08(SkelAnime* skelAnime, s32 idx, f32 speed, f32 start, f32 end, s32 mode, f32 morph);
 s32 Animation_GetLastFrame(SkelAnime* skelAnime, s32 idx);

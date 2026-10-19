@@ -27,7 +27,7 @@ s32 GetMessageMode(PlayState* play);
 s32 FUN_0034eaf8(void* collider);
 void FUN_00370778(PlayState* play);
 s32 FUN_002386c4(PlayState* play);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId); // Sfx_PlaySfxCentered
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId); // Sfx_PlaySfxCentered
 void FUN_003523dc(s32 instrument); // AudioOcarina_SetInstrument
 extern s8 En_Fr_sUnk5238D0; // 0x005238D0, EQU in data_syms.s
 extern s32 En_Fr_sSongToFrog[]; // 0x00523914, EQU in data_syms.s

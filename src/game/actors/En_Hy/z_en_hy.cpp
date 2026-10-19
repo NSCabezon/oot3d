@@ -76,7 +76,7 @@ void FUN_0036932c(SkeletonAnimationModel* model, s32 index);
 void FUN_0037266c(SkeletonAnimationModel* model, s32 index);
 void FUN_00357a50(SkelAnime* skelAnime, s32 index, s32 count, f32* color, s32 arg4);
 void Matrix_UpdatePosition(MTX34* dst, MTX34* src, Vec3f* translate);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 void FUN_0035c528(u32 seqId);
 void Rupees_ChangeBy(s16 amount);
 void Player_UpdateBottleHeld(PlayState* play, Player* player, s32 item, s32 itemAction);

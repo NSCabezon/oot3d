@@ -17,7 +17,7 @@ void FUN_001ca9fc(BgYdanMaruta* self, PlayState* play); // func_808BF108 (shake)
 void FUN_001ca91c(BgYdanMaruta* self, PlayState* play); // func_808BF1EC (fall)
 void FUN_00374bb8(PlayState* play, Actor* actor, f32 arg2, s16 arg3, f32 arg4);
 void FUN_00373264(Actor* actor, s32 arg1);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 s32 CollisionCheck_SetAT(PlayState* play, CollisionCheckContext* colChkCtx, Collider* collider);
 s32 CollisionCheck_SetAC(PlayState* play, CollisionCheckContext* colChkCtx, Collider* collider);
 void Flags_SetSwitch(PlayState* play, s32 flag);

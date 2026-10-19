@@ -11,7 +11,7 @@ void FUN_00357248(SkeletonAnimationModel** model);
 SkeletonAnimationModel* FUN_0036a924(Actor* actor, PlayState* play, s16 objectSlot, s32 arg3);
 void FUN_00154dac(BgMoriHineri* self, PlayState* play);
 void FUN_00174e04(BgMoriHineri* self, PlayState* play);
-void FUN_00372244(void* arg0, s16 arg1, u32 sfxId);
+void FUN_00372244(void* arg0, u16 arg1, u32 sfxId);
 s32 OnePointCutscene_Init(PlayState* play, s32 csId, s32 arg2, Actor* actor, s32 camId);
 void OnePointCutscene_EndCutscene(PlayState* play, s32 camId);
 void FUN_0029d22c(Actor* thisx, GameState* state);

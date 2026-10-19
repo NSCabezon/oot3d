@@ -4,4 +4,16 @@
 ObjSwitch_sDrawFuncs EQU 0x00535708
 ObjSwitch_sCrystalAnimColors EQU 0x004DBC0D
 ObjSwitch_sTextureAnimMask EQU 0x004DBC2B
+	EXPORT ObjSwitch_sModelIndices
+ObjSwitch_sModelIndices EQU 0x004DBC12
+	EXPORT ObjSwitch_sInitChain
+ObjSwitch_sInitChain EQU 0x005356F8
+	EXPORT ObjSwitch_sFocusHeights
+ObjSwitch_sFocusHeights EQU 0x005356B4
+	EXPORT ObjSwitch_sRustyFloorTrisInit
+ObjSwitch_sRustyFloorTrisInit EQU 0x005356C8
+	EXPORT ObjSwitch_sEyeTrisInit
+ObjSwitch_sEyeTrisInit EQU 0x005356D8
+	EXPORT ObjSwitch_sCrystalJntSphInit
+ObjSwitch_sCrystalJntSphInit EQU 0x005356E8
 	END
