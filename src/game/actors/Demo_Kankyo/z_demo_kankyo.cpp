@@ -2,6 +2,11 @@ extern "C" {
 #include "z_demo_kankyo.hpp"
 
 #define FLAGS 0x00000030
+#define R_UPDATE_RATE SREG(30)
+
+void FUN_0034fc7c(void* p);
+void SystemArena_Free(void* p);
+f32 FUN_00361490(u16 endFrame, u16 startFrame, u16 curFrame);
 
 void DemoKankyo_Init(Actor* actor, GameState* state);
 void DemoKankyo_Destroy(Actor* actor, GameState* state);
@@ -24,10 +29,52 @@ ActorInit Demo_Kankyo_InitVars = {
 
 GLOBAL_ASM("asm/DemoKankyo_Init.s")
 
-#if 0
-void DemoKankyo_Destroy(DemoKankyo* self, PlayState* play) {}
-#endif
-GLOBAL_ASM("asm/DemoKankyo_Destroy.s")
+void DemoKankyo_Destroy(Actor* actor, GameState* state) {
+    DemoKankyo* self = (DemoKankyo*)actor;
+    s32 i;
+    if (self->resourcesLoaded) {
+        switch (actor->params) {
+            case 0:
+            case 1:
+                for (i = 0; i < 150; i++) {
+                    FUN_00350f34(actor, &self->models[i], 0);
+                }
+                break;
+            case 13:
+                FUN_00350f34(actor, &self->models[0], &self->models[1], 0);
+                break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 14:
+                FUN_00350f34(actor, &self->models[0], 0);
+                break;
+            case 7:
+                for (i = 0; i < 30; i++) {
+                    FUN_00350f34(actor, &self->models[i], 0);
+                }
+                break;
+            case 15:
+            case 16:
+            case 17:
+            case 18:
+                if (self->effectResource != NULL) {
+                    FUN_0034fc7c(self->effectResource);
+                    SystemArena_Free(self->effectResource);
+                }
+                self->effectResource = NULL;
+                break;
+            case 8:
+            case 9:
+            case 10:
+            case 11:
+            case 12:
+                break;
+        }
+    }
+}
 
 void DemoKankyo_Update(Actor* actor, GameState* state) {
     DemoKankyo* self = (DemoKankyo*)actor;
@@ -48,39 +95,61 @@ void DemoKankyo_KillDoorOfTimeCollision(DemoKankyo* self, PlayState* play) {
 
 GLOBAL_ASM("asm/DemoKankyo_SetupType.s")
 
-#if 0
-// N64 logic is a 30-entry loop. The 3DS body uses update-rate-scaled
-// movement and a different packed actor layout, so this draft is not enabled.
 void DemoKankyo_UpdateClouds(DemoKankyo* self, PlayState* play) {
     u8 i;
     for (i = 0; i < 30; i++) {
-        self->unk_150[i].unk_20 += (s16)self->unk_150[i].unk_18;
+        self->effects[i].angle += (s16)(R_UPDATE_RATE * self->effects[i].translation / 3.0f);
     }
 }
-#endif
-GLOBAL_ASM("asm/DemoKankyo_UpdateClouds.s")
 
-#if 0
 void DemoKankyo_UpdateDoorOfTime(DemoKankyo* self, PlayState* play) {
-    Actor_PlaySfx(&self->actor, NA_SE_EV_STONE_STATUE_OPEN - SFX_FLAG);
-    self->unk_150[0].unk_18 += 1.0f;
-    if (self->unk_150[0].unk_18 >= 102.0f) {
-        Actor_PlaySfx(&self->actor, NA_SE_EV_STONEDOOR_STOP);
-        SET_EVENTCHKINF(EVENTCHKINF_OPENED_DOOR_OF_TIME);
+    Audio_PlayActorSound2(&self->actor, 0x01000175);
+    self->effects[0].translation += R_UPDATE_RATE / 3.0f;
+    if (self->effects[0].translation >= 102.0f) {
+        Audio_PlayActorSound2(&self->actor, 0x010001EA);
+        gSaveContext.eventChkInf[4] |= 0x800;
         Actor_Kill(self->actor.child);
-        DemoKankyo_SetupAction(self, DemoKankyo_KillDoorOfTimeCollision);
+        self->actionFunc = DemoKankyo_KillDoorOfTimeCollision;
     }
 }
-#endif
-GLOBAL_ASM("asm/DemoKankyo_UpdateDoorOfTime.s")
 
-#if 0
-void DemoKankyo_UpdateRock(DemoKankyo* self, PlayState* play) {
-    if (play->csCtx.state != CS_STATE_IDLE && play->csCtx.actorCues[self->actor.params - DEMOKANKYO_ROCK_1] != NULL) {
-        DemoKankyo_SetPosFromCue(self, play, self->actor.params - DEMOKANKYO_ROCK_1);
-    }
+static inline void DemoKankyo_SetPosFromCue(DemoKankyo* self, PlayState* play, s32 cueChannel) {
+    Vec3f startPos;
+    Vec3f endPos;
+    CsCmdActorAction* cue = play->csCtx.npcActions[cueChannel];
+    f32 lerp;
+
+    startPos.x = cue->startPos.x;
+    startPos.y = cue->startPos.y;
+    startPos.z = cue->startPos.z;
+    endPos.x = cue->endPos.x;
+    endPos.y = cue->endPos.y;
+    endPos.z = cue->endPos.z;
+    lerp = FUN_00361490(cue->endFrame, cue->startFrame, play->csCtx.frames);
+    self->actor.world.pos.x = (endPos.x - startPos.x) * lerp + startPos.x;
+    self->actor.world.pos.y = (endPos.y - startPos.y) * lerp + startPos.y;
+    self->actor.world.pos.z = (endPos.z - startPos.z) * lerp + startPos.z;
 }
-#endif
-GLOBAL_ASM("asm/DemoKankyo_UpdateRock.s")
+
+void DemoKankyo_UpdateRock(DemoKankyo* self, PlayState* play) {
+    CsCmdActorAction* cue;
+    if (play->GetCutsceneState() != 0 && (cue = play->csCtx.npcActions[self->actor.params - 2]) != NULL &&
+        cue->action == 2) {
+        DemoKankyo_SetPosFromCue(self, play, self->actor.params - 2);
+        if (play->csCtx.frames < play->csCtx.npcActions[self->actor.params - 2]->endFrame - 5) {
+            self->effects[0].angle = 255;
+        } else {
+            self->effects[0].angle = (play->csCtx.npcActions[self->actor.params - 2]->endFrame - play->csCtx.frames) * 0.2f * 255.0f;
+            if (self->effects[0].angle < 0) {
+                self->effects[0].angle = 0;
+            }
+        }
+    } else {
+        self->effects[0].angle = 0;
+    }
+    self->effects[0].offset.x += self->effects[0].velocity.x * (R_UPDATE_RATE / 3.0f);
+    self->effects[0].offset.y += self->effects[0].velocity.y * (R_UPDATE_RATE / 3.0f);
+    self->effects[0].offset.z += self->effects[0].velocity.z * (R_UPDATE_RATE / 3.0f);
+}
 
 }

@@ -25,8 +25,8 @@ Verified on **2026-10-19** against the USA reference build:
 
 | Metric | Current progress |
 | --- | --- |
-| `.text` implemented in C/C++ | **16.750%** — 665,224 bytes |
-| Functions implemented in C/C++ | **3,341 / 12,158 (27.48%)** |
+| `.text` implemented in C/C++ | **16.785%** — 666,616 bytes |
+| Functions implemented in C/C++ | **3,348 / 12,159 (27.54%)** |
 
 The complete local rebuild has one known mismatch, `FUN_00249af8` (four words),
 and zero differing bytes outside functions. Function counts use the current split

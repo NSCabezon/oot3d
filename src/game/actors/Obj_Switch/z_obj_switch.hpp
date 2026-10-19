@@ -46,7 +46,7 @@ void ObjSwitch_FloorRelease(ObjSwitch* thisx);
 void ObjSwitch_EyeClosed(ObjSwitch* thisx, PlayState* play);
 void ObjSwitch_EyeOpen(ObjSwitch* thisx, PlayState* play);
 void ObjSwitch_CrystalOff(ObjSwitch* thisx, PlayState* play);
-void caseD_0(ObjSwitch* thisx, PlayState* play);
+void caseD_0(Actor* actor, GameState* state);
 void caseD_1(ObjSwitch* thisx, PlayState* play);
 void ObjSwitch_FloorDownInit(ObjSwitch* thisx);
 

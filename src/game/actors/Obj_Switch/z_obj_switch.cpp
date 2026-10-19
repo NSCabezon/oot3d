@@ -47,19 +47,17 @@ void caseD_1(ObjSwitch* thisx, PlayState* play) {
     }
 }
 
-#if 0 // Best draft: 21/26 words differ in fastchk.
-void caseD_0(ObjSwitch* thisx, PlayState* play) {
-    Player* player = GET_PLAYER(play);
-    s32 type = ((u16)thisx->actor.params >> 4) & 7;
+void caseD_0(Actor* actor, GameState* state) {
+    ObjSwitch* thisx = (ObjSwitch*)actor;
+    s32 type = ((u32)(u16)actor->params << 25) >> 29;
 
-    FUN_00357fd0(player, thisx->actor.unk_178, &thisx->actor.world.pos);
+    FUN_00357fd0(GET_PLAYER((PlayState*)state), actor->unk_178, &actor->world.pos);
     if (thisx->skelAnimModel[type] != NULL) {
         thisx->skelAnimModel[type]->FUN_003721e0(&thisx->actor.modelMtx);
         thisx->skelAnimModel[type]->SetUnkAC(1);
         thisx->skelAnimModel[type]->FUN_00372170(0);
     }
 }
-#endif
 
 void ObjSwitch_EyeOpen(ObjSwitch* thisx, PlayState* play) {
     if ((thisx->eyeHitFlags & 2) && !(thisx->eyeColFlags & 2) && thisx->eyeHitActor != NULL) {
@@ -106,21 +104,26 @@ void ObjSwitch_FloorRelease(ObjSwitch* thisx) {
     }
 }
 
-#if 0 // Best draft: 20/72 words differ in fastchk before full-link validation.
+static inline void ObjSwitch_SetFloorDown(ObjSwitch* thisx) {
+    thisx->actor.scale.y = 0.0165f;
+    thisx->releaseTimer = 9;
+    thisx->actionFunc = ObjSwitch_FloorDown;
+}
+
 void ObjSwitch_FloorPress(ObjSwitch* thisx, PlayState* play) {
     if (3 == (((u32)(u16)thisx->actor.params << 25) >> 29) || !thisx->cooldownOn || FUN_0036ae04() == thisx->actor.type ||
         thisx->cooldownTimer <= 0) {
-        thisx->actor.scale.y -= 0.0165f;
+        thisx->actor.scale.y -= 0.0495f;
         if (thisx->actor.scale.y <= 0.0165f) {
-            ObjSwitch_FloorDownInit(thisx);
+            ObjSwitch_SetFloorDown(thisx);
             Audio_PlayActorSound2(&thisx->actor, 0x0100016C);
             if (thisx->actor.params & 0x4000) {
-                play->actorCtx.actorLists[ACTORCAT_PLAYER].head->freezeTimer = thisx->cooldownTimer;
+                Player* player = GET_PLAYER(play);
+                player->actor.freezeTimer = thisx->cooldownTimer;
             }
         }
     }
 }
-#endif
 
 #define FLAGS 0x00000010
 
@@ -128,23 +131,12 @@ void ObjSwitch_Init(Actor* actor, GameState* state);
 void ObjSwitch_Destroy(Actor* actor, GameState* state);
 void ObjSwitch_Update(Actor* actor, GameState* state);
 void ObjSwitch_Draw(Actor* actor, GameState* state);
-#if 0 // Best draft: static table duplicates the existing data table, so keep ASM active.
+typedef void (*ObjSwitchDrawFunc)(Actor*, PlayState*);
+extern ObjSwitchDrawFunc ObjSwitch_sDrawFuncs[8];
+GLOBAL_ASM("../src/game/actors/Obj_Switch/data_syms.s")
 void ObjSwitch_Draw(Actor* actor, GameState* state) {
-    typedef void (*ObjSwitchDrawFunc)(Actor*, PlayState*);
-    static ObjSwitchDrawFunc drawFuncs[8] = {
-        (ObjSwitchDrawFunc)caseD_0,
-        (ObjSwitchDrawFunc)caseD_1,
-        (ObjSwitchDrawFunc)caseD_2_0016ea9c,
-        (ObjSwitchDrawFunc)caseD_3,
-        (ObjSwitchDrawFunc)caseD_3,
-        NULL,
-        NULL,
-        NULL,
-    };
-    drawFuncs[(u16)actor->params & 7](actor, (PlayState*)state);
+    ObjSwitch_sDrawFuncs[(u16)actor->params & 7](actor, (PlayState*)state);
 }
-#endif
-GLOBAL_ASM("asm/ObjSwitch_Draw.s")
 
 GLOBAL_ASM("data/z_Obj_Switch.data.s")
 
@@ -176,7 +168,7 @@ GLOBAL_ASM("asm/ObjSwitch_CrystalTurnOn.s")
 
 GLOBAL_ASM("asm/ObjSwitch_EyeClosed.s")
 
-GLOBAL_ASM("asm/ObjSwitch_FloorPress.s")
+GLOBAL_ASM("../split/asm/FUN_001442ec.s")
 
 GLOBAL_ASM("asm/ObjSwitch_FloorDown.s")
 

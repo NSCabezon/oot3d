@@ -451,6 +451,15 @@
       ]
     },
     {
+      "name": "FUN_001442ec",
+      "source": "ObjSwitch_FloorPress",
+      "offset": 196,
+      "size": 92,
+      "exports": [
+        "FUN_001442ec"
+      ]
+    },
+    {
       "name": "FUN_001493f0",
       "source": "DemoExt_Update",
       "offset": 40,
@@ -1942,6 +1951,15 @@
       "size": 388,
       "exports": [
         "ObjMakeoshihiki_Draw"
+      ]
+    },
+    {
+      "name": "ObjSwitch_FloorPress",
+      "source": "ObjSwitch_FloorPress",
+      "offset": 0,
+      "size": 196,
+      "exports": [
+        "ObjSwitch_FloorPress"
       ]
     },
     {

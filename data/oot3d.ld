@@ -2660,6 +2660,10 @@ text 0x00100000
 	{
 		* (i.ObjSwitch_FloorPress)
 	}
+	FUN_001442ec 0x001442ec
+	{
+		* (i.FUN_001442ec)
+	}
 	FUN_00144348 0x00144348
 	{
 		* (i.FUN_00144348)

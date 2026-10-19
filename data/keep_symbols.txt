@@ -660,6 +660,7 @@
 --keep=ObjSwitch_EyeOpening
 --keep=FUN_001441b0
 --keep=ObjSwitch_FloorPress
+--keep=FUN_001442ec
 --keep=FUN_00144348
 --keep=EnHonotrap_EyeAttack
 --keep=EnHonotrap_EyeOpen
