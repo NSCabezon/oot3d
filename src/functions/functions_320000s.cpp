@@ -121,7 +121,14 @@ GLOBAL_ASM("asm/FUN_003254d8.s")
 GLOBAL_ASM("asm/FUN_003254f4.s")
 
 
-GLOBAL_ASM("asm/FUN_003255ec.s")
+#include "z3Dvec.hpp"
+struct PlayState;
+extern "C" {
+s32 FUN_003255f0(PlayState*, s32, MTX34*, void*);
+s32 FUN_003255ec(PlayState* play, s32 limbIndex, MTX34* mtx, void* actor) {
+    return FUN_003255f0(play, limbIndex, mtx, actor);
+}
+}
 
 GLOBAL_ASM("asm/FUN_003255f0.s")
 
