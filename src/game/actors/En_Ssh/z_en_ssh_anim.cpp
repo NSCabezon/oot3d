@@ -1,6 +1,8 @@
 extern "C" {
 #include "z_en_ssh.hpp"
 
+GLOBAL_ASM("../src/game/actors/En_Ssh/data_syms.s")
+
 s32 Animation_GetLastFrame(SkelAnime* skelAnime, s32 animIndex);
 void Animation_Change_00375c08(SkelAnime* skelAnime, s32 animIndex, f32 speed, f32 start, f32 end, s32 mode,
                                f32 morph);
@@ -29,4 +31,5 @@ f32 EnSsh_SetAnimation(EnSsh* self, s32 animIndex) {
 #endif
 
 GLOBAL_ASM("asm/EnSsh_SetAnimation.s")
+
 }

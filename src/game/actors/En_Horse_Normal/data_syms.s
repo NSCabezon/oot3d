@@ -1,0 +1,21 @@
+	EXPORT EnHorseNormal_sRandomIdle
+	EXPORT EnHorseNormal_sColInfo
+	EXPORT EnHorseNormal_sStepFrames
+	EXPORT EnHorseNormal_sInitChain
+	EXPORT EnHorseNormal_sAnimations
+	EXPORT EnHorseNormal_sCylinder1
+	EXPORT EnHorseNormal_sCylinder2
+	EXPORT EnHorseNormal_sJntSph
+	EXPORT EnHorseNormal_sAnimClass
+
+EnHorseNormal_sRandomIdle EQU 0x005271F4
+EnHorseNormal_sColInfo EQU 0x005271F6
+EnHorseNormal_sStepFrames EQU 0x00527200
+EnHorseNormal_sInitChain EQU 0x00527208
+EnHorseNormal_sAnimations EQU 0x00527210
+EnHorseNormal_sCylinder1 EQU 0x00527234
+EnHorseNormal_sCylinder2 EQU 0x0052726C
+EnHorseNormal_sJntSph EQU 0x005272A4
+EnHorseNormal_sAnimClass EQU 0x005272EC
+
+	END

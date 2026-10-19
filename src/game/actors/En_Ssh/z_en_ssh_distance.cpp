@@ -1,7 +1,8 @@
 extern "C" {
 #include "z_en_ssh.hpp"
 
-#if 0
+f32 EnSsh_SetAnimation(EnSsh* self, s32 animIndex);
+
 s32 EnSsh_IsCloseToLink(EnSsh* self, PlayState* play) {
     Player* player = GET_PLAYER(play);
     f32 yDist;
@@ -25,13 +26,14 @@ s32 EnSsh_IsCloseToLink(EnSsh* self, PlayState* play) {
     if ((yDist < 0.0f) || (yDist > 400.0f)) {
         return false;
     }
-    return player->actor.world.pos.y >= self->actor.floorHeight;
+    if (player->actor.world.pos.y < self->actor.floorHeight) {
+        return false;
+    }
+    return true;
 }
-#endif
 
-GLOBAL_ASM("asm/EnSsh_IsCloseToLink.s")
 
-#if 0
+
 void EnSsh_Return(EnSsh* self, PlayState* play);
 
 void EnSsh_Drop(EnSsh* self, PlayState* play);
@@ -41,9 +43,17 @@ void EnSsh_Idle(EnSsh* self, PlayState* play);
 void Audio_PlayActorSound2(Actor* actor, s32 soundId);
 void FUN_00369b58(PlayState* play, Vec3f* pos, Vec3f* velocity, Vec3f* accel, s32 radius, s32 scale, s32 life);
 
+static inline s32 EnSsh_IsCloseToHome(EnSsh* self) {
+    f32 vel = self->actor.velocity.y;
+    f32 nextY = self->actor.world.pos.y + 2.0f * vel;
+    if ((self->actor.home.pos.y - nextY) <= 0.0f) {
+        return 1;
+    }
+    return 0;
+}
+
 void EnSsh_Return(EnSsh* self, PlayState* play) {
     f32 frameRatio = self->skelAnime.curFrame / (self->skelAnime.animLength - 1.0f);
-    f32 nextY;
 
     if (frameRatio == 1.0f) {
         Audio_PlayActorSound2(&self->actor, 0x010002D9);
@@ -57,8 +67,7 @@ void EnSsh_Return(EnSsh* self, PlayState* play) {
         self->actionFunc = EnSsh_Drop;
         self->sfxTimer = 0;
     } else {
-        nextY = self->actor.world.pos.y + 2.0f * self->actor.velocity.y;
-        if (nextY < self->actor.home.pos.y) {
+        if (!EnSsh_IsCloseToHome(self)) {
             self->actor.velocity.y = 4.0f * frameRatio;
         } else {
             EnSsh_SetAnimation(self, 2);
@@ -66,9 +75,17 @@ void EnSsh_Return(EnSsh* self, PlayState* play) {
         }
     }
 }
+static inline s32 EnSsh_IsCloseToGround(EnSsh* self) {
+    f32 vel = self->actor.velocity.y;
+    f32 nextY = self->actor.world.pos.y + 2.0f * vel;
+    if ((nextY - self->actor.floorHeight) <= self->floorHeightOffset) {
+        return 1;
+    }
+    return 0;
+}
+
 void EnSsh_Drop(EnSsh* self, PlayState* play) {
     s16 timer;
-    f32 nextY;
 
     if ((self->unkTimer != 0) && (--self->unkTimer == 0)) {
         EnSsh_SetAnimation(self, 4);
@@ -78,16 +95,15 @@ void EnSsh_Drop(EnSsh* self, PlayState* play) {
         EnSsh_SetAnimation(self, 1);
         self->actionFunc = EnSsh_Return;
     } else {
-        nextY = self->actor.world.pos.y + 2.0f * self->actor.velocity.y;
-        if ((nextY - self->actor.floorHeight) <= self->floorHeightOffset) {
+        if (EnSsh_IsCloseToGround(self)) {
+            Vector3f zero(0.0f, 0.0f, 0.0f);
             Vec3f pos;
-            Vec3f zero = { 0.0f, 0.0f, 0.0f };
 
             pos.x = self->actor.world.pos.x;
             pos.y = self->actor.floorHeight;
             pos.z = self->actor.world.pos.z;
-            FUN_00369b58(play, &pos, &zero, &zero, 100, 220, 8);
-            self->actor.world.pos.y = self->actor.floorHeight + self->floorHeightOffset;
+            FUN_00369b58(play, &pos, (Vec3f*)&zero, (Vec3f*)&zero, 100, 220, 8);
+            self->actor.world.pos.y = self->floorHeightOffset + self->actor.floorHeight;
             timer = (s16)EnSsh_SetAnimation(self, 3);
             self->animTimer = timer;
             self->actionFunc = EnSsh_Land;
@@ -106,10 +122,9 @@ void EnSsh_Drop(EnSsh* self, PlayState* play) {
 }
 
 void EnSsh_Start(EnSsh* self, PlayState* play) {
-    f32 nextY = 2.0f * self->actor.velocity.y + self->actor.world.pos.y;
     f32 bobVel;
 
-    if ((nextY - self->actor.floorHeight) <= self->floorHeightOffset) {
+    if (EnSsh_IsCloseToGround(self)) {
         self->actor.world.pos.y = self->floorHeightOffset + self->actor.floorHeight;
         self->animTimer = (s16)EnSsh_SetAnimation(self, 3);
         self->stateFlags |= 4;
@@ -145,10 +160,9 @@ void EnSsh_Start(EnSsh* self, PlayState* play) {
         }
     }
 }
-#endif
 
-GLOBAL_ASM("asm/EnSsh_Return.s")
-GLOBAL_ASM("asm/EnSsh_Drop.s")
-GLOBAL_ASM("asm/EnSsh_Start.s")
+
+
+
 
 }

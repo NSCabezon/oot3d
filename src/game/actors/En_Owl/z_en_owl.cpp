@@ -13,6 +13,9 @@ void FUN_0035ff80(EnOwl* self);
 extern u8 EnRiverSound_sState[];
 extern u8 gSaveContext_E00[];
 s32 FUN_00369a48(Actor* actor, PlayState* play);
+void FUN_00359220(Actor* actor, PlayState* play, s32 arg, f32 a, f32 b);
+void FUN_003528dc(Actor* actor, PlayState* play);
+void FUN_003525e0(Actor* actor, PlayState* play);
 
 void FUN_00231364(s32 arg0, s32 arg1) {
     EnRiverSound_sState[1] = 1;
@@ -42,6 +45,7 @@ void FUN_0012c1b8(EnOwl* self, PlayState* play);
 void FUN_0012bf54(EnOwl* self, PlayState* play);
 void EnOwl_WaitOutsideKokiri(EnOwl* self, PlayState* play);
 void FUN_0015d054(EnOwl* self);
+void FUN_001857ec(EnOwl* self, PlayState* play);
 void FUN_0015cc5c(EnOwl* self);
 void FUN_00188484(EnOwl* self);
 void FUN_0021a9e8(EnOwl* self, PlayState* play);
@@ -305,6 +309,63 @@ void FUN_0012c444(EnOwl* self, PlayState* play) {
     }
 }
 
+void FUN_0012c37c(EnOwl* self, PlayState* play) {
+    FUN_0036e980(play, &self->actor, 8);
+    if (FUN_00369a48(&self->actor, play)) {
+        Audio_SetBGM(1, 0);
+        s32 switchFlag = self->actor.params & 0x3F;
+        if (switchFlag < 0x20) {
+            Flags_SetSwitch(play, switchFlag);
+            Flags_GetSwitch(play, switchFlag);
+        }
+        EnOwl_ChangeMode(self, (void*)FUN_0015d054, (void*)FUN_001eb30c,
+                         (SkelAnime*)((u8*)self + 0x1FC), (FaceAnimations*)((u8*)self + 0xAA0), 1, 0.0f);
+        self->eyeTexIndex = 0;
+        self->unk_1356 = Rand_S16Offset_003702c8(60, 60);
+        self->actor.flags &= ~0x10000;
+    }
+}
+
+void FUN_003cc72c(EnOwl* self, PlayState* play) {
+    FUN_0036e980(play, &self->actor, 8);
+    if (FUN_00369a48(&self->actor, play)) {
+        Audio_SetBGM(1, 0);
+        s32 switchFlag = self->actor.params & 0x3F;
+        if (switchFlag < 0x20) {
+            Flags_SetSwitch(play, switchFlag);
+            Flags_GetSwitch(play, switchFlag);
+        }
+        EnOwl_ChangeMode(self, (void*)FUN_0015d054, (void*)FUN_001eb30c,
+                         (SkelAnime*)((u8*)self + 0x1FC), (FaceAnimations*)((u8*)self + 0xAA0), 1, 0.0f);
+        self->eyeTexIndex = 0;
+        self->unk_1356 = Rand_S16Offset_003702c8(60, 60);
+        self->actor.flags &= ~0x10000;
+    }
+}
+
+void FUN_003c16ec(EnOwl* self, PlayState* play) {
+    FUN_0036e980(play, &self->actor, 8);
+    if (FUN_00369a48(&self->actor, play)) {
+        Audio_SetBGM(1, 0);
+        if ((*(u16*)((u8*)self + 0x134E) & 0x3F) == 0) {
+            s32 switchFlag = self->actor.params & 0x3F;
+            if (switchFlag < 0x20) {
+                Flags_SetSwitch(play, switchFlag);
+                Flags_GetSwitch(play, switchFlag);
+            }
+            EnOwl_ChangeMode(self, (void*)FUN_0015d054, (void*)FUN_001eb30c,
+                             (SkelAnime*)((u8*)self + 0x1FC), (FaceAnimations*)((u8*)self + 0xAA0), 1, 0.0f);
+            self->eyeTexIndex = 0;
+            self->unk_1356 = Rand_S16Offset_003702c8(60, 60);
+        } else {
+            self->actionFlags &= ~2;
+            FUN_0035ff80(self);
+            self->actionFunc = (void*)FUN_001857ec;
+        }
+        self->actor.flags &= ~0x10000;
+    }
+}
+
 #if 0
 void FUN_0015d054(EnOwl* self) {
     if (self->actionFlags & 1) {
@@ -552,9 +613,123 @@ GLOBAL_ASM("asm/EnOwl_PostLimbUpdate.s")
 
 GLOBAL_ASM("asm/EnOwl_WaitDeathMountainShortcut.s")
 
+#if 0 // Draft: typed cue handling remains 24 B short and 33/56 words differ.
+void EnOwl_WaitDefault(EnOwl* self, PlayState* play) {
+    CsCmdActorAction* cue;
+    if (play->GetCutsceneState() != 0 && (cue = play->csCtx.npcActions[7]) != NULL) {
+        if (*(u8*)((u8*)self + 0x136C) == cue->action) {
+            self->actor.world.rot.z = cue->rot.y;
+        } else {
+            s32 x = cue->startPos.x;
+            s32 y = cue->startPos.y;
+            s32 z = cue->startPos.z;
+            self->actionFlags |= 4;
+            self->actor.world.pos.x = x;
+            self->actor.world.pos.y = y;
+            self->actor.world.pos.z = z;
+            self->actor.world.rot.z = cue->rot.y;
+            *(s16*)((u8*)self + 0xC0) = cue->rot.z;
+            FUN_003528dc(&self->actor, play);
+        }
+    }
+    if (self->actionFlags & 0x80) {
+        FUN_003525e0(&self->actor, play);
+    }
+}
+#endif
 GLOBAL_ASM("asm/EnOwl_WaitDefault.s")
 
+#if 0 // Draft: correct typed fields and control flow, 7/59 words differ from the target.
+void EnOwl_WaitHyliaShortcut(EnOwl* self, PlayState* play) {
+    Player* player;
+    s16 textId;
+    textId = (gSaveContext.infTable[25] & 0x20) ? 0x4004 : 0x4003;
+    player = GET_PLAYER(play);
+    self->actor.world.rot.y = Math_Atan2S(player->actor.world.pos.z - self->actor.world.pos.z,
+                                          player->actor.world.pos.x - self->actor.world.pos.x);
+    self->actor.shape.rot.y = self->actor.world.rot.y;
+    if (Actor_ProcessTalkRequest(&self->actor, play)) {
+        gSaveContext.infTable[25] |= 0x20;
+        FUN_0035c528(0x010005C7);
+        self->actionFunc = (void*)FUN_0012c444;
+    } else {
+        self->actor.textId = textId;
+        if (self->actor.xzDistToPlayer < 120.0f) {
+            FUN_00359220(&self->actor, play, 0, 350.0f, 1000.0f);
+        }
+    }
+}
+#endif
 GLOBAL_ASM("asm/EnOwl_WaitHyliaShortcut.s")
+
+void FUN_0021a9e8(EnOwl* self, PlayState* play) {
+    if (!FUN_003731e0(self->drawSkelAnime)) {
+        return;
+    }
+    if (self->unk_135E != 0) {
+        self->unk_135E--;
+        Animation_Change_00375c08(self->drawSkelAnime, self->drawSkelAnime->animationType, 1.0f, 0.0f,
+                                  (f32)Animation_GetLastFrame(self->drawSkelAnime,
+                                                              self->drawSkelAnime->animationType),
+                                  2, 0.0f);
+    } else {
+        self->unk_135E = 0xA0;
+        self->updateFunc = (void*)FUN_001c5148;
+        Animation_Change_00375c08(self->drawSkelAnime, 4, 1.0f, 0.0f,
+                                  (f32)Animation_GetLastFrame(self->drawSkelAnime, 4), 0, 5.0f);
+    }
+}
+
+#if 0 // Draft: movement/vertical-motion body remains 12 B short, 28/66 words differ.
+void FUN_003cb000(EnOwl* self, PlayState* play) {
+    self->actor.flags |= 0x20;
+    if (self->actor.xzDistToPlayer > 6000.0f && !(self->actionFlags & 0x80)) {
+        Actor_Kill(&self->actor);
+    }
+    Math_SmoothStepToS(&self->actor.world.rot.y, *(s16*)((u8*)self + 0x1360), 2, 0x80, 0x40);
+    self->actor.shape.rot.y = self->actor.world.rot.y;
+    if (self->actor.speedXZ < 16.0f) {
+        self->actor.speedXZ += 0.5f;
+    }
+    if (self->actor.world.pos.y > self->unk_1358 + 4.0f) {
+        if (self->actor.velocity.y > 0.5f) {
+            self->actor.velocity.y -= 0.4f;
+        }
+    } else if (self->actor.velocity.y < 4.0f) {
+        self->actor.velocity.y += 0.2f;
+    }
+    self->actionFlags |= 8;
+}
+#endif
+
+#if 0 // Draft: takeoff/action path remains 20 B short, 43/72 words differ.
+void FUN_0015cc5c(EnOwl* self) {
+    if (self->unk_238 > 10.0f) {
+        Math_SmoothStepToS(&self->actor.world.rot.y, *(s16*)((u8*)self + 0x1360), 2, 0x400, 0x40);
+        self->actor.shape.rot.y = self->actor.world.rot.y;
+    }
+    if (self->unk_238 > 45.0f) {
+        self->actor.velocity.y = 6.0f;
+        self->actor.gravity = 0.0f;
+        self->actor.speedXZ = 4.0f;
+    } else if (self->unk_238 > 17.0f) {
+        self->actor.velocity.y = 4.0f;
+        self->actor.gravity = 0.0f;
+        self->actor.speedXZ = 6.0f;
+    }
+    if (self->actionFlags & 1) {
+        EnOwl_ChangeMode(self, (void*)FUN_003cb000, (void*)FUN_0021a9e8,
+                         (SkelAnime*)((u8*)self + 0x1FC), (FaceAnimations*)((u8*)self + 0xAA0), 3, 0.0f);
+        self->unk_135E = 6;
+        if (self->actionFlags & 0x40) {
+            *(s16*)((u8*)self + 0x1360) = self->actor.world.rot.y - 0x2000;
+        } else {
+            *(s16*)((u8*)self + 0x1360) = self->actor.world.rot.y + 0x2000;
+        }
+    }
+    self->actionFlags |= 8;
+}
+#endif
 
 
 void EnOwl_WaitZoraRiver(EnOwl* self, PlayState* play) {
