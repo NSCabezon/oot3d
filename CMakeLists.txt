@@ -90,17 +90,16 @@ if(WIBO)
     string(REPLACE " --multibyte-chars --locale=japanese" "" CXX_FLAGS "${CXX_FLAGS}")
 endif()
 
-SET_SOURCE_FILES_PROPERTIES(
-    ${cxxsourcefiles}
-    PROPERTIES
-    COMPILE_FLAGS "${CXX_FLAGS}"
-    )
+# Keep common options independent of the source list: per-source flags rewrite
+# flags.make when a TU is added, invalidating every existing object.
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_FLAGS}")
+set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} --cpu=MPCore")
 
 SET_SOURCE_FILES_PROPERTIES(
     ${CMAKE_SOURCE_DIR}/data/conststring.cpp
     PROPERTIES
     COMPILE_FLAGS
-    "${CXX_FLAGS} --no_data_reorder"
+    "--no_data_reorder"
     )
 
 add_executable(oot3d ${csourcefiles} ${cxxsourcefiles})
@@ -177,7 +176,6 @@ foreach(CPP_FILE ${cxxsourcefiles})
         COMMAND ${PYTHON_EXE} ${CMAKE_CURRENT_SOURCE_DIR}/tools/preproc.py ${CPP_FILE} ${NON_MATCH_ASM_FILES}/${FILE_NAME}.s "${DISASSEMBLY_DIR}/"
         DEPENDS ${DEP_FILE_LIST}
     )
-    set_source_files_properties(${NON_MATCH_ASM_FILES}/${FILE_NAME}.s PROPERTIES COMPILE_FLAGS "--cpu=MPCore")
     target_sources(oot3d PUBLIC ${NON_MATCH_ASM_FILES}/${FILE_NAME}.s)
 endforeach()
 

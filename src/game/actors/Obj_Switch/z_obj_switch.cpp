@@ -187,8 +187,48 @@ void ObjSwitch_Destroy(Actor* actor, GameState* state) {
 #endif
 GLOBAL_ASM("asm/ObjSwitch_Destroy.s")
 
+#if 0 // Luna batch3 incomplete draft, only 44/436 B compiled; switch/table gate unresolved
+void ObjSwitch_Update(Actor* actor, GameState* state) {
+    ObjSwitch* thisx = (ObjSwitch*)actor;
+    PlayState* play = (PlayState*)state;
+    if (thisx->releaseTimer > 0) thisx->releaseTimer--;
+    if (thisx->cooldownTimer > 0) thisx->cooldownTimer--;
+    thisx->actionFunc(thisx, play);
+}
+#endif
 GLOBAL_ASM("asm/ObjSwitch_Update.s")
 
+#if 0 // Luna batch3 draft: best 84/93 words differ
+void ObjSwitch_CrystalOff(ObjSwitch* thisx, PlayState* play) {
+    s32 params = thisx->actor.params;
+    s32 type = ((u32)(u16)params << 25) >> 29;
+    s32 activate = 0;
+
+    if (type == 0) {
+        if ((play->sceneNum == 13 && *(u8*)((u8*)play + 0x500C) == 0x12) ||
+            (play->sceneNum == 6 && *(u8*)((u8*)play + 0x500C) == 0x19)) {
+            if (Player_InCsMode(play)) return;
+        }
+        if ((thisx->eyeHitFlags & 2) && thisx->cooldownTimer <= 0) activate = 1;
+    } else if (type == 1) {
+        if ((thisx->eyeHitFlags & 2) && !(thisx->eyeColFlags & 2) && thisx->cooldownTimer <= 0) activate = 1;
+    } else if (type == 4) {
+        if (((thisx->eyeHitFlags & 2) && thisx->cooldownTimer > 0) ||
+            Flags_GetSwitch(play, ((u16)params >> 8) & 0x3F)) activate = 1;
+    }
+    if (activate) {
+        thisx->actionFunc = ObjSwitch_CrystalTurnOn;
+        thisx->cooldownTimer = 150;
+        ObjSwitch_SetOn(thisx, play);
+    }
+    if (type == 1) {
+        ((u8*)thisx)[0x1D0] = (((u8*)thisx)[0x1D0] - 1) & 0x7F;
+        ((u8*)thisx)[0x1D1] = (((u8*)thisx)[0x1D1] + 1) & 0x7F;
+        ((u8*)thisx)[0x1D2] = (((u8*)thisx)[0x1D2] + 1) & 0x7F;
+        ((u8*)thisx)[0x1D3] = (((u8*)thisx)[0x1D3] - 1) & 0x7F;
+    }
+}
+#endif
 GLOBAL_ASM("asm/ObjSwitch_CrystalOff.s")
 
 void ObjSwitch_CrystalTurnOff(ObjSwitch* thisx, PlayState* play) {
@@ -347,6 +387,39 @@ void caseD_3(ObjSwitch* thisx, PlayState* play) {
 
 GLOBAL_ASM("../split/asm/FUN_001442ec.s")
 
+#if 0 // Luna batch3 best draft: 60/81 words differ
+void ObjSwitch_FloorDown(ObjSwitch* thisx, PlayState* play) {
+    s32 params = thisx->actor.params;
+    s32 type = ((u32)(u16)params << 25) >> 29;
+
+    if ((params & 0x4000) && !Flags_GetSwitch(play, ((u16)params >> 8) & 0x3F)) {
+        if (type == 1) {
+            Flags_SetSwitch(play, ((u16)params >> 8) & 0x3F);
+            return;
+        }
+    } else {
+        if (type == 0) {
+            if (!Flags_GetSwitch(play, ((u16)params >> 8) & 0x3F)) {
+                thisx->actionFunc = ObjSwitch_FloorDown;
+                thisx->releaseTimer = 150;
+            }
+            return;
+        }
+        if (type == 1) {
+            if (!(thisx->eyeHitFlags & 2)) return;
+            if (thisx->eyeColFlags & 2) return;
+        } else if (type == 2 || type == 3) {
+            if (!FUN_0036a83c(&thisx->actor) && !Player_InCsMode(play) && thisx->cooldownTimer <= 0) {
+                thisx->releaseTimer = 9;
+                return;
+            }
+        } else {
+            return;
+        }
+    }
+    ObjSwitch_SetOn(thisx, play);
+}
+#endif
 GLOBAL_ASM("asm/ObjSwitch_FloorDown.s")
 
 GLOBAL_ASM("asm/ObjSwitch_FloorUp.s")
