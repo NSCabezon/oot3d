@@ -28,7 +28,7 @@ typedef struct EnOwl {
     /* 0x136A */ char unk_136A[0x1370 - 0x136A];
     /* 0x1370 */ void* actionFunc;
     /* 0x1374 */ void* updateFunc;
-    /* 0x1378 */ char unk_1378[0x137C - 0x1378];
+    /* 0x1378 */ s32 unk_1378;
 } EnOwl; // size = 0x137C
 
 typedef char EnOwl_SizeCheck[sizeof(EnOwl) == 0x137C ? 1 : -1];

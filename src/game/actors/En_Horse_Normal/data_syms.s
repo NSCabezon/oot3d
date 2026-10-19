@@ -18,4 +18,8 @@ EnHorseNormal_sCylinder2 EQU 0x0052726C
 EnHorseNormal_sJntSph EQU 0x005272A4
 EnHorseNormal_sAnimClass EQU 0x005272EC
 
+	EXPORT EnHorseNormal_sPlaybackSpeeds
+EnHorseNormal_sPlaybackSpeeds EQU 0x005272B4
+	EXPORT EnHorseNormal_sActionFuncs
+EnHorseNormal_sActionFuncs EQU 0x005272D8
 	END

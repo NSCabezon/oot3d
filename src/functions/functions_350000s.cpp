@@ -34,7 +34,6 @@ GLOBAL_ASM("asm/Collider_DestroyJntSph.s")
 
 GLOBAL_ASM("asm/SkelAnime_Free2.s")
 
-GLOBAL_ASM("asm/FUN_00350c68.s")
 
 GLOBAL_ASM("asm/CollisionCheck_SetInfo.s")
 

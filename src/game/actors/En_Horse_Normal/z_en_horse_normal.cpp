@@ -19,10 +19,17 @@ extern s32 EnHorseNormal_sAnimations[];
 extern s32 EnHorseNormal_sStepFrames[];
 extern s32 EnHorseNormal_sAnimClass[];
 extern u8 EnHorseNormal_sRandomIdle[];
+extern f32 EnHorseNormal_sPlaybackSpeeds[];
+typedef void (*EnHorseNormalActionFunc)(EnHorseNormal*,PlayState*);
+extern EnHorseNormalActionFunc EnHorseNormal_sActionFuncs[];
 f32* EnHorse_CurFramePtr(SkelAnime*);
 f32 FUN_00350c68(EnHorseNormal* self);
 s32 Animation_GetLastFrame(SkelAnime*,s32);
 void Animation_Change_00375c08(SkelAnime*,s32,f32,f32,f32,s32,f32);
+void Animation_PlayOnce(SkelAnime*,s32);
+void Collider_DestroyJntSph(PlayState*,void*);
+void FUN_003406b8(Actor*,PlayState*,EnHorseNormalSkin*,void*,PostLimbDrawOpa,s32,s32,s32);
+void FUN_003409ac(EnHorseNormalSkin*,s32,Vec3f*,Vec3f*);
 static inline void EnHorseNormal_IdleSound(EnHorseNormal* self) {
  f32 frame = *EnHorse_CurFramePtr(&self->skin.skelAnime);
  if (self->animationIdx==0 && (Animation_OnFrameImpl(&self->skin.skelAnime,47.0f,0.6666667f) || Animation_OnFrameImpl(&self->skin.skelAnime,58.0f,0.6666667f)) && !(self->flags&1)) {
@@ -44,6 +51,91 @@ void EnHorseNormal_WaitClone(EnHorseNormal* self,PlayState* play) {
   self->flags&=~1;self->flags&=~2;self->flags&=~8;self->flags&=~0x10;
  }
 }
+
+void EnHorseNormal_CycleAnimations(EnHorseNormal* self,PlayState* play) {
+ self->actor.speedXZ=0.0f;
+ if(FUN_003731e0(&self->skin.skelAnime)) {
+  self->action=0;
+  self->animationIdx++;
+  if(self->animationIdx>=9) self->animationIdx=0;
+  Animation_PlayOnce(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx]);
+ }
+}
+
+#if 0
+void EnHorseNormal_Wait(EnHorseNormal* self,PlayState* play) {
+ if(FUN_003731e0(&self->skin.skelAnime)) {
+  f32 rand=Rand_ZeroOne();
+  if(rand<0.4f) self->animationIdx=0;
+  else if(rand<0.8f) {
+   self->animationIdx=1;
+   Audio_PlaySoundGeneral(0x0100016D,&self->soundPos,4,&FLOAT_0054ac20,&FLOAT_0054ac20,&DAT_0054ac24.unk_0);
+  } else {
+   self->animationIdx=3;
+   Audio_PlaySoundGeneral(0x0100015C,&self->soundPos,4,&FLOAT_0054ac20,&FLOAT_0054ac20,&DAT_0054ac24.unk_0);
+  }
+  f32 last=Animation_GetLastFrame(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx]);
+  Animation_Change_00375c08(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx],FUN_00350c68(self),0.0f,last,2,0.0f);
+ }
+}
+#endif
+
+#if 0
+void EnHorseNormal_Update(Actor* actor,GameState* state) {
+ EnHorseNormal* self=(EnHorseNormal*)actor;
+ PlayState* play=(PlayState*)state;
+ EnHorseNormal_sActionFuncs[self->action](self,play);
+ Actor_MoveForward(actor);
+ Actor_UpdateBgCheckInfo(play,actor,20.0f,35.0f,100.0f,0x1D);
+ if(play->sceneNum==0x63 && -2400.0f>actor->world.pos.z) actor->world.pos.z=-2400.0f;
+ actor->focus.pos=actor->world.pos;
+ actor->focus.pos.y+=70.0f;
+ self->soundPos=actor->unk_EC;
+ self->soundPos.y+=120.0f;
+ Collider_UpdateCylinder(actor,&self->bodyCollider);
+ CollisionCheck_SetOC(play,&play->colChkCtx,&self->bodyCollider.base);
+ actor->colChkInfo.mass=(actor->speedXZ==0.0f)?0xFF:0xFE;
+}
+#endif
+
+
+#if 0
+void EnHorseNormal_Destroy(Actor* actor,GameState* state) {
+ EnHorseNormal* self=(EnHorseNormal*)actor;
+ PlayState* play=(PlayState*)state;
+ SkelAnime_Free2(&self->skin.skelAnime);
+ if(self->action==3) {
+  SkelAnime_Free2(&self->cloneSkin.skelAnime);
+  if(self->shadowModel) {
+   void (*destroyModel)(SkeletonAnimationModel*)=(void (*)(SkeletonAnimationModel*))((void**)self->shadowModel->vTable)[1];
+   destroyModel(self->shadowModel);
+  }
+ }
+ Collider_DestroyCylinder(play,&self->bodyCollider);
+ Collider_DestroyCylinder(play,&self->cloneCollider);
+ Collider_DestroyJntSph(play,&self->headCollider);
+}
+#endif
+
+void FUN_001c3180(Actor* actor,PlayState* play,EnHorseNormalSkin* skin,void* postDraw,PostLimbDrawOpa postLimb,s32 a,s32 b,s32 c) {
+ FUN_003406b8(actor,play,skin,postDraw,postLimb,a,b,c);
+}
+
+#if 0
+void FUN_001c307c(Actor* actor,PlayState* play,EnHorseNormalSkin* skin) {
+ EnHorseNormal* self=(EnHorseNormal*)actor;
+ for(s32 i=0;i<self->headCollider.count;i++) {
+  EnHorseNormalJntSphDim* elem=&self->headCollider.elements[i];
+  Vec3f modelPos;
+  Vec3f worldPos;
+  modelPos.x=elem->modelCenter.x;modelPos.y=elem->modelCenter.y;modelPos.z=elem->modelCenter.z;
+  FUN_003409ac(skin,elem->limb,&modelPos,&worldPos);
+  elem->worldCenter.x=worldPos.x;elem->worldCenter.y=worldPos.y;elem->worldCenter.z=worldPos.z;
+  elem->worldRadius=elem->modelRadius*elem->scale;
+ }
+ CollisionCheck_SetOC(play,&play->colChkCtx,&self->headCollider.base);
+}
+#endif
 
 f32 fabsf(f32);
 
@@ -163,6 +255,7 @@ GLOBAL_ASM("asm/EnHorseNormal_Init.s")
 
 GLOBAL_ASM("asm/EnHorseNormal_Destroy.s")
 
+GLOBAL_ASM("asm/EnHorseNormal_Wait.s")
 GLOBAL_ASM("asm/EnHorseNormal_Update.s")
 
 // Unmatched Draw draft: 27 words, 1132/1132 B; flagged sounds use cloneSoundPos.
@@ -223,11 +316,7 @@ void EnHorseNormal_Draw(Actor* actor,PlayState* play) {
 #endif
 GLOBAL_ASM("asm/EnHorseNormal_Draw.s")
 
-GLOBAL_ASM("asm/EnHorseNormal_CycleAnimations.s")
-
 GLOBAL_ASM("asm/EnHorseNormal_FollowPath.s")
-
-GLOBAL_ASM("asm/EnHorseNormal_Wait.s")
 
 
 
@@ -288,8 +377,6 @@ void EnHorseNormal_Wander(EnHorseNormal* self,PlayState* play) {
  }
 }
 
-
-GLOBAL_ASM("asm/FUN_001c3180.s")
 
 GLOBAL_ASM("asm/FUN_003406b8.s")
 

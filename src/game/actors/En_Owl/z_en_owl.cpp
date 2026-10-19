@@ -8,6 +8,8 @@ void EnOwl_Destroy(Actor* actor, PlayState* state);
 void EnOwl_Update(Actor* actor, GameState* state);
 void EnOwl_Draw(Actor* actor, PlayState* state);
 void EnOwl_WaitDeathMountainShortcut(EnOwl* self, PlayState* play);
+void EnOwl_WaitDefault(EnOwl* self, PlayState* play);
+void FUN_00188650(EnOwl* self);
 void FUN_0035ff80(EnOwl* self);
 
 extern u8 EnRiverSound_sState[];
@@ -47,7 +49,7 @@ void EnOwl_WaitOutsideKokiri(EnOwl* self, PlayState* play);
 void FUN_0015d054(EnOwl* self);
 void FUN_001857ec(EnOwl* self, PlayState* play);
 void FUN_0015cc5c(EnOwl* self);
-void FUN_00188484(EnOwl* self);
+void FUN_00188484(EnOwl* self, PlayState* play);
 void FUN_0021a9e8(EnOwl* self, PlayState* play);
 void FUN_003cb000(EnOwl* self, PlayState* play);
 void FUN_001eb30c(EnOwl* self);
@@ -63,6 +65,46 @@ void EnOwl_ChangeMode(EnOwl* self, void* actionFunc, void* updateFunc, SkelAnime
                       FaceAnimations* faceAnimations, s32 animationIndex, f32 morphFrames);
 void FUN_00160e78(EnOwl* self);
 void FUN_0035c528(u32 seqId);
+ s32 OnePointCutscene_Init(PlayState* play, s32 textId, s32 priority, Actor* actor, s32 camId);
+extern u16 gTimeSpeed;
+s32 Gameplay_InCsMode(PlayState* play);
+
+#if 0 // Batch 7 draft: 472 B vs 460 B, best 66/115 words differ; existing storage/API bindings only.
+void FUN_00188484(EnOwl* self, PlayState* play) {
+    ObjectStatus* objectStatus = play->GetObjectStatus(self->actor.objBankIndex);
+    ZARInfo* zarInfo = (ZARInfo*)((u8*)objectStatus + 0x10);
+
+    Math_SmoothStepToS(&self->actor.world.rot.y, *(s16*)((u8*)self + 0x1360), 2, 900, 600);
+    self->actor.shape.rot.y = self->actor.world.rot.y;
+    if (self->actor.xzDistToPlayer < 50.0f && !Gameplay_InCsMode(play)) {
+        s32 choice = (self->actor.params & 0xFC0) >> 6;
+        if (choice == 7) {
+            play->FUN_0037573c(zarInfo->GetQDBByIndex(0));
+            *(s32*)((u8*)self + 0x140) = 0;
+        } else if (choice == 8 || choice == 9) {
+            play->FUN_0037573c(zarInfo->GetQDBByIndex(1));
+            *(s32*)((u8*)self + 0x140) = 0;
+        }
+        Audio_PlaySoundGeneral(0x0100048C, NULL, 4, &FLOAT_0054ac20, &FLOAT_0054ac20,
+                               (s8*)&DAT_0054ac24.unk_0);
+        *(u8*)((u8*)&gSaveContext + 0x15A2) = 1;
+        FUN_00231364(0x14, 0xA);
+        self->actionFunc = (void*)EnOwl_WaitDefault;
+        *(u8*)((u8*)self + 0x136C) = 0;
+        self->actionFlags |= 0x80;
+        gTimeSpeed = 0;
+    }
+    if (self->unk_238 >= 37.0f) {
+        if (self->unk_1366 == 0) {
+            self->actionFunc = (void*)FUN_00188650;
+        } else {
+            self->unk_238 = 37.0f;
+            self->unk_1366--;
+        }
+    }
+    self->actionFlags |= 8;
+}
+#endif
 
 void FUN_0012be6c(EnOwl* self, PlayState* play) {
     if (Message_GetState(&play->msgCtx) == 5 && Message_ShouldAdvance(play)) {
@@ -574,6 +616,10 @@ void EnOwl_Destroy(Actor* actor, PlayState* play) {
 
 s32 EnOwl_OverrideLimbDraw(PlayState* play, s32 limbIndex, MTX34* mtx, void* thisx);
 void EnOwl_PostLimbUpdate(PlayState* play, s32 limbIndex, MTX34* mtx, void* thisx);
+void Matrix_RotateY(MTX34* mtx, s32 mode, f32 angle);
+void Matrix_RotateZ(MTX34* mtx, s32 mode, f32 angle);
+f32 sinf(f32 angle);
+f32 cosf(f32 angle);
 
 #if 0
 void EnOwl_Draw(Actor* actor, PlayState* play) {
@@ -592,8 +638,89 @@ GLOBAL_ASM("asm/EnOwl_Update.s")
 
 GLOBAL_ASM("asm/EnOwl_Draw.s")
 
+#if 0 // Batch 7 draft: built 320/328 B, best 50/82 words differ.
+s32 EnOwl_CheckInitTalk(EnOwl* self, PlayState* play, s32 textId, f32 targetDist, s32 flags) {
+    s16 priority;
+
+    if (Actor_ProcessTalkRequest(&self->actor, play)) {
+        if (self->actor.params == 0x0FFF) {
+            priority = -100;
+            self->actionFlags |= 0x40;
+        } else if (Rand_ZeroOne() < 0.5f) {
+            priority = (flags & 1) ? -97 : -99;
+            self->actionFlags |= 0x40;
+        } else {
+            priority = (flags & 1) ? -96 : -98;
+            self->actionFlags &= ~0x40;
+        }
+        s16 cutsceneTextId = 0x21FC;
+        if (self->unk_1378 == 10) {
+            cutsceneTextId |= cutsceneTextId >> 8;
+        }
+        *(s16*)((u8*)self + 0x1362) =
+            OnePointCutscene_Init(play, cutsceneTextId, priority, &self->actor, 0);
+        return 1;
+    }
+
+    *(u16*)((u8*)self + 0x116) = textId;
+    if (self->actor.xzDistToPlayer < targetDist) {
+        self->actor.flags |= 0x10000;
+        FUN_00359220(&self->actor, play, 0, targetDist, (flags & 2) ? 200.0f : 1000.0f);
+    }
+    return 0;
+}
+#endif
 GLOBAL_ASM("asm/EnOwl_CheckInitTalk.s")
 
+#if 0 // Batch 7 draft: exact-size 452 B, best 57/113 words differ.
+s32 EnOwl_OverrideLimbDraw(PlayState* play, s32 limbIndex, MTX34* mtx, void* thisx) {
+    u8* self = (u8*)thisx;
+    f32 angle;
+
+    switch (limbIndex) {
+    case 1:
+        Matrix_RotateZ(mtx, 1, *(s16*)(self + 0x1352) * 0.0000958738f);
+        break;
+    case 2:
+        Matrix_RotateZ(mtx, 1, (s16)(*(s16*)(self + 0x134C) - *(s16*)(self + 0x1352)) *
+                                  0.0000958738f);
+        angle = *(s16*)(self + 0x1350) * 0.0000958738f;
+        if (angle != 0.0f) {
+            f32 sinAngle = sinf(angle);
+            f32 cosAngle = cosf(angle);
+            f32 col1;
+            f32 col2;
+
+            col1 = mtx->data[0][1];
+            col2 = mtx->data[0][2];
+            mtx->data[0][1] = col1 * cosAngle + col2 * sinAngle;
+            mtx->data[0][2] = col2 * cosAngle - col1 * sinAngle;
+            col1 = mtx->data[1][1];
+            col2 = mtx->data[1][2];
+            mtx->data[1][1] = col1 * cosAngle + col2 * sinAngle;
+            mtx->data[1][2] = col2 * cosAngle - col1 * sinAngle;
+            col1 = mtx->data[2][1];
+            col2 = mtx->data[2][2];
+            mtx->data[2][1] = col1 * cosAngle + col2 * sinAngle;
+            mtx->data[2][2] = col2 * cosAngle - col1 * sinAngle;
+        }
+        break;
+    case 3:
+        if (!(*(u16*)(self + 0x135C) & 8)) {
+            Matrix_RotateY(mtx, 1, -(s16)(*(s16*)(self + 0x134C) * 1.5f) * 0.0000958738f);
+        }
+        break;
+    case 4:
+        if (!(*(u16*)(self + 0x135C) & 8)) {
+            Matrix_RotateY(mtx, 1, (s16)(*(s16*)(self + 0x134C) * 1.5f) * 0.0000958738f);
+        }
+        break;
+    default:
+        break;
+    }
+    return 0;
+}
+#endif
 GLOBAL_ASM("asm/EnOwl_OverrideLimbDraw.s")
 
 #if 0
@@ -611,6 +738,34 @@ void EnOwl_PostLimbUpdate(PlayState* play, s32 limbIndex, MTX34* mtx, void* this
 #endif
 GLOBAL_ASM("asm/EnOwl_PostLimbUpdate.s")
 
+#if 0 // Batch 7 draft: exact-size 304 B, best 16/76 words differ.
+void EnOwl_WaitDeathMountainShortcut(EnOwl* self, PlayState* play) {
+    Player* player = GET_PLAYER(play);
+
+    self->actor.world.rot.y = Math_Atan2S(player->actor.world.pos.z - self->actor.world.pos.z,
+                                         player->actor.world.pos.x - self->actor.world.pos.x);
+    self->actor.shape.rot.y = self->actor.world.rot.y;
+    if (gSaveContext.magicAcquired == 0) {
+        if (Actor_ProcessTalkRequest(&self->actor, play)) {
+            FUN_0035c528(0x010005C7);
+            self->actionFunc = (void*)FUN_001eb37c;
+        } else {
+            self->actor.textId = 0x3062;
+            if (self->actor.xzDistToPlayer < 120.0f) {
+                FUN_00359220(&self->actor, play, 0, 350.0f, 1000.0f);
+            }
+        }
+    } else if (Actor_ProcessTalkRequest(&self->actor, play)) {
+        FUN_0035c528(0x010005C7);
+        self->actionFunc = (void*)FUN_0012c4e8;
+    } else {
+        self->actor.textId = 0x3063;
+        if (self->actor.xzDistToPlayer < 120.0f) {
+            FUN_00359220(&self->actor, play, 0, 350.0f, 1000.0f);
+        }
+    }
+}
+#endif
 GLOBAL_ASM("asm/EnOwl_WaitDeathMountainShortcut.s")
 
 #if 0 // Draft: typed cue handling remains 24 B short and 33/56 words differ.
