@@ -1,4 +1,5 @@
 #include "non_matchings.hpp"
+#include "global.hpp"
 
 
 GLOBAL_ASM("asm/FUN_00243fa4.s")
@@ -187,7 +188,31 @@ GLOBAL_ASM("asm/IChain_Apply_f32div1000.s")
 
 GLOBAL_ASM("asm/IChain_Apply_Vec3fdiv1000.s")
 
-GLOBAL_ASM("asm/FUN_00257108.s")
+
+
+extern "C" {
+s16 FUN_00257108(s16* value, s16 target, s16 scale, s16 maxStep, s16 minStep, s32 direction) {
+    s32 delta = (s16)(target-*value);
+    s16 step;
+    if(direction!=0) { if(delta<0) delta+=0x10000; }
+    else { if(delta>0) delta-=0x10000; }
+    if(*value!=target) {
+        step=delta/scale;
+        if(step>minStep || step<-minStep) {
+            if(step>maxStep) step=maxStep;
+            if(step<-maxStep) step=-maxStep;
+            *value+=step>0 ? (s32)(0.5f+((f32)step*(f32)gGameInfo->data[126])*(1.0f/3.0f)) : (s32)(((f32)step*(f32)gGameInfo->data[126])*(1.0f/3.0f)-0.5f);
+        } else if(delta>=0) {
+            *value+=minStep>0 ? (s32)(0.5f+((f32)minStep*(f32)gGameInfo->data[126])*(1.0f/3.0f)) : (s32)(((f32)minStep*(f32)gGameInfo->data[126])*(1.0f/3.0f)-0.5f);
+            if((s16)(target-*value)<=0) *value=target;
+        } else {
+            *value-=minStep>0 ? (s32)(0.5f+((f32)minStep*(f32)gGameInfo->data[126])*(1.0f/3.0f)) : (s32)(((f32)minStep*(f32)gGameInfo->data[126])*(1.0f/3.0f)-0.5f);
+            if((s16)(target-*value)>=0) *value=target;
+        }
+    }
+    return (s16)delta;
+}
+}
 
 GLOBAL_ASM("asm/FUN_00257280.s")
 

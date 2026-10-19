@@ -39,7 +39,8 @@ GLOBAL_ASM("asm/FUN_001810fc.s")
 
 
 
-GLOBAL_ASM("asm/FUN_00181770.s")
+
+
 
 
 
