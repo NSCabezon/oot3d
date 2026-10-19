@@ -8,7 +8,9 @@ struct EnOwl;
 
 typedef struct EnOwl {
     /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[0x1334 - 0x1A4];
+    /* 0x01A4 */ char unk_1A4[0x0238 - 0x01A4];
+    /* 0x0238 */ f32 unk_238;
+    /* 0x023C */ char unk_23C[0x1334 - 0x023C];
     /* 0x1334 */ SkelAnime* drawSkelAnime;
     /* 0x1338 */ FaceAnimations* faceAnimations;
     /* 0x133C */ u8 drawFlag;
@@ -18,7 +20,7 @@ typedef struct EnOwl {
     /* 0x1356 */ s16 unk_1356;
     /* 0x1358 */ f32 unk_1358;
     /* 0x135C */ u16 actionFlags;
-    /* 0x135E */ s16 unk_135E;
+    /* 0x135E */ u16 unk_135E;
     /* 0x1360 */ char unk_1360[0x1364 - 0x1360];
     /* 0x1364 */ u8 unk_1364[2];
     /* 0x1366 */ s16 unk_1366;

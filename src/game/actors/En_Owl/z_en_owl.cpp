@@ -34,6 +34,7 @@ void FUN_0012c1b8(EnOwl* self, PlayState* play);
 void FUN_0012c2d4(EnOwl* self, PlayState* play);
 void FUN_0012c668(EnOwl* self, PlayState* play);
 void FUN_0012c784(EnOwl* self, PlayState* play);
+void FUN_0012c37c(EnOwl* self, PlayState* play);
 void FUN_0012c574(EnOwl* self, PlayState* play);
 void FUN_0012c444(EnOwl* self, PlayState* play);
 void FUN_0012c4e8(EnOwl* self, PlayState* play);
@@ -42,6 +43,9 @@ void FUN_0012bf54(EnOwl* self, PlayState* play);
 void EnOwl_WaitOutsideKokiri(EnOwl* self, PlayState* play);
 void FUN_0015d054(EnOwl* self);
 void FUN_0015cc5c(EnOwl* self);
+void FUN_00188484(EnOwl* self);
+void FUN_0021a9e8(EnOwl* self, PlayState* play);
+void FUN_003cb000(EnOwl* self, PlayState* play);
 void FUN_001eb30c(EnOwl* self);
 void FUN_00160f44(EnOwl* self);
 void FUN_003c16ec(EnOwl* self, PlayState* play);
@@ -163,6 +167,119 @@ void FUN_0012c574(EnOwl* self, PlayState* play) {
             self->actionFunc = (void*)FUN_003c16ec;
         }
     }
+}
+
+#if 0 // Drafts: message choice-flow candidates are 22/42 words off; c070 is 30/53 words off.
+void FUN_0012c2d4(EnOwl* self, PlayState* play) {
+    if (Message_GetState(&play->msgCtx) == 4 && Message_ShouldAdvance(play)) {
+        s32 choice = FUN_00369f3c(play);
+        if (choice == 0) {
+            Message_ContinueTextbox(play, 0x2071);
+            self->actionFunc = (void*)FUN_0012c260;
+        } else if (choice == 1) {
+            Message_ContinueTextbox(play, 0x2072);
+            self->actionFunc = (void*)FUN_003c16ec;
+        }
+        self->actionFlags &= ~2;
+        FUN_0035ff80(self);
+    }
+}
+
+void FUN_0012c668(EnOwl* self, PlayState* play) {
+    if (Message_GetState(&play->msgCtx) == 4 && Message_ShouldAdvance(play)) {
+        s32 choice = FUN_00369f3c(play);
+        if (choice == 0) {
+            Message_ContinueTextbox(play, 0x10C1);
+            self->actionFunc = (void*)FUN_0012c5f4;
+        } else if (choice == 1) {
+            Message_ContinueTextbox(play, 0x10C3);
+            self->actionFunc = (void*)FUN_003c16ec;
+        }
+        self->actionFlags &= ~2;
+        FUN_0035ff80(self);
+    }
+}
+
+void FUN_0012c784(EnOwl* self, PlayState* play) {
+    if (Message_GetState(&play->msgCtx) == 4 && Message_ShouldAdvance(play)) {
+        s32 choice = FUN_00369f3c(play);
+        if (choice == 0) {
+            Message_ContinueTextbox(play, 0x10C5);
+            self->actionFunc = (void*)FUN_0012c710;
+        } else if (choice == 1) {
+            Message_ContinueTextbox(play, 0x10C7);
+            self->actionFunc = (void*)FUN_003c16ec;
+        }
+        self->actionFlags &= ~2;
+        FUN_0035ff80(self);
+    }
+}
+
+void FUN_0012c070(EnOwl* self, PlayState* play) {
+    if (Message_GetState(&play->msgCtx) == 4 && Message_ShouldAdvance(play)) {
+        s32 choice = FUN_00369f3c(play);
+        if (choice == 0) {
+            if (((u16*)gSaveContext_E00)[0x7A] & 1) {
+                Message_ContinueTextbox(play, 0x206D);
+            } else {
+                Message_ContinueTextbox(play, 0x206C);
+            }
+            self->actionFunc = (void*)FUN_0012bffc;
+        } else if (choice == 1) {
+            Message_ContinueTextbox(play, 0x206E);
+            self->actionFunc = (void*)FUN_003c16ec;
+        }
+        self->actionFlags &= ~2;
+        FUN_0035ff80(self);
+    }
+}
+#endif
+
+void FUN_001c5148(EnOwl* self) {
+    FUN_003731e0(self->drawSkelAnime);
+    if (self->unk_135E != 0) {
+        self->unk_135E--;
+        s16 angle = self->unk_135E * 0x333;
+        *((s16*)((u8*)self + 0xC0)) = (s32)(Math_SinS(angle) * 1000.0f);
+    } else {
+        self->updateFunc = (void*)FUN_0021a9e8;
+        self->unk_135E = 6;
+        Animation_Change_00375c08(self->drawSkelAnime, 3, 1.0f, 0.0f,
+                                  (f32)Animation_GetLastFrame(self->drawSkelAnime, 3), 2, 5.0f);
+    }
+}
+
+void FUN_00188650(EnOwl* self) {
+    Math_SmoothStepToS(&self->actor.world.rot.y, *(s16*)((u8*)self + 0x1360), 2, 0x384, 0x258);
+    self->actor.shape.rot.y = self->actor.world.rot.y;
+    if (self->actionFlags & 1) {
+        EnOwl_ChangeMode(self, (void*)FUN_003cb000, (void*)FUN_0021a9e8,
+        (SkelAnime*)((u8*)self + 0x1FC), (FaceAnimations*)((u8*)self + 0xAA0), 3, 0.0f);
+        self->unk_135E = 6;
+        self->actor.velocity.y = 2.0f;
+        self->actor.gravity = 0.0f;
+        self->actor.speedXZ = 4.0f;
+    }
+    self->actionFlags |= 8;
+}
+
+void FUN_00160e78(EnOwl* self) {
+    if (self->unk_238 < 20.0f) {
+        self->actor.speedXZ = 1.5f;
+    } else {
+        self->actor.speedXZ = 0.0f;
+        Math_SmoothStepToS(&self->actor.world.rot.y, *(s16*)((u8*)self + 0x1360), 2, 0x384, 0x258);
+        self->actor.shape.rot.y = self->actor.world.rot.y;
+    }
+    if (self->unk_238 >= 37.0f) {
+        self->unk_238 = 21.0f;
+        self->actionFunc = (void*)FUN_00188484;
+        self->unk_135E = 5;
+        self->actor.velocity.y = 0.0f;
+        self->actor.gravity = 0.0f;
+        self->actor.speedXZ = 0.0f;
+    }
+    self->actionFlags |= 8;
 }
 
 void FUN_0012c4e8(EnOwl* self, PlayState* play) {
@@ -440,7 +557,26 @@ GLOBAL_ASM("asm/EnOwl_WaitDefault.s")
 GLOBAL_ASM("asm/EnOwl_WaitHyliaShortcut.s")
 
 
-GLOBAL_ASM("asm/EnOwl_WaitZoraRiver.s")
+void EnOwl_WaitZoraRiver(EnOwl* self, PlayState* play) {
+    Player* player = GET_PLAYER(play);
+    self->actor.world.rot.y = Math_Atan2S(player->actor.world.pos.z - self->actor.world.pos.z,
+                                          player->actor.world.pos.x - self->actor.world.pos.x);
+    self->actor.shape.rot.y = self->actor.world.rot.y;
+    s32 textId;
+    if (CHECK_QUEST_ITEM(14)) {
+        if (CHECK_QUEST_ITEM(12)) {
+            textId = 0x4031;
+        } else {
+            textId = 0x4017;
+        }
+    } else {
+        textId = 0x4002;
+    }
+    if (EnOwl_CheckInitTalk(self, play, textId, 360.0f, 0)) {
+        FUN_0035c528(0x010005C7);
+        self->actionFunc = (void*)FUN_0012c37c;
+    }
+}
 
 
 }

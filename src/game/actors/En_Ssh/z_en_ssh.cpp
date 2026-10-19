@@ -49,7 +49,7 @@ void EnSsh_Destroy(Actor* actor, GameState* state) {
     for (i = 0; i < 6; i++) {
         Collider_DestroyCylinder((PlayState*)state, &self->colliderCylinders[i]);
     }
-    Collider_DestroyJntSph((PlayState*)state, self->colliderJntSph);
+    Collider_DestroyJntSph((PlayState*)state, &self->colliderJntSph);
     FUN_003508b8(actor, 0);
     SkelAnime_Free2(&self->skelAnime);
     ((FaceAnimations*)self->faceAnimations)->Destroy();
@@ -59,7 +59,6 @@ GLOBAL_ASM("asm/EnSsh_Update.s")
 
 GLOBAL_ASM("asm/EnSsh_Draw.s")
 
-GLOBAL_ASM("asm/EnSsh_Drop.s")
 
 GLOBAL_ASM("asm/EnSsh_Idle.s")
 
@@ -84,14 +83,29 @@ s32 EnSsh_OverrideLimbDraw(PlayState* play, s32 limbIndex, MTX34* mtx, void* thi
 
 void EnSsh_PostLimbDraw(PlayState* play, s32 limbIndex, MTX34* mtx, void* thisx) {
     EnSsh* self = (EnSsh*)thisx;
-    Collider_UpdateSpheres(limbIndex, self->colliderJntSph, mtx);
+    Collider_UpdateSpheres(limbIndex, &self->colliderJntSph, mtx);
 }
 
-GLOBAL_ASM("asm/EnSsh_Return.s")
+
+#if 0
+void EnSsh_SetColliderScale(EnSsh* self, f32 scale, f32 radiusMod) {
+    EnSshColliderElement* elements = (EnSshColliderElement*)self->colliderJntSph.elements;
+    s32 i;
+
+    elements[0].modelSphereRadius = (s16)(elements[0].modelSphereRadius * scale);
+    for (i = 0; i < 6; i++) {
+        self->colliderCylinders[i].dim.yShift = (s16)(self->colliderCylinders[i].dim.yShift * scale);
+        self->colliderCylinders[i].dim.radius = (s16)(self->colliderCylinders[i].dim.radius * scale * radiusMod);
+        self->colliderCylinders[i].dim.height = (s16)(self->colliderCylinders[i].dim.height * scale);
+    }
+    Actor_SetScale(&self->actor, 0.04f * scale);
+    self->floorHeightOffset = 40.0f * scale;
+    self->colliderScale = scale * 1.5f;
+}
+#endif
 
 GLOBAL_ASM("asm/EnSsh_SetColliderScale.s")
 
-GLOBAL_ASM("asm/EnSsh_Start.s")
 
 void EnSsh_Talk(EnSsh* self, PlayState* play) {
     EnSsh_Bob(self, play);
