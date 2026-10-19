@@ -180,26 +180,20 @@ GLOBAL_ASM("asm/FUN_0012ba6c.s")
 
 
 
-GLOBAL_ASM("asm/FUN_0012bf54.s")
-
-
-GLOBAL_ASM("asm/FUN_0012c070.s")
-
-
-GLOBAL_ASM("asm/FUN_0012c1b8.s")
-
-
-GLOBAL_ASM("asm/FUN_0012c2d4.s")
 
 
 
 
 
 
-GLOBAL_ASM("asm/FUN_0012c668.s")
 
 
-GLOBAL_ASM("asm/FUN_0012c784.s")
+
+
+
+
+
+
 
 GLOBAL_ASM("asm/FUN_0012c82c.s")
 

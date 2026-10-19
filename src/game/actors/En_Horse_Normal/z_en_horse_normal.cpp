@@ -24,12 +24,23 @@ typedef void (*EnHorseNormalActionFunc)(EnHorseNormal*,PlayState*);
 extern EnHorseNormalActionFunc EnHorseNormal_sActionFuncs[];
 f32* EnHorse_CurFramePtr(SkelAnime*);
 f32 FUN_00350c68(EnHorseNormal* self);
+extern const u8 EnHorseNormal_sModelIndices[];
+void* ZAR_GetCMBByIndex(void*,s32);
+void FUN_00299ef8(Actor*,Lights*,PlayState*,s32,Color_RGBA8*);
+void FUN_00358ea8(void*,PlayState*,SkelAnime*,void*,void*,s32,void*,void*,s32);
 s32 Animation_GetLastFrame(SkelAnime*,s32);
 void Animation_Change_00375c08(SkelAnime*,s32,f32,f32,f32,s32,f32);
 void Animation_PlayOnce(SkelAnime*,s32);
+void SkelAnime_SetPlaySpeed(SkelAnime*,f32);
 void Collider_DestroyJntSph(PlayState*,void*);
 void FUN_003406b8(Actor*,PlayState*,EnHorseNormalSkin*,void*,PostLimbDrawOpa,s32,s32,s32);
 void FUN_003409ac(EnHorseNormalSkin*,s32,Vec3f*,Vec3f*);
+void ActorShadow_Draw(Actor*,Lights*,PlayState*,s32,Color_RGBA8*);
+void MTX34CopyAsm(MTX34*,MTX34*);
+void FUN_002894e0(EnHorseNormal*,Lights*,PlayState*,s32,Color_RGBA8*);
+void FUN_003a5778(MTX34*,Vec3f*,Vec3s*,Vec3f*);
+f32 sinf(f32);
+f32 cosf(f32);
 static inline void EnHorseNormal_IdleSound(EnHorseNormal* self) {
  f32 frame = *EnHorse_CurFramePtr(&self->skin.skelAnime);
  if (self->animationIdx==0 && (Animation_OnFrameImpl(&self->skin.skelAnime,47.0f,0.6666667f) || Animation_OnFrameImpl(&self->skin.skelAnime,58.0f,0.6666667f)) && !(self->flags&1)) {
@@ -62,7 +73,6 @@ void EnHorseNormal_CycleAnimations(EnHorseNormal* self,PlayState* play) {
  }
 }
 
-#if 0
 void EnHorseNormal_Wait(EnHorseNormal* self,PlayState* play) {
  if(FUN_003731e0(&self->skin.skelAnime)) {
   f32 rand=Rand_ZeroOne();
@@ -78,16 +88,14 @@ void EnHorseNormal_Wait(EnHorseNormal* self,PlayState* play) {
   Animation_Change_00375c08(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx],FUN_00350c68(self),0.0f,last,2,0.0f);
  }
 }
-#endif
 
-#if 0
 void EnHorseNormal_Update(Actor* actor,GameState* state) {
  EnHorseNormal* self=(EnHorseNormal*)actor;
  PlayState* play=(PlayState*)state;
  EnHorseNormal_sActionFuncs[self->action](self,play);
  Actor_MoveForward(actor);
  Actor_UpdateBgCheckInfo(play,actor,20.0f,35.0f,100.0f,0x1D);
- if(play->sceneNum==0x63 && -2400.0f>actor->world.pos.z) actor->world.pos.z=-2400.0f;
+ if(play->sceneNum==0x63) actor->world.pos.z=(actor->world.pos.z<=-2400.0f)?-2400.0f:actor->world.pos.z;
  actor->focus.pos=actor->world.pos;
  actor->focus.pos.y+=70.0f;
  self->soundPos=actor->unk_EC;
@@ -96,10 +104,9 @@ void EnHorseNormal_Update(Actor* actor,GameState* state) {
  CollisionCheck_SetOC(play,&play->colChkCtx,&self->bodyCollider.base);
  actor->colChkInfo.mass=(actor->speedXZ==0.0f)?0xFF:0xFE;
 }
-#endif
 
 
-#if 0
+#if 0 // Sol small pending: best remains 2 words, 124/124 B.
 void EnHorseNormal_Destroy(Actor* actor,GameState* state) {
  EnHorseNormal* self=(EnHorseNormal*)actor;
  PlayState* play=(PlayState*)state;
@@ -116,26 +123,52 @@ void EnHorseNormal_Destroy(Actor* actor,GameState* state) {
  Collider_DestroyJntSph(play,&self->headCollider);
 }
 #endif
+GLOBAL_ASM("asm/EnHorseNormal_Destroy.s")
 
 void FUN_001c3180(Actor* actor,PlayState* play,EnHorseNormalSkin* skin,void* postDraw,PostLimbDrawOpa postLimb,s32 a,s32 b,s32 c) {
  FUN_003406b8(actor,play,skin,postDraw,postLimb,a,b,c);
 }
 
-#if 0
-void FUN_001c307c(Actor* actor,PlayState* play,EnHorseNormalSkin* skin) {
+#if 0 // Sol small pending: 2 words, full 200/200 B; copy argument scheduling remains.
+static inline void EnHorseNormal_CopyMatrix(MTX34* src,MTX34* dst) { MTX34CopyAsm(dst,src); }
+void FUN_00299ef8(Actor* actor,Lights* lights,PlayState* play,s32 arg3,Color_RGBA8* color) {
  EnHorseNormal* self=(EnHorseNormal*)actor;
- for(s32 i=0;i<self->headCollider.count;i++) {
-  EnHorseNormalJntSphDim* elem=&self->headCollider.elements[i];
-  Vec3f modelPos;
-  Vec3f worldPos;
-  modelPos.x=elem->modelCenter.x;modelPos.y=elem->modelCenter.y;modelPos.z=elem->modelCenter.z;
-  FUN_003409ac(skin,elem->limb,&modelPos,&worldPos);
-  elem->worldCenter.x=worldPos.x;elem->worldCenter.y=worldPos.y;elem->worldCenter.z=worldPos.z;
-  elem->worldRadius=elem->modelRadius*elem->scale;
+ MTX34 saved;
+ EnHorseNormal_CopyMatrix(&actor->modelMtx,&saved);
+ s16 oldYaw=actor->world.rot.y;
+ ActorShadow_Draw(actor,lights,play,1,NULL);
+ EnHorseNormal_CopyMatrix(&self->cloneMtx,&actor->modelMtx);
+ actor->world.pos.x=self->cloneMtx.data[0][3];
+ actor->world.pos.y=self->cloneMtx.data[1][3];
+ actor->world.pos.z=self->cloneMtx.data[2][3];
+ actor->shape.rot.y=self->cloneRotY;
+ FUN_002894e0(self,lights,play,1,NULL);
+ EnHorseNormal_CopyMatrix(&saved,&actor->modelMtx);
+ actor->world.pos.x=saved.data[0][3];
+ actor->world.pos.y=saved.data[1][3];
+ actor->world.pos.z=saved.data[2][3];
+ actor->shape.rot.y=oldYaw;
+}
+#endif
+
+class EnHorseNormalVecCopy {
+ public:
+ EnHorseNormalVecCopy(const Vec3f* p):x(p->x),y(p->y),z(p->z) {}
+ f32 x,y,z;
+};
+void FUN_001c307c(Actor* actor,PlayState* play,EnHorseNormalSkin* skin) {
+ Vec3f modelPos;
+ Vec3f worldPos;
+ s32 i;
+ EnHorseNormal* self=(EnHorseNormal*)actor;
+ for(i=0;i<self->headCollider.count;i++) {
+  modelPos=*(Vec3f*)&EnHorseNormalVecCopy(&self->headCollider.elements[i].modelCenter);
+  FUN_003409ac(skin,self->headCollider.elements[i].limb,&modelPos,&worldPos);
+  self->headCollider.elements[i].worldCenter=worldPos;
+  self->headCollider.elements[i].worldRadius=self->headCollider.elements[i].modelRadius*self->headCollider.elements[i].scale;
  }
  CollisionCheck_SetOC(play,&play->colChkCtx,&self->headCollider.base);
 }
-#endif
 
 f32 fabsf(f32);
 
@@ -205,6 +238,7 @@ void Collider_SetJntSph(PlayState*,EnHorseNormalJntSph*,Actor*,void*,void*);
 void* ZAR_GetCMBByIndex(void*,s32);
 void FUN_00358ea8(void*,PlayState*,SkelAnime*,void*,void*,s32,void*,void*,s32);
 void Animation_PlayOnce(SkelAnime*,s32);
+void SkelAnime_SetPlaySpeed(SkelAnime*,f32);
 void FUN_00385c34(void*,PlayState*,EnHorseNormal*);
 static inline void EnHorseNormal_InitSkin(void* zar,PlayState* play,EnHorseNormal* self) {
  FUN_00358ea8(zar,play,&self->skin.skelAnime,ZAR_GetCMBByIndex(zar,0),self->actor.unk_178,6,self->jointTable,self->morphTable,0x18);
@@ -253,10 +287,7 @@ void EnHorseNormal_Init(Actor* actor,GameState* state) {
 #endif
 GLOBAL_ASM("asm/EnHorseNormal_Init.s")
 
-GLOBAL_ASM("asm/EnHorseNormal_Destroy.s")
 
-GLOBAL_ASM("asm/EnHorseNormal_Wait.s")
-GLOBAL_ASM("asm/EnHorseNormal_Update.s")
 
 // Unmatched Draw draft: 27 words, 1132/1132 B; flagged sounds use cloneSoundPos.
 #if 0
@@ -315,8 +346,40 @@ void EnHorseNormal_Draw(Actor* actor,PlayState* play) {
 
 #endif
 GLOBAL_ASM("asm/EnHorseNormal_Draw.s")
+void FUN_00385c34(void* zar,PlayState* play,EnHorseNormal* self) {
+ self->action=3; self->animationIdx=0;
+ self->actor.speedXZ=0.0f; self->accel=0.0f;
+ self->yawDelta=0; self->yawVel=0; self->actor.flags|=0x30;
+ FUN_00358ea8(zar,play,&self->cloneSkin.skelAnime,ZAR_GetCMBByIndex(zar,0),self->actor.unk_178,6,self->cloneJointTable,NULL,0x18);
+ f32 last=Animation_GetLastFrame(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx]);
+ Animation_Change_00375c08(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx],FUN_00350c68(self),0.0f,last,2,0.0f);
+ ZARInfo* shadowZar=&play->GetObjectStatus(0)->zarInfo;
+ ModelAllocator* allocator=GetModelManager().allocator;
+ self->shadowModel=allocator->Create(ZAR_GetCMBByIndex(shadowZar,EnHorseNormal_sModelIndices[1]),0);
+ ActorShape_Init(&self->actor.shape,0.0f,(ActorShadowFunc)FUN_00299ef8,20.0f);
+}
 
-GLOBAL_ASM("asm/EnHorseNormal_FollowPath.s")
+void EnHorseNormal_FollowPath(EnHorseNormal* self,PlayState* play) {
+ Path* path=&play->setupPathList[self->actor.params&0xF];
+ Vec3s* pointPos=path->points+self->waypoint;
+ f32 dx=pointPos->x-self->actor.world.pos.x;
+ f32 dz=pointPos->z-self->actor.world.pos.z;
+ f32 distSq=dx*dx+dz*dz;
+ Math_SmoothStepToS(&self->actor.world.rot.y,(s16)(Math_FAtan2F(dx,dz)*10430.378f),0xA,0x7D0,1);
+ self->actor.shape.rot.y=self->actor.world.rot.y;
+ if(distSq<600.0f) {
+  self->waypoint++;
+  if(self->waypoint>=path->count) self->waypoint=0;
+ }
+ f32 playSpeed=FUN_00350c68(self);
+ SkelAnime_SetPlaySpeed(&self->skin.skelAnime,playSpeed);
+ if(FUN_003731e0(&self->skin.skelAnime)) {
+  f32 last=Animation_GetLastFrame(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx]);
+  Animation_Change_00375c08(&self->skin.skelAnime,EnHorseNormal_sAnimations[self->animationIdx],FUN_00350c68(self),0.0f,last,2,0.0f);
+  if(self->animationIdx==5) Audio_PlaySoundGeneral(0x0100015B,&self->actor.world.pos,4,&FLOAT_0054ac20,&FLOAT_0054ac20,&DAT_0054ac24.unk_0);
+  else if(self->animationIdx==6) Audio_PlaySoundGeneral(0x0100015B,&self->actor.world.pos,4,&FLOAT_0054ac20,&FLOAT_0054ac20,&DAT_0054ac24.unk_0);
+ }
+}
 
 
 
@@ -378,59 +441,68 @@ void EnHorseNormal_Wander(EnHorseNormal* self,PlayState* play) {
 }
 
 
+
+#if 0 // Sol small pending: semantically corrected yaw and angle guards, 360/364 B.
+void FUN_003406b8(Actor* actor,PlayState* play,EnHorseNormalSkin* skin,void* postDraw,PostLimbDrawOpa postLimb,s32 arg5,s32 arg6,s32 flags) {
+ if(!(flags&1)) {
+  Vec3f pos;
+  MTX34 modelMtx;
+  pos.x=actor->world.pos.x;
+  pos.y=actor->world.pos.y+actor->shape.yOffset*actor->scale.y;
+  pos.z=actor->world.pos.z;
+  FUN_003a5778(&modelMtx,&actor->scale,&actor->shape.rot,&pos);
+  f32 yaw=skin->skinYaw;
+  if(yaw!=0.0f) {
+   f32 angle=yaw*9.58738e-5f;
+   if(angle!=0.0f) {
+   f32 s=sinf(angle),c=cosf(angle);
+   for(s32 i=0;i<3;i++) {
+    f32 x=modelMtx.data[i][0],z=modelMtx.data[i][2];
+    modelMtx.data[i][0]=x*c-z*s;
+    modelMtx.data[i][2]=x*s+z*c;
+   }
+   }
+  }
+  MTX34CopyAsm(&actor->modelMtx,&modelMtx);
+ }
+ SkelAnime_DrawOpa(&skin->skelAnime,&actor->modelMtx,NULL,postLimb,actor,0);
+ if(postDraw!=NULL) ((void (*)(Actor*,PlayState*,EnHorseNormalSkin*))postDraw)(actor,play,skin);
+}
+#endif
 GLOBAL_ASM("asm/FUN_003406b8.s")
 
-// FUN_003a5778 (matrix = Trans(trans) * Rx*Ry*Rz * Scale(scale)): draft, recipe R8. The MTX34_MakeTrans part matches; the scale
-// matrix at sp+0x30 is ALSO built word-wise with integer ldr/str (an SDK-style MakeScale u32 copy, not covered by the accepted
-// helper) -> float stores here. Also stack order / axis Vec3f reg (r7) not tuned. Needs a user decision on MTX34_MakeScale.
-#if 0
-void FUN_003625f8(MTX34* dst, f32 angle, Vec3f* axis);
+// Correct matrix order and accepted SDK helpers; remaining compiler-lifetime differences documented in STATUS.
+#if 0 // Sol small pending: SDK MakeTrans/MakeScale + axis setters, 396/404 B.
+void FUN_003625f8(MTX34* dst, Vec3f* axis, f32 angle);
 void FUN_0036c174(MTX34* dst, MTX34* a, MTX34* b);
 
-static inline void EnHorseNormal_MakeScale(MTX34* m, Vec3f* s) {
-    m->data[0][0] = s->x;
-    m->data[0][1] = 0.0f;
-    m->data[0][2] = 0.0f;
-    m->data[0][3] = 0.0f;
-    m->data[1][0] = 0.0f;
-    m->data[1][1] = s->y;
-    m->data[1][2] = 0.0f;
-    m->data[1][3] = 0.0f;
-    m->data[2][0] = 0.0f;
-    m->data[2][1] = 0.0f;
-    m->data[2][2] = s->z;
-    m->data[2][3] = 0.0f;
-}
+static inline void EnHorseNormal_SetAxis(Vec3f* p,f32 x,f32 y,f32 z) {p->x=x;p->y=y;p->z=z;}
 
 void FUN_003a5778(MTX34* m, Vec3f* scale, Vec3s* rot, Vec3f* trans) {
-    MTX34 tmp;
-    MTX34 scaleMtx;
-    MTX34 rz;
-    MTX34 ry;
-    MTX34 rx;
     Vec3f axis;
+    MTX34 rx;
+    MTX34 ry;
+    MTX34 rz;
+    MTX34 scaleMtx;
+    MTX34 tmp;
 
     MTX34_MakeTrans(m, trans);
-    axis.x = 1.0f;
-    axis.y = 0.0f;
-    axis.z = 0.0f;
-    FUN_003625f8(&rx, rot->x * 9.58738E-5f, &axis);
-    axis.x = 0.0f;
-    axis.y = 1.0f;
-    axis.z = 0.0f;
-    FUN_003625f8(&ry, rot->y * 9.58738E-5f, &axis);
-    axis.x = 0.0f;
-    axis.y = 0.0f;
-    axis.z = 1.0f;
-    FUN_003625f8(&rz, rot->z * 9.58738E-5f, &axis);
-    FUN_0036c174(&tmp, &rx, &ry);
+    EnHorseNormal_SetAxis(&axis,1.0f,0.0f,0.0f);
+    FUN_003625f8(&rx, &axis, rot->x * 9.58738E-5f);
+    EnHorseNormal_SetAxis(&axis,0.0f,1.0f,0.0f);
+    FUN_003625f8(&ry, &axis, rot->y * 9.58738E-5f);
+    EnHorseNormal_SetAxis(&axis,0.0f,0.0f,1.0f);
+    FUN_003625f8(&rz, &axis, rot->z * 9.58738E-5f);
+    FUN_0036c174(&tmp, &ry, &rx);
     FUN_0036c174(&tmp, &tmp, &rz);
     FUN_0036c174(&tmp, m, &tmp);
-    EnHorseNormal_MakeScale(&scaleMtx, scale);
+    MTX34_MakeScale(&scaleMtx, scale);
     FUN_0036c174(m, &tmp, &scaleMtx);
 }
 #endif
-
 GLOBAL_ASM("asm/FUN_003a5778.s")
+
+
+
 
 }

@@ -9,6 +9,8 @@ void EnArrow_Init(Actor* actor, GameState* state);
 void EnArrow_Destroy(Actor* actor, GameState* state);
 void EnArrow_Update(Actor* actor, GameState* state);
 void EnArrow_Draw(Actor* actor, GameState* state);
+void EnArrow_Shoot(EnArrow*, PlayState*);
+void EnArrow_Fly(EnArrow*, PlayState*);
 
 GLOBAL_ASM("data/z_En_Arrow.data.s")
 
@@ -23,6 +25,22 @@ ActorInit En_Arrow_InitVars = {
     (ActorFunc)EnArrow_Update,
     (ActorFunc)EnArrow_Draw,
 };
+
+extern "C++" {
+class EnGanonMantFreer {
+public:
+    virtual void vf00();
+    virtual void vf04();
+    virtual void vf08();
+    virtual void* Alloc(u32, const char*, s32);
+    virtual void Free(void*);
+};
+}
+extern EnGanonMantFreer* gUnk_0055A1F8;
+void* FUN_003488e4(void* model);
+void FUN_00348904(void* mgr, void* model);
+s32 FUN_0034eaf8(PlayState* play, void* quad);
+void Effect_Delete(PlayState* play, s32 index);
 
 #if 0 // Full Sol draft:1308/1316B126words; statics unpinned, see STATUS.
 struct EnArrowBlureInit2 {
@@ -46,17 +64,6 @@ typedef char EnArrowBlureSizeCheck[(sizeof(EnArrowBlureInit2) == 0x2C) ? 1 : -1]
 typedef char EnArrowBlureDurationOffsetCheck[(offsetof(EnArrowBlureInit2, elemDuration) == 0x16) ? 1 : -1];
 typedef char EnArrowBlurePrimOffsetCheck[(offsetof(EnArrowBlureInit2, altPrimColor) == 0x1A) ? 1 : -1];
 typedef char EnArrowBlureContextOffsetCheck[(offsetof(EnArrowBlureInit2, context) == 0x24) ? 1 : -1];
-extern "C++" {
-class EnGanonMantFreer {
-public:
-    virtual void vf00();
-    virtual void vf04();
-    virtual void vf08();
-    virtual void* Alloc(u32, const char*, s32);
-    virtual void Free(void*);
-};
-}
-extern EnGanonMantFreer* gUnk_0055A1F8;
 extern InitChainEntry EnArrow_sInitChain[];
 extern u8 EnArrow_sQuadInit[];
 extern u8 EnArrow_sTextureModelData[];
@@ -147,6 +154,29 @@ void EnArrow_Init(Actor* actor, GameState* state) {
 #endif
 GLOBAL_ASM("asm/EnArrow_Init.s")
 
+#if 0 // Luna continuation candidate: 30 words differ and the fast object lacks link-time inlining.
+void EnArrow_Destroy(Actor* actor, GameState* state) {
+    EnArrow* self = (EnArrow*)actor;
+    PlayState* play = (PlayState*)state;
+
+    if (self->actor.params <= 5) {
+        Effect_Delete(play, self->effectIndex);
+    }
+    SkelAnime_Free2(&self->skelAnime);
+    FUN_0034eaf8(play, &self->collider);
+    if (self->hitActor != NULL && self->hitActor->update != NULL) {
+        self->hitActor->flags &= ~0x8000;
+    }
+    if (self->textureModel != NULL) {
+        void* model = FUN_003488e4(self->textureModel);
+        gUnk_0055A1F8->Free(model);
+        self->textureModel = NULL;
+    }
+    if (self->managedModel != NULL) {
+        FUN_00348904(GetModelManager().unk_247C, self->managedModel);
+    }
+}
+#endif
 GLOBAL_ASM("asm/EnArrow_Destroy.s")
 
 GLOBAL_ASM("asm/EnArrow_Update.s")
@@ -174,8 +204,7 @@ void FUN_0010d850(EnArrow* self, PlayState* play) {
     Actor_Kill(&self->actor);
 }
 
-#if 0 // Candidate wrapper: the observed callee signature is unresolved.
-s32 BgCheck_LineTestImpl(CollisionContext*, s32, Vec3f*, Vec3f*, Vec3f*, f32, CollisionPoly**, s32*, Actor*, s32);
+#if 0 // Earlier candidates omitted shared unk2; best candidate below passed unk2 but remained 7 words off.
 s32 FUN_003aa580(void* colCtx, Vec3f* posA, Vec3f* posB, Vec3f* posResult, CollisionPoly** poly, s32 chkWall,
                  s32 chkFloor, s32 chkCeil, s32 chkOneFace, s32* bgId) {
     s32 flags = 0;
@@ -183,19 +212,81 @@ s32 FUN_003aa580(void* colCtx, Vec3f* posA, Vec3f* posB, Vec3f* posResult, Colli
     if (chkFloor) flags |= 2;
     if (chkCeil) flags |= 4;
     if (chkOneFace) flags |= 8;
-    return BgCheck_LineTestImpl((CollisionContext*)colCtx, 4, posA, posB, posResult, 1.0f, poly, bgId, NULL,
+    return BgCheck_LineTestImpl((CollisionContext*)colCtx, 4, 0, posA, posB, posResult, 1.0f, poly, bgId, NULL,
                                 flags | 0x10);
 }
 #endif
 
-#if 0 // Full Sol draft:1796/1812B385words; guarded vectors unpinned.
+#if 0 // Best wrapper candidate, shared prototype verified, still 7/34 words off.
+s32 BgCheck_LineTestImpl(CollisionContext*, s32, s32, Vec3f*, Vec3f*, Vec3f*, f32, CollisionPoly**, s32*, Actor*,
+                         s32);
+s32 FUN_003aa580(void* colCtx, Vec3f* posA, Vec3f* posB, Vec3f* posResult, CollisionPoly** poly, s32 chkWall,
+                 s32 chkFloor, s32 chkCeil, s32 chkOneFace, s32* bgId) {
+    s32 flags = 0;
+    if (chkWall) flags |= 1;
+    if (chkFloor) flags |= 2;
+    if (chkCeil) flags |= 4;
+    if (chkOneFace) flags |= 8;
+    flags |= 0x10;
+    return BgCheck_LineTestImpl((CollisionContext*)colCtx, 4, 0, posA, posB, posResult, 1.0f, poly, bgId, NULL,
+                                flags);
+}
+#endif
+GLOBAL_ASM("asm/FUN_003aa580.s")
+
+// Shooting action. Case order preserves the original sound dispatch layout.
 struct EnArrowPlayerView {
     Actor actor;
     char pad[0x247E - sizeof(Actor)];
     u8 projectileState;
 };
-struct EnArrowPlayFrameView { char pad[0x5BF4]; u32 gameplayFrames; };
 typedef char EnArrowPlayerProjectileOffsetCheck[(offsetof(EnArrowPlayerView, projectileState) == 0x247E) ? 1 : -1];
+
+void FUN_0036f59c(Player* player, s32 sfxId);
+void FUN_0036c648(Actor* actor, f32 speed);
+
+void EnArrow_Shoot(EnArrow* self, PlayState* play) {
+    Player* player = GET_PLAYER(play);
+
+    if (self->actor.parent != NULL) {
+        return;
+    }
+    if (self->actor.params != 10 && ((EnArrowPlayerView*)player)->projectileState == 0) {
+        Actor_Kill(&self->actor);
+        return;
+    }
+    switch (self->actor.params) {
+        case 9:
+            FUN_0036f59c(player, 0x01000112);
+            break;
+        case 0:
+        case 1:
+        case 2:
+            FUN_0036f59c(player, 0x010000F6);
+            break;
+        case 3:
+        case 4:
+        case 5:
+            FUN_0036f59c(player, 0x0100012B);
+            break;
+    }
+    self->actionFunc = EnArrow_Fly;
+    Math_Vec3f_Copy(&self->previousPos, &self->actor.world.pos);
+    if (self->actor.params >= 9) {
+        FUN_0036c648(&self->actor, 80.0f);
+        self->timer = (u8)(0.5f + (3.0f / R_UPDATE_RATE) * 15.0f);
+        self->actor.shape.rot.z = 0;
+        self->actor.shape.rot.y = 0;
+        self->actor.shape.rot.x = 0;
+    } else {
+        FUN_0036c648(&self->actor, 150.0f);
+        self->timer = (u8)(0.5f + (3.0f / R_UPDATE_RATE) * 12.000001f);
+    }
+}
+
+
+#if 0 // Full Sol draft:1796/1812B385words; guarded vectors unpinned.
+struct EnArrowPlayFrameView { char pad[0x5BF4]; u32 gameplayFrames; };
 typedef char EnArrowFramesOffsetCheck[(offsetof(EnArrowPlayFrameView, gameplayFrames) == 0x5BF4) ? 1 : -1];
 struct EnArrowPackedRGBA {
     u32 r : 8;
@@ -535,9 +626,5 @@ void EnArrow_Fly(EnArrow* self, PlayState* play) {
 
 #endif
 GLOBAL_ASM("asm/EnArrow_Fly.s")
-
-GLOBAL_ASM("asm/EnArrow_Shoot.s")
-GLOBAL_ASM("asm/FUN_003aa580.s")
-
 
 }

@@ -2,18 +2,16 @@
 #define _Z_EN_HORSE_NORMAL_H_
 #include "global.hpp"
 #include <stddef.h>
-typedef struct { char unk_00[0x10]; SkelAnime skelAnime; } EnHorseNormalSkin;
+typedef struct { char unk_00[0x10]; SkelAnime skelAnime; f32 skinYaw; } EnHorseNormalSkin;
 typedef struct { char unk_00[0x28]; Vec3f modelCenter; f32 modelRadius; Vec3f worldCenter; f32 worldRadius; f32 scale; u8 limb; char pad_4D[3]; } EnHorseNormalJntSphDim;
 typedef struct { Collider base; s32 count; EnHorseNormalJntSphDim* elements; } EnHorseNormalJntSph;
 typedef struct EnHorseNormal {
     Actor actor;
     u8 action; u8 animationIdx; char pad_1A6[2];
     EnHorseNormalSkin skin;
-    char pad_23C[4];
     char jointTable[0x4E0];
     char morphTable[0x4E0];
     EnHorseNormalSkin cloneSkin;
-    char pad_C94[4];
     char cloneJointTable[0x4E0];
     SkeletonAnimationModel* shadowModel;
     MTX34 cloneMtx;

@@ -74,7 +74,6 @@ GLOBAL_ASM("asm/caseD_9_003858a0.s")
 GLOBAL_ASM("asm/caseD_11_00385aa4.s")
 
 
-GLOBAL_ASM("asm/FUN_00385c34.s")
 
 GLOBAL_ASM("asm/FUN_00385de0.s")
 

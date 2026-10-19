@@ -11,7 +11,6 @@ GLOBAL_ASM("asm/FUN_001c23a4.s")
 
 
 
-GLOBAL_ASM("asm/FUN_001c307c.s")
 
 
 GLOBAL_ASM("asm/FUN_001c31c0.s")

@@ -22,4 +22,6 @@ EnHorseNormal_sAnimClass EQU 0x005272EC
 EnHorseNormal_sPlaybackSpeeds EQU 0x005272B4
 	EXPORT EnHorseNormal_sActionFuncs
 EnHorseNormal_sActionFuncs EQU 0x005272D8
+	EXPORT EnHorseNormal_sModelIndices
+EnHorseNormal_sModelIndices EQU 0x004D96B4
 	END

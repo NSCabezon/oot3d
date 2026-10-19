@@ -312,7 +312,6 @@ GLOBAL_ASM("asm/FUN_0015c004.s")
 
 GLOBAL_ASM("asm/FUN_0015c67c.s")
 
-GLOBAL_ASM("asm/FUN_0015cc5c.s")
 
 GLOBAL_ASM("asm/FUN_0015cd7c.s")
 
