@@ -177,6 +177,29 @@ void EnArrow_Destroy(Actor* actor, GameState* state) {
     }
 }
 #endif
+
+#if 0 // Sol alternate: full264B7words; allocator object loads before helper, unlike target order.
+void EnArrow_Destroy(Actor* actor, GameState* state) {
+    EnArrow* self = (EnArrow*)actor;
+    PlayState* play = (PlayState*)state;
+
+    if (self->actor.params <= 5) {
+        Effect_Delete(play, self->effectIndex);
+    }
+    SkelAnime_Free2(&self->skelAnime);
+    FUN_0034eaf8(play, &self->collider);
+    if (self->hitActor != NULL && self->hitActor->update != NULL) {
+        self->hitActor->flags &= ~0x8000;
+    }
+    if (self->textureModel != NULL) {
+        gUnk_0055A1F8->Free(FUN_003488e4(self->textureModel));
+        self->textureModel = NULL;
+    }
+    if (self->managedModel != NULL) {
+        FUN_00348904(GetModelManager().unk_247C, self->managedModel);
+    }
+}
+#endif
 GLOBAL_ASM("asm/EnArrow_Destroy.s")
 
 GLOBAL_ASM("asm/EnArrow_Update.s")

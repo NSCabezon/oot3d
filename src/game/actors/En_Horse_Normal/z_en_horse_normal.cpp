@@ -129,15 +129,17 @@ void FUN_001c3180(Actor* actor,PlayState* play,EnHorseNormalSkin* skin,void* pos
  FUN_003406b8(actor,play,skin,postDraw,postLimb,a,b,c);
 }
 
-#if 0 // Sol small pending: 2 words, full 200/200 B; copy argument scheduling remains.
 static inline void EnHorseNormal_CopyMatrix(MTX34* src,MTX34* dst) { MTX34CopyAsm(dst,src); }
+static inline void EnHorseNormal_CopyClone(MTX34* dst, EnHorseNormal* self) {
+ MTX34CopyAsm(dst, &self->cloneMtx);
+}
 void FUN_00299ef8(Actor* actor,Lights* lights,PlayState* play,s32 arg3,Color_RGBA8* color) {
  EnHorseNormal* self=(EnHorseNormal*)actor;
  MTX34 saved;
  EnHorseNormal_CopyMatrix(&actor->modelMtx,&saved);
  s16 oldYaw=actor->world.rot.y;
  ActorShadow_Draw(actor,lights,play,1,NULL);
- EnHorseNormal_CopyMatrix(&self->cloneMtx,&actor->modelMtx);
+ EnHorseNormal_CopyClone(&actor->modelMtx,self);
  actor->world.pos.x=self->cloneMtx.data[0][3];
  actor->world.pos.y=self->cloneMtx.data[1][3];
  actor->world.pos.z=self->cloneMtx.data[2][3];
@@ -149,7 +151,6 @@ void FUN_00299ef8(Actor* actor,Lights* lights,PlayState* play,s32 arg3,Color_RGB
  actor->world.pos.z=saved.data[2][3];
  actor->shape.rot.y=oldYaw;
 }
-#endif
 
 class EnHorseNormalVecCopy {
  public:
