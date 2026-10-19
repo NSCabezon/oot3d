@@ -1,3 +1,7 @@
 	EXPORT ObjSwitch_sDrawFuncs
+	EXPORT ObjSwitch_sCrystalAnimColors
+	EXPORT ObjSwitch_sTextureAnimMask
 ObjSwitch_sDrawFuncs EQU 0x00535708
+ObjSwitch_sCrystalAnimColors EQU 0x004DBC0D
+ObjSwitch_sTextureAnimMask EQU 0x004DBC2B
 	END

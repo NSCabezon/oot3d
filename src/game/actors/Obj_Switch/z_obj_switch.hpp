@@ -6,6 +6,27 @@
 struct ObjSwitch;
 typedef void (*ObjSwitchActionFunc)(ObjSwitch*, PlayState*);
 
+typedef struct {
+    Vec3f vtx[3];
+} ObjSwitchColliderTrisDimInit;
+typedef struct {
+    ColliderInfoInit info;
+    ObjSwitchColliderTrisDimInit dim;
+} ObjSwitchColliderTrisElementInit;
+typedef struct {
+    ColliderInit base;
+    s32 count;
+    ObjSwitchColliderTrisElementInit* elements;
+} ObjSwitchColliderTrisInit;
+typedef struct {
+    u8 bytes[0x5C];
+} ObjSwitchColliderTrisElement;
+typedef struct {
+    Collider base;
+    s32 count;
+    ObjSwitchColliderTrisElement* elements;
+} ObjSwitchColliderTris;
+
 struct ObjSwitch {
     /* 0x0000 */ Actor actor;
     /* 0x01A4 */ char unk_1A4[0x18];
@@ -36,7 +57,7 @@ extern ActorInit Obj_Switch_InitVars;
 
 void FUN_001cf100(ObjSwitch* thisx);
 void FUN_001cf0e4(ObjSwitch* thisx);
-void FUN_001eb278(ObjSwitch* thisx, PlayState* play);
+void FUN_001eb278(ObjSwitch* thisx);
 void ObjSwitch_EyeInit(ObjSwitch* thisx, PlayState* play);
 void ObjSwitch_EyeClosing(ObjSwitch* thisx, PlayState* play);
 void ObjSwitch_EyeOpen(ObjSwitch* thisx, PlayState* play);

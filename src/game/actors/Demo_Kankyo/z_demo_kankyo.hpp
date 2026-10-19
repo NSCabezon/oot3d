@@ -21,7 +21,10 @@ typedef struct DemoKankyoEffect {
 
 typedef struct DemoKankyo {
     /* 0x0000 */ Actor actor;
-    /* 0x01A4 */ char unk_1A4[4];
+    /* 0x01A4 */ u8 requiredObjectSlot;
+    /* 0x01A5 */ u8 sparkleCounter;
+    /* 0x01A6 */ u8 warpTimer;
+    /* 0x01A7 */ u8 unk_1A7;
     /* 0x01A8 */ DemoKankyoEffect effects[150];
     /* 0x1918 */ void (*actionFunc)(DemoKankyo*, PlayState*);
     /* 0x191C */ void* effectResource;

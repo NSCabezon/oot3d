@@ -1979,6 +1979,7 @@
 --keep=DemoShd_Destroy
 --keep=FUN_001d2588
 --keep=FUN_001d2700
+--keep=FUN_001d27b0
 --keep=DoorAna_Init
 --keep=DoorAna_Destroy
 --keep=EffDust_Init

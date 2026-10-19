@@ -260,7 +260,8 @@ GLOBAL_ASM("asm/caseD_2_001d21d4.s")
 
 GLOBAL_ASM("asm/FUN_001d2588.s")
 
-GLOBAL_ASM("asm/FUN_001d2700.s")
+GLOBAL_ASM("../split/asm/FUN_001d2700.s")
+GLOBAL_ASM("../split/asm/FUN_001d27b0.s")
 
 GLOBAL_ASM("asm/FUN_001d37ac.s")
 

@@ -811,6 +811,24 @@
       ]
     },
     {
+      "name": "FUN_001d2700",
+      "source": "FUN_001d2700",
+      "offset": 0,
+      "size": 176,
+      "exports": [
+        "FUN_001d2700"
+      ]
+    },
+    {
+      "name": "FUN_001d27b0",
+      "source": "FUN_001d2700",
+      "offset": 176,
+      "size": 2444,
+      "exports": [
+        "FUN_001d27b0"
+      ]
+    },
+    {
       "name": "FUN_001dc864",
       "source": "EnXc_Update",
       "offset": 40,

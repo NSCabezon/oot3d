@@ -2,6 +2,14 @@ extern "C" {
 #include "z_obj_switch.hpp"
 
 void ObjSwitch_FloorUp(ObjSwitch* thisx, PlayState* play);
+void ObjSwitch_CrystalOff(ObjSwitch* thisx, PlayState* play);
+
+void FUN_001eb278(ObjSwitch* thisx) {
+    thisx->crystalR = 0;
+    thisx->crystalG = 0;
+    thisx->crystalB = 0;
+    thisx->actionFunc = ObjSwitch_CrystalOff;
+}
 
 void FUN_001cf0e4(ObjSwitch* thisx) {
     thisx->actor.scale.y = 0.165f;

@@ -8016,6 +8016,10 @@ text 0x00100000
 	{
 		* (i.FUN_001d2700)
 	}
+	FUN_001d27b0 0x001d27b0
+	{
+		* (i.FUN_001d27b0)
+	}
 	DoorAna_Init 0x001d313c
 	{
 		* (i.DoorAna_Init)
